@@ -1,10 +1,10 @@
 import { useContext } from "react"
-import { ProductContext } from "./Context"
+import { ShopContext } from "../Context/ShopContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSearch, faWindowClose } from "@fortawesome/free-solid-svg-icons"
 
 const SearchBar = () => {
-    const {search,setSearch,showSearch,setShowSearch}=useContext(ProductContext)
+    const {search,setSearch,showSearch,setShowSearch}=useContext(ShopContext)
   return (
    <>
    {showSearch?(

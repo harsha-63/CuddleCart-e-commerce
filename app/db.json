@@ -1,194 +1,320 @@
 {
-    "user": [
-      {
-        "id": "b712",
-        "username": "Harsha",
-        "email": "harsha@gmail.com",
-        "password": "harsha",
-        "cart": []
-          
-      },
-      {
-        "id": "daee",
-        "username": "sa",
-        "email": "sa@gnail.com",
-        "password": "sssss",
-        "cart": []
-      },
-      {
-        "id": "aacc",
-        "name": "Anshida.U",
-        "email": "nnn@gmail.com",
-        "password": "fharshau",
-        "cart": []
-      },
-      {
-        "id": "bae5",
-        "name": "nnn",
-        "email": "anshidaummattil@gmail.com",
-        "password": "fffff",
-        "cart": []
-      },
-      {
-        "id": "d476",
-        "name": "anshida",
-        "email": "anshidaummattil@gmail.com",
-        "password": "hhhhh",
-        "cart": []
-      },
-      {
-        "id": "6ebe",
-        "name": "hhhh",
-        "email": "hhhh@gmail.com",
-        "password": "gggg",
-        "cart": []
-      },
-      {
-        "id": "c236",
-        "name": "Harsha",
-        "email": "harsha@gmail.com",
-        "password": "harsha",
-        "cart": []
-      },
-      {
-        "id": "8a3b",
-        "name": "Ayisha",
-        "email": "Ayisha@gmail.com",
-        "password": "aaaa",
-        "cart": []
-      },
-      {
-        "id": "9e35",
-        "name": "Navaf",
-        "email": "na@gmail.com",
-        "password": "nnnn",
-        "cart": []
-      },
-      {
-        "id": "a32f",
-        "name": "sithara",
-        "email": "ss@gmail.com",
-        "password": "ssss",
-        "cart": []
-      }
-    ],
-    "products": [
-      {
-        "id": "1",
-        "name": "Extra Soft Touch Lamb Doll",
-        "description": "Comfortable and safe stroller for your baby",
-        "price": 100.99,
-        "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-12.jpg",
-        "category": "Toys",
-        "stars": 4.8
-      },
-      {
-        "id": "2",
-        "name": "Twin Cute Bunny Set Combo",
-        "description": "Cute and cozy clothes set for babies",
-        "price": 29.99,
-        "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-11.jpg",
-        "category": "Clothing",
-        "stars": 4
-      },
-      {
-        "id": "3",
-        "name": "Baby Feeding Spoon",
-        "description": "Babies Bloom Pink Silicone Baby Feeding Spoon",
-        "price": 15.99,
-        "image": "https://babiesbloomstore.com/wp-content/uploads/2019/06/BBS-N17-FBP.jpg",
-        "category": "Feeding",
-        "stars": 3.2
-      },
-      {
-        "id": "4",
-        "name": "Nutrikids Food Nutrition DHA+ Orange",
-        "description": "Monitor to keep an eye on your baby",
-        "price": 79.99,
-        "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-9.jpg",
-        "category": "Protein",
-        "stars": 3.4
-      },
-      {
-        "id": "5",
-        "name": "Sunny Outdoor picnic Set Yellow",
-        "description": "Safe and comfortable car seat for babies",
-        "price": 149.99,
-        "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-8.jpg",
-        "category": "Clothing",
-        "stars": 4.3
-      },
-      {
-        "id": "6",
-        "name": "Teddy Bear Ready To Flight Doll",
-        "description": "Spacious diaper bag with multiple compartments",
-        "price": 39.99,
-        "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-7.jpg",
-        "category": "Toys",
-        "stars": 4.1
-      },
-      {
-        "id": "7",
-        "name": "VitCom Nutrition Fruits Flavor",
-        "description": "Adjustable and easy-to-clean high chair for babies",
-        "price": 59.99,
-        "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-6.jpg",
-        "category": "Protein",
-        "stars": 4.4
-      },
-      {
-        "id": "8",
-        "name": "Frosted White Plactic Bottle 400ml",
-        "description": "Soft and soothing teething toy for babies",
-        "price": 9.99,
-        "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-5.jpg",
-        "category": "Toys",
-        "stars": 4.6
-      },
-      {
-        "id": "9",
-        "name": "ZooMate 3 Animal Set Toys",
-        "description": "Comfortable and secure bath tub for babies",
-        "price": 39.99,
-        "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-4.jpg",
-        "category": "Bath",
-        "stars": 4.2
-      },
-      {
-        "id": "10",
-        "name": "Baby Swaddle Blanket",
-        "description": "Soft and breathable swaddle blanket for babies",
-        "price": 19.99,
-        "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-3.jpg",
-        "category": "Clothing",
-        "stars": 4
-      },
-      {
-        "id": "11",
-        "name": "Baby Changing Pad",
-        "description": "Waterproof and easy-to-clean changing pad for babies",
-        "price": 14.99,
-        "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-2.jpg",
-        "category": "Clothing",
-        "stars": 4.3
-      },
-      {
-        "id": "12",
-        "name": "Baby Mobile",
-        "description": "Colorful and engaging mobile for baby cribs",
-        "price": 24.99,
-        "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-1.jpg",
-        "category": "Toys",
-        "stars": 4.5
-      },
-      {
-        "id": "1720533871511",
-        "name": "Bath Tub",
-        "description": "Baby Bath Essentials Checklist | Firstcry ",
-        "price": 23,
-        "image": "https://staranddaisy.in/wp-content/uploads/2023/04/bath-tub-12dec23415-16.jpg",
-        "category": "Bath",
-        "stars": 4
-      }
-    ]
-  }
+  "user": [
+    {
+      "id": "b712",
+      "name": "Harsha",
+      "email": "harsha@gmail.com",
+      "password": "harsha",
+      "confirmpassword": "harsha",
+      "isAdmin": true,
+      "isBlock": false,
+      "cart": [
+        {
+          "id": "2",
+          "name": " Twin Cute Bunny Set Combo",
+          "description": "Cute and cozy clothes set for babies",
+          "price": 50,
+          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-11.jpg",
+          "category": "Clothing",
+          "stars": 4,
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "name": "Baby Feeding Spoon",
+          "description": "Babies Bloom Pink Silicone Baby Feeding Spoon",
+          "review": "The Baby Feeding Spoon is a must-have for parents seeking a safe and effective way to introduce solid foods to their little ones. With its thoughtful design and quality materials, this spoon is an essential tool for making mealtime enjoyable for both babies and parents.",
+          "price": 15,
+          "image": "https://babiesbloomstore.com/wp-content/uploads/2019/06/BBS-N17-FBP.jpg",
+          "category": "Feeding",
+          "stars": 3.2,
+          "quantity": 1
+        }
+      ],
+      "order": [
+        {
+          "id": "3",
+          "name": "Baby Feeding Spoon",
+          "description": "Babies Bloom Pink Silicone Baby Feeding Spoon",
+          "price": 15,
+          "image": "https://babiesbloomstore.com/wp-content/uploads/2019/06/BBS-N17-FBP.jpg",
+          "category": "Feeding",
+          "stars": 3.2,
+          "quantity": 1
+        },
+        {
+          "id": "2",
+          "name": " Twin Cute Bunny Set Combo",
+          "description": "Cute and cozy clothes set for babies",
+          "price": 50,
+          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-11.jpg",
+          "category": "Clothing",
+          "stars": 4,
+          "quantity": 1
+        },
+        {
+          "id": "4",
+          "name": "Nutrikids Food Nutrition DHA+ Orange",
+          "description": "Monitor to keep an eye on your baby",
+          "price": 79,
+          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-9.jpg",
+          "category": "Protein",
+          "stars": 3.4,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "d476",
+      "name": "anshida",
+      "email": "anshidaummattil@gmail.com",
+      "password": "hhhhh",
+      "confirmpassword": "hhhhh",
+      "isAdmin": true,
+      "isBlock": false,
+      "cart": [],
+      "order": []
+    },
+    {
+      "id": "8a3b",
+      "name": "Ayisha",
+      "email": "Ayisha@gmail.com",
+      "password": "aaaa",
+      "confirmpassword": "aaaa",
+      "isAdmin": false,
+      "isBlock": false,
+      "cart": [],
+      "order": []
+    },
+    {
+      "id": "9e35",
+      "name": "Navaf",
+      "email": "na@gmail.com",
+      "password": "nnnn",
+      "confirmpassword": "nnnn",
+      "isAdmin": false,
+      "isBlock": true,
+      "cart": [],
+      "order": []
+    },
+    {
+      "id": "a32f",
+      "name": "sithara",
+      "email": "ss@gmail.com",
+      "password": "ssss",
+      "confirmpassword": "ssss",
+      "isAdmin": true,
+      "isBlock": false,
+      "cart": [],
+      "order": [
+        {
+          "id": "5",
+          "name": "Sunny Outdoor picnic Set Yellow",
+          "description": "Safe and comfortable car seat for babies",
+          "price": 149.99,
+          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-8.jpg",
+          "category": "Clothing",
+          "stars": 4.3,
+          "quantity": 1
+        },
+        {
+          "id": "3",
+          "name": "Baby Feeding Spoon",
+          "description": "Babies Bloom Pink Silicone Baby Feeding Spoon",
+          "price": 15.99,
+          "image": "https://babiesbloomstore.com/wp-content/uploads/2019/06/BBS-N17-FBP.jpg",
+          "category": "Feeding",
+          "stars": 3.2,
+          "quantity": 1
+        },
+        {
+          "id": "4",
+          "name": "Nutrikids Food Nutrition DHA+ Orange",
+          "description": "Monitor to keep an eye on your baby",
+          "price": 79.99,
+          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-9.jpg",
+          "category": "Protein",
+          "stars": 3.4,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "d04f",
+      "name": "sibi",
+      "email": "sibi@gmail.com",
+      "confirmpassword": "ssss",
+      "password": "ssss",
+      "isAdmin": false,
+      "isBlock": false,
+      "cart": [],
+      "order": []
+    },
+    {
+      "id": "9c34",
+      "name": "jifu",
+      "email": "jif@gmail.com",
+      "password": "jjjj",
+      "confirmpassword": "jjjj",
+      "isAdmin": false,
+      "isBlock": true,
+      "cart": [
+        {
+          "id": "1",
+          "name": "Extra Soft Touch Lamb Doll",
+          "description": "Comfortable and safe stroller for your baby",
+          "price": 100.99,
+          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-12.jpg",
+          "category": "Toys",
+          "stars": 4.8,
+          "quantity": 1
+        }
+      ],
+      "order": []
+    },
+    {
+      "id": "af22",
+      "name": "abbas",
+      "email": "pv@gmail.com",
+      "password": "pvpv",
+      "isAdmin": false,
+      "isBlock": false,
+      "cart": [],
+      "confirmpassword": "pvpv",
+      "order": []
+    }
+  ],
+  "products": [
+    {
+      "id": "2",
+      "name": " Twin Cute Bunny Set Combo",
+      "description": "Cute and cozy clothes set for babies",
+      "review": "The Twin Cute Bunny Set Combo is an adorable and delightful addition for children or as a charming gift for any bunny lover. Featuring two beautifully designed plush bunnies, this combo brings joy and comfort, making it a perfect choice for playtime or cuddling.",
+      "price": 50,
+      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-11.jpg",
+      "category": "Clothing",
+      "stars": 4
+    },
+    {
+      "id": "3",
+      "name": "Baby Feeding Spoon",
+      "description": "Babies Bloom Pink Silicone Baby Feeding Spoon",
+      "review": "The Baby Feeding Spoon is a must-have for parents seeking a safe and effective way to introduce solid foods to their little ones. With its thoughtful design and quality materials, this spoon is an essential tool for making mealtime enjoyable for both babies and parents.",
+      "price": 15,
+      "image": "https://babiesbloomstore.com/wp-content/uploads/2019/06/BBS-N17-FBP.jpg",
+      "category": "Feeding",
+      "stars": 3.2
+    },
+    {
+      "id": "4",
+      "name": "Nutrikids Food Nutrition DHA+ Orange",
+      "description": "Monitor to keep an eye on your baby",
+      "review": "Nutrikids Food Nutrition DHA+ Orange is an exceptional dietary supplement designed to support the nutritional needs of growing children. With its delicious orange flavor, this product not only provides essential nutrients but also makes it easy and enjoyable for kids to consume.",
+      "price": 79,
+      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-9.jpg",
+      "category": "Protein",
+      "stars": 3.4
+    },
+    {
+      "id": "5",
+      "name": "Sunny Outdoor picnic Set Yellow",
+      "description": "Safe and comfortable car seat for babies",
+      "review": "The Sunny Outdoor Picnic Set in yellow is a delightful and practical addition to any family's outdoor adventures. This set combines vibrant aesthetics with functionality, making it perfect for picnics, beach days, and outdoor gatherings.",
+      "price": 149,
+      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-8.jpg",
+      "category": "Clothing",
+      "stars": 4.3
+    },
+    {
+      "id": "6",
+      "name": "Teddy Bear Ready To Flight Doll",
+      "description": "Spacious diaper bag with multiple compartments",
+      "review": "The Teddy Bear Ready To Flight Doll is an adorable companion that combines the charm of a classic teddy bear with a fun travel theme. This plush toy is perfect for children who love imaginative play and adventure, making it an ideal gift for birthdays, holidays, or special occasions.",
+      "price": 39,
+      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-7.jpg",
+      "category": "Toys",
+      "stars": 4.1
+    },
+    {
+      "id": "7",
+      "name": "VitCom Nutrition Fruits Flavor",
+      "description": "Adjustable and easy-to-clean high chair for babies",
+      "review": "VitCom Nutrition Fruits Flavor is a tasty and nutritious supplement designed to enhance your daily vitamin intake while providing a burst of fruity flavor. This product is ideal for individuals looking to support their health in a convenient and enjoyable way.",
+      "price": 59,
+      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-6.jpg",
+      "category": "Protein",
+      "stars": 4.4
+    },
+    {
+      "id": "8",
+      "name": "Frosted White Plastic Bottle 400ml",
+      "description": "Soft and soothing teething toy for babies",
+      "review": "The Frosted White Plastic Bottle (400ml) is an excellent choice for those seeking a stylish, functional, and versatile container for various beverages. With its sleek design and practical features, this bottle stands out in both aesthetics and functionality.",
+      "price": 19,
+      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-5.jpg",
+      "category": "Feeding",
+      "stars": 4.6
+    },
+    {
+      "id": "9",
+      "name": "ZooMate 3 Animal Set Toys",
+      "description": "Comfortable and secure bath tub for babies",
+      "review": "The ZooMate 3 Animal Set Toys offer a delightful play experience for children, encouraging imaginative play and learning about wildlife. This set is perfect for young animal lovers and provides a fun and educational addition to any toy collection.",
+      "price": 39,
+      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-4.jpg",
+      "category": "Bath",
+      "stars": 4.2
+    },
+    {
+      "id": "10",
+      "name": "Baby Swaddle Blanket",
+      "description": "Soft and breathable swaddle blanket for babies",
+      "review": "The Baby Swaddle Blanket is a must-have for new parents seeking comfort and security for their little ones. Designed with softness and functionality in mind, this swaddle blanket promotes better sleep for babies while providing a soothing environment that mimics the womb.",
+      "price": 19,
+      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-3.jpg",
+      "category": "Clothing",
+      "stars": 4
+    },
+    {
+      "id": "11",
+      "name": "Baby Changing Pad",
+      "description": "Waterproof and easy-to-clean changing pad for babies",
+      "review": "The Baby Changing Pad is a practical and essential accessory for new parents, offering a clean and comfortable space for diaper changes. With thoughtful design elements and easy maintenance, this changing pad simplifies the process of caring for your little one.",
+      "price": 14,
+      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-2.jpg",
+      "category": "Clothing",
+      "stars": 4.3
+    },
+    {
+      "id": "12",
+      "name": "Baby Mobile",
+      "description": "Colorful and engaging mobile for baby cribs",
+      "review": "The Baby Mobile is a delightful nursery accessory that captivates infants with its colorful designs and gentle movement, promoting visual and auditory stimulation. Made from safe materials, it enhances the room's decor while providing a soothing atmosphere for your little one.",
+      "price": 24,
+      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-1.jpg",
+      "category": "Toys",
+      "stars": 4.5
+    },
+    {
+      "id": "13",
+      "name": "Bath Tub",
+      "description": "Baby Bath Essentials Checklist | Firstcry ",
+      "review": "The Baby Bath Tub is a must-have for new parents, providing a safe and comfortable space for bathing infants. Its ergonomic design ensures ease of use for parents while keeping babies secure, making bath time an enjoyable and stress-free experience for both",
+      "price": 23,
+      "image": "https://staranddaisy.in/wp-content/uploads/2023/04/bath-tub-12dec23415-16.jpg",
+      "category": "Bath",
+      "stars": 4
+    },
+    {
+      "id": "a588",
+      "name": "Extra Soft Touch Lamb Doll",
+      "description": "Comfortable and safe stroller for your baby",
+      "review": "The Extra Soft Touch Lamb Doll is an incredibly huggable companion for babies and toddlers, featuring plush fabric that’s gentle on delicate skin. Its charming design and lightweight structure make it perfect for snuggling, providing comfort and security during naps or playtime.",
+      "price": 100,
+      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-12.jpg",
+      "category": "Toys",
+      "stars": "4",
+      "catagory": "Toys"
+    }
+  ]
+}

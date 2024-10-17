@@ -18,7 +18,7 @@ const Navbar = () => {
         <NavLink to={'/'}><img src={logo} className="w-20 sm:w-28 lg:w-40" alt="Logo" /></NavLink>
         <nav className="hidden sm:flex gap-5 text-sm text-gray-600">
           <NavLink to="/" className="flex flex-col items-center gap-1 hover:shadow-lg">Home</NavLink>
-          <NavLink to="/shop" className="hover:shadow-lg flex flex-col items-center gap-1">Shop</NavLink>
+          <NavLink to="/collection" className="hover:shadow-lg flex flex-col items-center gap-1">Collection</NavLink>
           <NavLink to="/about" className="flex flex-col items-center gap-1 hover:shadow-lg">About</NavLink>
           <NavLink to="/contact" className="flex flex-col items-center gap-1 hover:shadow-lg">Contact</NavLink>
           {currentUser&&currentUser.isAdmin?(
@@ -26,7 +26,7 @@ const Navbar = () => {
             ):null}
         </nav>
         <div className="flex items-center space-x-4 sm:space-x-10">
-        <NavLink  to={'/shop'}className="hover:text-gray-400">
+        <NavLink  to={'/collection'}className="hover:text-gray-400">
             <FontAwesomeIcon icon={faSearch} size="lg" onClick={()=>setShowSearch(true)} />
           </NavLink>
           <NavLink to="/cart" className="hover:text-gray-400 relative">
