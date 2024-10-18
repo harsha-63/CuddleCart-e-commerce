@@ -27,7 +27,7 @@ const Signup = () => {
     e.preventDefault();
     if (formData.name && formData.email && formData.password) {
     try {
-      const response=  await axios.post('http://localhost:3000/user', formData);
+      const response=  await axios.post('http://localhost:4000/user', formData);
       alert("Sign up successful");
       setCurrentUser(response.data)
       await fetchUsers();

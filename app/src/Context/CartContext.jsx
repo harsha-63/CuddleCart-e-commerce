@@ -22,7 +22,7 @@ const CartProvider = ({ children }) => {
     const fetchUserCart = async () => {
       if (currentUser) {
         try {
-          const response = await axios.get(`http://localhost:3000/user/${currentUser.id}`);
+          const response = await axios.get(`http://localhost:4000/user/${currentUser.id}`);
           const userCartData = response.data.cart || [];
           const userOrdersData = response.data.order || [];
           setUserCart(userCartData);
@@ -77,7 +77,7 @@ const CartProvider = ({ children }) => {
   const patchUpdatedCart = async (updatedCart) => {
     if (currentUser && currentUser.id) {
       try {
-        await axios.patch(`http://localhost:3000/user/${currentUser.id}`, { cart: updatedCart });
+        await axios.patch(`http://localhost:4000/user/${currentUser.id}`, { cart: updatedCart });
         const updatedData = { ...currentUser, cart: updatedCart };
         setCurrentUser(updatedData);
         localStorage.setItem("currentUser", JSON.stringify(updatedData));
@@ -102,7 +102,7 @@ const CartProvider = ({ children }) => {
   };
 
   const patchUpdatedOrder=(userOrder)=>{
-    axios.patch(`http://localhost:3000/user/${currentUser?.id}`,{order:userOrder})
+    axios.patch(`http://localhost:4000/user/${currentUser?.id}`,{order:userOrder})
   }
   useEffect(()=>{
     if(currentUser!==null){

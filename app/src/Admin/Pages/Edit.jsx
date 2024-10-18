@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { ShopContext } from "../../Context/ShopContext";
 
@@ -11,6 +11,7 @@ const Edit = () => {
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
     const [price, setPrice] = useState('');
+    const navigate=useNavigate()
 
     useEffect(() => {
         if (products) {
@@ -48,6 +49,7 @@ const Edit = () => {
                     prevProducts.map(p => (p.id === product.id ? updatedProduct : p))
                 );
                 alert("Product updated successfully");
+                navigate('/items')
             } catch (error) {
                 console.log("Failed to update:", error);
             }

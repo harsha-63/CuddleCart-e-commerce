@@ -21,7 +21,7 @@ const AdminSidebar = () => {
               <span>Dashboard</span>
             </li>
           </NavLink>
-          <NavLink to={'/customers'} className="block px-4 py-3 hover:bg-white hover:text-gray-800 transition-all rounded-md">
+          <NavLink to={'/users'} className="block px-4 py-3 hover:bg-white hover:text-gray-800 transition-all rounded-md">
             <li className="flex items-center">
               <FontAwesomeIcon icon={faUser} className="mr-3" />
               <span>Users</span>

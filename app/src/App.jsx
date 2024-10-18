@@ -25,10 +25,10 @@ import Notfound from './Pages/Notfound'
 import { useContext } from 'react'
 
 import Dashbord from './Admin/Pages/Dashbord'
-import User from './Admin/Pages/User'
 import Action from './Admin/Pages/Action'
 import Collection from './Pages/Collection'
 import { UserContext } from './Context/UserContext'
+import Users from './Admin/Pages/Users'
 
 
 
@@ -91,7 +91,7 @@ function App() {
             <Route path='/admin' element={<AdminSideBar />} /> 
             <Route path='/admin' element={<Navigate to='/dashbord' replace />} />
             <Route path='/dashbord' element={<Dashbord/>}/>
-            <Route path='/users' element={<User/>} />
+            <Route path='/users' element={<Users/>} />
             <Route path='/action/:id' element={< Action/>} />
             <Route path='/items' element={<Product />} />
             <Route path='/edit/:id' element={<Edit />} />

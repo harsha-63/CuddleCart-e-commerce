@@ -27,7 +27,7 @@ const AddProduct = () => {
         e.preventDefault();
         if (formData.name && formData.description && formData.price) {
             try {
-                await axios.post('http://localhost:3000/products', formData);
+                await axios.post('http://localhost:4000/products', formData);
                 alert("Product added successfully!");
                 fetchdata();
                 setFormData({
@@ -47,6 +47,10 @@ const AddProduct = () => {
             alert("Please fill in all required fields.");
         }
     };
+    const Saveproduct=()=>{
+        alert('save the new product successfully');
+        navigate('/items')
+    }
 
     return (
         <div className="max-w-md mx-auto mt-10 p-4 border rounded shadow-lg">
@@ -132,7 +136,7 @@ const AddProduct = () => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="w-full bg-green-600 text-white p-2 rounded">Save</button>
+                <button  onSubmit={Saveproduct} type="submit" className="w-full bg-green-600 text-white p-2 rounded">Save</button>
             </form>
         </div>
     );
