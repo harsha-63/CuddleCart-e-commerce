@@ -1,9 +1,32 @@
 import { faDashboard, faListAlt, faShoppingBag, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import Dashbord from "../Pages/Dashbord";
+import Users from "../Pages/Users";
+import Product from "../Pages/Product";
+import Order from "../../Pages/Order";
 
 const AdminSidebar = () => {
+     const location=useLocation();
+
+     const render=()=>{
+        switch(location.pathname){
+          case '/dashbord':
+            return <Dashbord/>
+          case '/users':
+            return <Users/>
+          case '/items':
+            return <Product/>
+          case '/order':
+            return <Order/>
+          default:
+            return <Dashbord/>
+        }
+     }
+
+
   return (
+    <div className="flex">
     <div className="  h-screen fixed top-0 left-0 w-1/5 bg-red-400 text-white flex-col flex justify-center items-center">
      
       <div className="p-6">
@@ -48,6 +71,10 @@ const AdminSidebar = () => {
         </ul>
       </nav>
     </div>
+    <div className="ml-1/5 w-4/5 p-6">
+        {render()} 
+      </div>
+  </div>
   );
 };
 

@@ -1,13 +1,13 @@
 import './App.css'
 import {BrowserRouter as Router, Routes, Route, Navigate,Outlet} from 'react-router-dom'
-
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import Home from './Pages/Home'
 import About from './Pages/About'
 import Contact from './Pages/Contact'
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 import Cart from './Pages/Cart'
-
 import Navbar from './Component/Navbar'
 import Details from './Pages/Details'
 import PaymentPage from './Pages/Payment'
@@ -35,6 +35,7 @@ import Users from './Admin/Pages/Users'
 function AdminLayout() {
   return (
     <div className="flex min-h-screen">
+      <ToastContainer/>
        <div className="w-1/5">
         <AdminSideBar />
       </div>
@@ -48,12 +49,16 @@ function AdminLayout() {
 
 function UserLayout() {
   return (
+    <>
+    <ToastContainer/>
     <div className='px-4 sm:px-[5vw] md:px-[7vm] lg:px-[9vw]'>
+      
       <Navbar />
       <SearchBar />
        <Outlet />
       <Footer/>
     </div>
+    </>
   );
 }
 

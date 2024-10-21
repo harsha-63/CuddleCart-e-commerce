@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ShopContext } from "../Context/ShopContext";
 const Collection = () => {
-    // const { products, categories, selectedCategory, setSelectedCategory, showSearch, search } = useContext(ShopContext);
     const {products,categories,selectedCategory,setSelectedCategory,showSearch,search}=useContext(ShopContext)
 
     const filteredProducts = () => {

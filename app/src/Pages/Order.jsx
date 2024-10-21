@@ -13,7 +13,7 @@ const Order = () => {
           {userOrder.map((product) => (
             <div
               key={product?.id}
-              className="border p-4 rounded shadow hover:shadow-xl w-full flex flex-col sm:flex-row justify-between gap-4"
+              className="border p-4 rounded shadow hover:shadow-xl w-full flex flex-row sm:flex-row justify-between gap-4"
             >
               <div className="w-full sm:w-1/2">
                 <img

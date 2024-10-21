@@ -8,16 +8,18 @@
       "confirmpassword": "harsha",
       "isAdmin": true,
       "isBlock": false,
-      "cart": [
+      "cart": [],
+      "order": [
         {
           "id": "2",
           "name": " Twin Cute Bunny Set Combo",
           "description": "Cute and cozy clothes set for babies",
+          "review": "The Twin Cute Bunny Set Combo is an adorable and delightful addition for children or as a charming gift for any bunny lover. Featuring two beautifully designed plush bunnies, this combo brings joy and comfort, making it a perfect choice for playtime or cuddling.",
           "price": 50,
           "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-11.jpg",
           "category": "Clothing",
           "stars": 4,
-          "quantity": 1
+          "quantity": 4
         },
         {
           "id": "3",
@@ -29,33 +31,12 @@
           "category": "Feeding",
           "stars": 3.2,
           "quantity": 1
-        }
-      ],
-      "order": [
-        {
-          "id": "3",
-          "name": "Baby Feeding Spoon",
-          "description": "Babies Bloom Pink Silicone Baby Feeding Spoon",
-          "price": 15,
-          "image": "https://babiesbloomstore.com/wp-content/uploads/2019/06/BBS-N17-FBP.jpg",
-          "category": "Feeding",
-          "stars": 3.2,
-          "quantity": 1
-        },
-        {
-          "id": "2",
-          "name": " Twin Cute Bunny Set Combo",
-          "description": "Cute and cozy clothes set for babies",
-          "price": 50,
-          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-11.jpg",
-          "category": "Clothing",
-          "stars": 4,
-          "quantity": 1
         },
         {
           "id": "4",
           "name": "Nutrikids Food Nutrition DHA+ Orange",
           "description": "Monitor to keep an eye on your baby",
+          "review": "Nutrikids Food Nutrition DHA+ Orange is an exceptional dietary supplement designed to support the nutritional needs of growing children. With its delicious orange flavor, this product not only provides essential nutrients but also makes it easy and enjoyable for kids to consume.",
           "price": 79,
           "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-9.jpg",
           "category": "Protein",

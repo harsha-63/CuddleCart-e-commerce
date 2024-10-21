@@ -1,6 +1,7 @@
 import  { useContext, useState } from 'react';
 import { NavLink, useNavigate, } from 'react-router-dom';
 import { UserContext } from '../Context/UserContext';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -21,7 +22,7 @@ const Login = () => {
        navigate('/')}
        else if(foundUser){
         if(foundUser.isBlock){
-          alert('you are blocked')
+          toast.error("You Are Blocked!")
         }
         else{
         setCurrentUser(foundUser);
@@ -30,7 +31,7 @@ const Login = () => {
         
       }
       else{
-      alert("not found")
+      toast.error("Not found")
     }
   };  
   

@@ -109,7 +109,7 @@ const CartProvider = ({ children }) => {
       patchUpdatedOrder(userOrder)
     }
   },[currentUser, userOrder])
-  
+    
   
 
   const value = { userCart, setUserCart, addToCart, removeFromCart, updateQuantity, logoutUser,patchUpdatedCart,userOrder,patchUpdatedOrder,setUserOrder};

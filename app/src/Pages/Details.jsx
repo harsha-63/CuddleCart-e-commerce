@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { CartContext } from '../Context/CartContext';
 import { ShopContext } from '../Context/ShopContext';
 import { UserContext } from '../Context/UserContext';
+import { toast } from 'react-toastify';
 
 
 const ProductDetails = () => {
@@ -32,8 +33,9 @@ const ProductDetails = () => {
     if (currentUser) {
       addToCart(product);
     } else {
+      toast('Please log in .');
       navigate('/login');
-      alert('Please log in to add items to the cart.');
+      
     }
   };
 
