@@ -5,9 +5,12 @@ import Dashbord from "../Pages/Dashbord";
 import Users from "../Pages/Users";
 import Product from "../Pages/Product";
 import Order from "../../Pages/Order";
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext";
 
 const AdminSidebar = () => {
      const location=useLocation();
+     const {logOutUser}=useContext(CartContext)
 
      const render=()=>{
         switch(location.pathname){
@@ -35,7 +38,6 @@ const AdminSidebar = () => {
         </NavLink>
         <h1 className="text-2xl font-bold mt-6 text-center">Admin Hub</h1>
       </div>
-      
       <nav className="flex-grow mt-4 items-center justify-between text-center">
         <ul className="space-y-5">
           <NavLink to={'/dashbord'} className="block px-4 py-3 hover:bg-white hover:text-gray-800 transition-all rounded-md">
@@ -62,8 +64,8 @@ const AdminSidebar = () => {
               <span>Orders</span>
             </li>
           </NavLink>
-          <NavLink to={'/'} className="block px-4 py-3 hover:bg-white hover:text-gray-800 transition-all rounded-md">
-            <li className="flex items-center">
+          <NavLink to={'/'} className="block px-4 py-3 hover:bg-white hover:text-gray-800 transition-all rounded-md ">
+            <li className="flex items-center" onClick={logOutUser}>
               <FontAwesomeIcon icon={faSignOut} className="mr-3" />
               <span>LogOut</span>
             </li>

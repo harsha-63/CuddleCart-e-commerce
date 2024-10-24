@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import {toast} from 'react-toastify'
 import { ShopContext } from "../../Context/ShopContext";
 
 const Edit = () => {
@@ -48,7 +49,7 @@ const Edit = () => {
                 setProducts(prevProducts =>
                     prevProducts.map(p => (p.id === product.id ? updatedProduct : p))
                 );
-                alert("Product updated successfully");
+                toast("Product updated successfully");
                 navigate('/items')
             } catch (error) {
                 console.log("Failed to update:", error);
@@ -62,7 +63,7 @@ const Edit = () => {
         try {
             await axios.delete(`http://localhost:4000/products/${productId}`);
             setProducts(products.filter(product => product.id !== productId));
-            alert('Product deleted successfully');
+            toast('Product deleted successfully');
         } catch (error) {
             console.error('Failed to delete the product', error);
         }

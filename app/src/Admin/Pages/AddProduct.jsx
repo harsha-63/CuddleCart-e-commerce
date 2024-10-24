@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
     const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const AddProduct = () => {
         if (formData.name && formData.description && formData.price) {
             try {
                 await axios.post('http://localhost:4000/products', formData);
-                alert("Product added successfully!");
+                toast("Product added successfully!");
                 fetchdata();
                 setFormData({
                     name: '',
@@ -41,14 +42,14 @@ const AddProduct = () => {
                 navigate('/');
             } catch (error) {
                 console.error("Error adding product:", error);
-                alert("Failed to add product. Please try again.");
+                toast("Failed to add product. Please try again.");
             }
         } else {
-            alert("Please fill in all required fields.");
+            toast("Please fill in all required fields.");
         }
     };
     const Saveproduct=()=>{
-        alert('save the new product successfully');
+        toast('save the new product successfully');
         navigate('/items')
     }
 

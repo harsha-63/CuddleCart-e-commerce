@@ -7,7 +7,16 @@ const Product = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-semibold text-center mb-6">Products List</h1>
+      <div className="flex justify-between">
+      <h1 className="text-3xl font-semibold text-left mb-6">Products List</h1>
+      
+        <NavLink to={'/add'}>
+          <button className="bg-green-600 hover:bg-green-800 text-white py-2 px-4 rounded mb- text-right">
+            Add New Product
+          </button>
+        </NavLink>
+        </div>
+      
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white shadow-lg rounded-lg">
           <thead className="bg-gray-100">
@@ -46,13 +55,7 @@ const Product = () => {
           </tbody>
         </table>
       </div>
-      <div className="mt-6 text-center">
-        <NavLink to={'/add'}>
-          <button className="bg-green-600 hover:bg-green-800 text-white py-2 px-4 rounded">
-            Add New Product
-          </button>
-        </NavLink>
-      </div>
+      
     </div>
   );
 };

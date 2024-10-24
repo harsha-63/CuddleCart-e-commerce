@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
+import {toast} from 'react-toastify'
 import axios from "axios";
 import { UserContext } from "../../Context/UserContext";
 
@@ -32,7 +33,7 @@ const Action = () => {
             try {
                 await axios.patch(`http://localhost:4000/user/${user.id}`, { isAdmin: updatedUser.isAdmin });
                 setUser(updatedUser);
-                alert(`User role changed to ${updatedUser.isAdmin ? "Admin" : "User"}`);
+                toast(`User role changed to ${updatedUser.isAdmin ? "Admin" : "User"}`);
             } catch (error) {
                 console.error("Failed to update user role:", error);
             }
@@ -48,7 +49,7 @@ const Action = () => {
             try {
                 await axios.patch(`http://localhost:4000/user/${user.id}`, { isBlock: updatedUser.isBlock });
                 setUser(updatedUser);
-                alert(`${updatedUser.isBlock ? "User blocked" : "User unblocked"}`);
+                toast(`${updatedUser.isBlock ? "User blocked" : "User unblocked"}`);
             } catch (error) {
                 console.error("Failed to update user block status:", error);
             }
