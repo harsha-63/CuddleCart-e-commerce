@@ -25,14 +25,14 @@ const Footer = () => {
             <p className="text-xl font-medium mb-4">GET IN TOUCH</p>
             <ul className="flex flex-col gap-2">
               <li className="hover:text-green-600 transition-colors duration-200">+91-123-456-7890</li>
-              <li className="hover:text-green-600 transition-colors duration-200">babyshop@gmail.com</li>
+              <li className="hover:text-green-600 transition-colors duration-200">cuddlecart@gmail.com</li>
             </ul>
           </div>
         </div>
       </div>
       <div className="bg-white">
         <hr />
-        <p className="py-4 text-center text-sm text-gray-600">Copyright 2024 @ babyshop.com - All rights reserved.</p>
+        <p className="py-4 text-center text-sm text-gray-600">Copyright 2024 @ cuddlecart.com - All rights reserved.</p>
       </div>
     </>
   );

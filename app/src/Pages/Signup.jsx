@@ -1,5 +1,5 @@
-import  { useContext, useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../Context/UserContext";
 
@@ -8,13 +8,16 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
-    isAdmin:false,
-    isBlocked:false,
-    cart:[],
-    order:[]
+    confirmpassword: "", 
+    isAdmin: false,
+    isBlocked: false,
+    cart: [],
+    order: []
   });
- const navigate=useNavigate();
- const {fetchUsers,setCurrentUser}=useContext(UserContext)
+  
+  const navigate = useNavigate();
+  const { fetchUsers, setCurrentUser } = useContext(UserContext);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -23,92 +26,91 @@ const Signup = () => {
     }));
   };
 
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.password) {
-    try {
-      const response=  await axios.post('http://localhost:4000/user', formData);
-      alert("Sign up successful");
-      setCurrentUser(response.data)
-      await fetchUsers();
-      navigate('/login'); 
-      
-      
-    } catch (error) {
-      console.error("Error signing up:", error);
-    }
+    if (formData.name && formData.email && formData.password && formData.password === formData.confirmpassword) {
+      try {
+        const response = await axios.post('http://localhost:4000/user', formData);
+        alert("Sign up successful");
+        setCurrentUser(response.data);
+        await fetchUsers();
+        navigate('/login'); 
+      } catch (error) {
+        console.error("Error signing up:", error);
+      }
     } else {
-    
-      alert("please fill the all fields")
+      alert("Please fill in all fields and ensure passwords match.");
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen ">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h1 className="text-3xl font-bold mb-6 items-center">Sign up</h1>
-
-        {alert && <p className="mb-4 text-center text-green-600">{alert}</p>}
+    <div className="flex justify-center items-center my-20 ">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h1 className="text-3xl font-bold mb-6 text-center text-gray-700">Sign Up</h1>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className="w-full p-2 border rounded"
-              placeholder="Enter your name"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Username"
               required
             />
           </div>
 
           <div className="mb-4">
-           
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full p-2 border rounded"
-              placeholder="Enter your email"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Email"
               required
             />
           </div>
 
           <div className="mb-4">
-           
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              className="w-full p-2 border rounded"
-              placeholder="Enter your password"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Password"
               required
             />
           </div>
+
           <div className="mb-4">
-            
             <input
               type="password"
               name="confirmpassword"
               value={formData.confirmpassword}
               onChange={handleInputChange}
-              className="w-full p-2 border rounded"
-              placeholder="Conform password"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Confirm Password"
               required
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+            className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition duration-200"
           >
             Sign Up
           </button>
         </form>
+
+        <p className="mt-4 text-center text-gray-600">
+          Already have an account?{" "}
+          <a href="/login" className="text-blue-600 hover:underline">
+            Log In
+          </a>
+        </p>
       </div>
     </div>
   );

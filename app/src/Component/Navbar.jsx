@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <header className="relative">
-      <div className="flex justify-between items-center w-full max-w-7xl mx-auto p-4">
+      <div className="flex justify-between items-center w-full max-w-7xl mx-auto ">
         <NavLink to={'/'}>
           <img src={logo} className="w-20 sm:w-28 lg:w-40" alt="Logo" />
         </NavLink>
