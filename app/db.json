@@ -9,7 +9,19 @@
       "isAdmin": true,
       "isBlock": false,
       "cart": [],
-      "order": []
+      "order": [
+        {
+          "id": "2",
+          "name": " Twin Cute Bunny Set Combo",
+          "description": "Cute and cozy clothes set for babies",
+          "review": "The Twin Cute Bunny Set Combo is an adorable and delightful addition for children or as a charming gift for any bunny lover. Featuring two beautifully designed plush bunnies, this combo brings joy and comfort, making it a perfect choice for playtime or cuddling.",
+          "price": 50,
+          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-11.jpg",
+          "category": "Clothing",
+          "stars": 4,
+          "quantity": 4
+        }
+      ]
     },
     {
       "id": "d476",
@@ -17,7 +29,7 @@
       "email": "anshidaummattil@gmail.com",
       "password": "hhhhh",
       "confirmpassword": "hhhhh",
-      "isAdmin": true,
+      "isAdmin": false,
       "isBlock": false,
       "cart": [],
       "order": []
@@ -260,6 +272,15 @@
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-12.jpg",
       "category": "Toys",
       "stars": 5
+    },
+    {
+      "id": "ae74",
+      "name": "Soft Plush Elephant",
+      "description": "A soft and cuddly elephant plush toy perfect for newborns and toddlers.",
+      "price": 15,
+      "image": "https://i.pinimg.com/736x/df/c8/02/dfc8020008d7c15f0686ca6c43ff3f76.jpg",
+      "category": "Toys",
+      "stars": 4.7
     }
   ]
 }
