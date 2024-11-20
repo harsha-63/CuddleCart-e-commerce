@@ -152,7 +152,8 @@
       "price": 50,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-11.jpg",
       "category": "Clothing",
-      "stars": 4
+      "stars": 4,
+      "newArrivel":false
     },
     {
       "id": "3",
@@ -162,7 +163,8 @@
       "price": 15,
       "image": "https://babiesbloomstore.com/wp-content/uploads/2019/06/BBS-N17-FBP.jpg",
       "category": "Feeding",
-      "stars": 3.2
+      "stars": 3.2,
+      "newArrivel":false
     },
     {
       "id": "4",
@@ -172,7 +174,8 @@
       "price": 79,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-9.jpg",
       "category": "Protein",
-      "stars": 3.4
+      "stars": 3.4,
+      "newArrivel":false
     },
     {
       "id": "5",
@@ -182,7 +185,8 @@
       "price": 149,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-8.jpg",
       "category": "Clothing",
-      "stars": 4.3
+      "stars": 4.3,
+      "newArrivel":false
     },
     {
       "id": "6",
@@ -192,7 +196,8 @@
       "price": 39,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-7.jpg",
       "category": "Toys",
-      "stars": 4.1
+      "stars": 4.1,
+      "newArrivel":false
     },
     {
       "id": "7",
@@ -202,7 +207,8 @@
       "price": 59,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-6.jpg",
       "category": "Protein",
-      "stars": 4.4
+      "stars": 4.4,
+      "newArrivel":false
     },
     {
       "id": "8",
@@ -212,7 +218,8 @@
       "price": 19,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-5.jpg",
       "category": "Feeding",
-      "stars": 4.6
+      "stars": 4.6,
+      "newArrivel":false
     },
     {
       "id": "9",
@@ -222,7 +229,8 @@
       "price": 39,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-4.jpg",
       "category": "Bath",
-      "stars": 4.2
+      "stars": 4.2,
+      "newArrivel":true
     },
     {
       "id": "10",
@@ -232,7 +240,8 @@
       "price": 19,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-3.jpg",
       "category": "Clothing",
-      "stars": 4
+      "stars": 4,
+      "newArrivel":false
     },
     {
       "id": "11",
@@ -242,7 +251,8 @@
       "price": 14,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-2.jpg",
       "category": "Clothing",
-      "stars": 4.3
+      "stars": 4.3,
+      "newArrivel":false
     },
     {
       "id": "12",
@@ -252,7 +262,8 @@
       "price": 24,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-1.jpg",
       "category": "Toys",
-      "stars": 4.5
+      "stars": 4.5,
+      "newArrivel":false
     },
     {
       "id": "13",
@@ -262,8 +273,277 @@
       "price": 23,
       "image": "https://staranddaisy.in/wp-content/uploads/2023/04/bath-tub-12dec23415-16.jpg",
       "category": "Bath",
-      "stars": 4
+      "stars": 4,
+      "newArrivel":false
     },
+    {
+      "id": "14",
+      "category": "Clothing",
+      "name": "Organic Cotton Bodysuit Set",
+      "price": 25.99,
+      "stock": 50,
+      "description": "Set of 3 organic cotton bodysuits in neutral colors, suitable for sensitive skin.",
+      "sizes": ["0-3 months", "3-6 months", "6-9 months"],
+      "stars": 4.8,
+      "review": "The Organic Cotton Bodysuit Set is gentle on your baby's skin, offering comfort and breathability. Parents love how soft and stretchy the fabric is, making it easy to dress and move around in.",
+      "imageUrl": "url-to-bodysuit-image",
+      "newArrivel":false
+    },
+    {
+      "id": "15",
+      "category": "Clothing",
+      "name": "Floral Print Baby Dress",
+      "price": 19.99,
+      "stock": 30,
+      "description": "A beautiful floral dress for special occasions, made from soft, breathable fabric.",
+      "sizes": ["3-6 months", "6-12 months"],
+      "stars": 4.7,
+      "review": "The Floral Print Baby Dress is perfect for special occasions. The vibrant colors and soft fabric make it both stylish and comfortable, and it's easy to put on with snap closures.",
+      "imageUrl": "url-to-dress-image",
+      "newArrivel":true
+    },
+    {
+      "id": "16",
+      "category": "Clothing",
+      "name": "Cozy Baby Pajamas",
+      "price": 15.99,
+      "stock": 60,
+      "description": "Warm and cozy pajamas with a zip closure, perfect for bedtime.",
+      "sizes": ["0-3 months", "3-6 months", "6-9 months"],
+      "stars": 4.6,
+      "review": "These Cozy Baby Pajamas are a parent's favorite for bedtime. The zip closure makes it easy to change your baby, and the soft fabric ensures a peaceful sleep throughout the night.",
+      "imageUrl": "url-to-pajamas-image",
+      "newArrivel":true
+    },
+    {
+      "id": "17",
+      "category": "Essentials",
+      "name": "Super Absorbent Diapers - Pack of 50",
+      "price": 29.99,
+      "stock": 100,
+      "description": "Hypoallergenic diapers with leak-proof technology, perfect for overnight use.",
+      "sizeOptions": ["Newborn", "Small", "Medium", "Large"],
+      "stars": 4.9,
+      "review": "Parents trust these Super Absorbent Diapers for their baby's comfort. The leak-proof design and hypoallergenic materials provide all-night protection, ensuring your baby stays dry and happy.",
+      "imageUrl": "url-to-diapers-image",
+      "newArrivel":false
+    },
+    {
+      "id": "18",
+      "category": "Essentials",
+      "name": "Soft Cotton Baby Blankets",
+      "price": 22.99,
+      "stock": 40,
+      "description": "Set of 2 lightweight and breathable baby blankets, perfect for swaddling.",
+      "stars": 4.8,
+      "review": "These Soft Cotton Baby Blankets are a must-have for any nursery. They're light yet warm, providing the perfect comfort for swaddling or cuddling your baby to sleep.",
+      "imageUrl": "url-to-blanket-image",
+      "newArrivel":false
+    },
+    {
+      "id": "19",
+      "category": "Essentials",
+      "name": "Waterproof Bib Set",
+      "price": 12.99,
+      "stock": 80,
+      "description": "Pack of 5 waterproof and washable bibs with adorable patterns.",
+      "stars": 4.7,
+      "review": "The Waterproof Bib Set is a parent's lifesaver during mealtime. They’re easy to clean and feature fun patterns that make feeding time a little brighter.",
+      "imageUrl": "url-to-bibs-image",
+      "newArrivel":false
+    },
+    {
+      "id": "20",
+      "category": "Toys",
+      "name": "Interactive Baby Rattle",
+      "price": 9.99,
+      "stock": 100,
+      "description": "A colorful rattle designed to engage your baby with sounds and movement.",
+      "stars": 4.8,
+      "review": "The Interactive Baby Rattle captures your baby's attention with its bright colors and soothing sounds. It’s designed to help develop motor skills while providing hours of entertainment.",
+      "imageUrl": "url-to-rattle-image",
+      "newArrivel":false
+    },
+    {
+      "id": "21",
+      "category": "Toys",
+      "name": "Plush Toy Set",
+      "price": 18.99,
+      "stock": 50,
+      "description": "A set of soft, huggable plush toys, each with its own unique character.",
+      "stars": 4.7,
+      "review": "The Plush Toy Set is perfect for cuddling and play. The soft, plush material makes it safe for babies, and the variety of characters helps stimulate imagination and sensory development.",
+      "imageUrl": "url-to-plush-toy-image",
+      "newArrivel":false
+    },
+    {
+      "id": "22",
+      "category": "Toys",
+      "name": "Baby Play Gym",
+      "price": 39.99,
+      "stock": 25,
+      "description": "A fun and safe play gym with hanging toys and a soft mat for tummy time.",
+      "stars": 4.9,
+      "review": "The Baby Play Gym provides a fun, safe space for your baby to explore. With colorful hanging toys and a soft mat, it encourages tummy time and strengthens baby’s muscles.",
+      "imageUrl": "url-to-play-gym-image",
+      "newArrivel":true
+    },
+    {
+      "id": "23",
+      "category": "Feeding",
+      "name": "Baby Bottle Set - 3 Pack",
+      "price": 14.99,
+      "stock": 150,
+      "description": "Set of 3 BPA-free baby bottles with anti-colic design.",
+      "stars": 4.8,
+      "review": "The Baby Bottle Set is a top choice for new parents. With an anti-colic design and easy-to-clean bottles, feeding time is made simpler and more comfortable for both baby and parents.",
+      "imageUrl": "url-to-bottle-image",
+      "newArrivel":true
+    },
+    {
+      "id": "24",
+      "category": "Feeding",
+      "name": "Portable Baby Food Warmer",
+      "price": 29.99,
+      "stock": 70,
+      "description": "Compact and portable baby food warmer, ideal for on-the-go parents.",
+      "stars": 4.7,
+      "review": "The Portable Baby Food Warmer ensures that your baby’s food is always at the right temperature. It’s easy to carry and heats bottles and jars quickly, making it perfect for travel.",
+      "imageUrl": "url-to-food-warmer-image",
+      "newArrivel":false
+    },
+    {
+      "id": "25",
+      "category": "Feeding",
+      "name": "Silicone Baby Feeding Set",
+      "price": 19.99,
+      "stock": 60,
+      "description": "A 5-piece silicone feeding set including plates, bowls, and spoons, all in bright colors.",
+      "stars": 4.6,
+      "review": "This Silicone Baby Feeding Set is durable, non-toxic, and easy to clean. Its vibrant colors and practical design make mealtime fun for both babies and parents.",
+      "imageUrl": "url-to-feeding-set-image",
+      "newArrivel":true
+    },
+    {
+      "id": "26",
+      "category": "Nursery",
+      "name": "Baby Crib Mattress",
+      "price": 89.99,
+      "stock": 20,
+      "description": "Firm and comfortable crib mattress made from breathable materials.",
+      "stars": 4.9,
+      "review": "The Baby Crib Mattress provides a safe and comfortable sleeping environment. It’s breathable and firm to support your baby’s developing spine, ensuring a peaceful night’s sleep.",
+      "imageUrl": "url-to-mattress-image",
+      "newArrivel":false
+    },
+    {
+      "id": "27",
+      "category": "Nursery",
+      "name": "Baby Mobile with Lights and Music",
+      "price": 39.99,
+      "stock": 30,
+      "description": "A delightful mobile with soft lights, calming music, and spinning animals.",
+      "stars": 4.8,
+      "review": "The Baby Mobile with Lights and Music is perfect for creating a calming atmosphere in your nursery. It engages babies with soothing music and gentle movements while enhancing room decor.",
+      "imageUrl": "url-to-mobile-image",
+      "newArrivel":false
+    },
+    {
+      "id": "28",
+      "category": "Nursery",
+      "name": "Soft Cotton Baby Sheets",
+      "price": 24.99,
+      "stock": 100,
+      "description": "Set of 2 soft and breathable cotton sheets designed for standard cribs.",
+      "stars": 4.7,
+      "review": "These Soft Cotton Baby Sheets are gentle on your baby's skin, offering comfort and breathability throughout the night. The soft fabric keeps your baby cozy in any season.",
+      "imageUrl": "url-to-sheets-image",
+      "newArrivel":true
+    },
+    {
+      "id": "29",
+      "category": "Safety",
+      "name": "Baby Safety Gate",
+      "price": 49.99,
+      "stock": 40,
+      "description": "Adjustable safety gate to keep your baby safe from hazardous areas.",
+      "stars": 4.9,
+      "review": "The Baby Safety Gate is a must-have for any home with a curious baby. It’s easy to install and provides a secure barrier, ensuring your baby stays safe in different areas of the house.",
+      "imageUrl": "url-to-safety-gate-image",
+      "newArrivel":true
+    },
+    {
+      "id": "30",
+      "category": "Safety",
+      "name": "Corner Protectors Set",
+      "price": 9.99,
+      "stock": 100,
+      "description": "Soft, cushioned corner protectors to prevent injuries from sharp edges.",
+      "stars": 4.7,
+      "review": "The Corner Protectors Set helps protect your baby from sharp edges. The soft cushioning absorbs impact, making it a practical addition to any home with young children.",
+      "imageUrl": "url-to-corner-protectors-image",
+      "newArrivel":false
+    },
+    {
+      "id": "31",
+      "category": "Safety",
+      "name": "Baby Monitor with Camera",
+      "price": 79.99,
+      "stock": 60,
+      "description": "Audio and video baby monitor with night vision and remote viewing.",
+      "stars": 4.8,
+      "review": "The Baby Monitor with Camera provides peace of mind to parents. With clear video and audio, it allows you to keep an eye on your baby, day or night, from anywhere in your home.",
+      "imageUrl": "url-to-monitor-image",
+      "newArrivel":true    },
+    {
+      "id": "32",
+      "category": "Travel",
+      "name": "Lightweight Stroller",
+      "price": 119.99,
+      "stock": 40,
+      "description": "Compact and easy-to-fold lightweight stroller, perfect for traveling and city outings.",
+      "stars": 4.8,
+      "review": "The Lightweight Stroller is perfect for busy parents on the go. Its compact design and one-hand fold feature make it easy to store and carry, while the sturdy build ensures safety and comfort for your baby.",
+      "imageUrl": "url-to-stroller-image",
+      "newArrivel":true
+        },
+    {
+      "id": "33",
+      "category": "Travel",
+      "name": "Convertible Car Seat",
+      "price": 169.99,
+      "stock": 25,
+      "description": "A convertible car seat that grows with your child, from infant to toddler.",
+      "stars": 4.9,
+      "review": "The Convertible Car Seat provides superior safety and comfort. It easily transitions from rear-facing to forward-facing as your child grows, offering an adjustable harness and side-impact protection.",
+      "imageUrl": "url-to-car-seat-image",
+      "newArrivel":false
+    },
+    {
+      "id": "34",
+      "category": "Travel",
+      "name": "Multi-functional Diaper Bag",
+      "price": 39.99,
+      "stock": 60,
+      "description": "Spacious diaper bag with multiple pockets for organization and a changing mat.",
+      "stars": 4.7,
+      "review": "The Multi-functional Diaper Bag is both stylish and practical. With its spacious compartments, insulated bottle holders, and comfortable straps, it makes on-the-go parenting much easier.",
+      "imageUrl": "url-to-diaper-bag-image",
+      "newArrivel":false
+    },
+    {
+      "id": "35",
+      "category": "Travel",
+      "name": "Baby Carrier Backpack",
+      "price": 79.99,
+      "stock": 50,
+      "description": "Ergonomic baby carrier that provides comfort for both parent and baby during long walks.",
+      "stars": 4.8,
+      "review": "The Baby Carrier Backpack allows you to carry your baby hands-free while ensuring both comfort and safety. Its ergonomic design reduces strain on your back and shoulders, making it ideal for long walks and hikes.",
+      "imageUrl": "url-to-carrier-image",
+      "newArrivel":true
+        },
+  
     {
       "id": "80d3",
       "name": "Extra Soft Touch Lamb Doll",
@@ -271,7 +551,8 @@
       "price": 100,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-12.jpg",
       "category": "Toys",
-      "stars": 5
+      "stars": 5,
+      "newArrivel":false
     },
     {
       "id": "ae74",
@@ -280,7 +561,8 @@
       "price": 15,
       "image": "https://i.pinimg.com/736x/df/c8/02/dfc8020008d7c15f0686ca6c43ff3f76.jpg",
       "category": "Toys",
-      "stars": 4.7
+      "stars": 4.7,
+      "newArrivel":true
     }
   ]
 }
