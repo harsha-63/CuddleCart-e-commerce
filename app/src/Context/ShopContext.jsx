@@ -26,7 +26,7 @@ const ShopProvider = ({children}) => {
       
   },[])
 
-  const value={showSearch,setShowSearch,selectedCategory,setSelectedCategory,categories,setCategories,products,search,setSearch}
+  const value={showSearch,setShowSearch,selectedCategory,setSelectedCategory,categories,setCategories,products,search,setSearch,setProducts}
   return (
     <ShopContext.Provider value={value}>
         {children}
