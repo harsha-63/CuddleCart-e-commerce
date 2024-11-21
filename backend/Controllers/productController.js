@@ -1,4 +1,4 @@
-import Product from "../Models/productModel"
+import Product from "../Models/productModel.js"
 
 
 //function for getAllProducts
@@ -51,19 +51,6 @@ export const getProductsByCategory = async(req,res)=>{
     
 }
 
-//function for addToCart
-export const addToCart = async(req,res)=>{
-    
-}
 
-//function for updateCart
-export const updateCart = async(req,res)=>{
-    
-}
-
-//function for DeleteProduct from cart
-export const deleteProduct = async(req,res)=>{
-    
-}
 
 
