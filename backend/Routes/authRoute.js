@@ -1,24 +1,12 @@
-import express from 'express'
-import{getAllProducts,getProductById,getProductsByCategory } from '../Controllers/productController.js'
-import { addToCart,updateCart,deleteProduct } from '../Controllers/cartController.js'
+import express from  'express'
+import { loginUser, registerUser } from "../Controllers/authController.js";
+console.log(registerUser)
 
-const productRouter = express.Router()
+const authRouter =express.Router();
 
-
-productRouter
-
-//route for the products
-.get('/products',getAllProducts)
-.get('/product/:id',getProductById)
-.get('/products/:category',getProductsByCategory)
+authRouter
+.post('/register',registerUser)
+.post('/login', loginUser)
 
 
-//route for cartProduct
-.get('/')
-.post('/add',addToCart)
-.put('/update',updateCart)
-.delete('/delete/:id',deleteProduct)
-
-
-
-export default productRouter
+export default authRouter;
