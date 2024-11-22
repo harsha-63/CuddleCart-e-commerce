@@ -21,8 +21,8 @@ export const getUserCart = async(req,res)=>{
 
 //function for addToCart& updateCart
 export const updateCart = async(req,res,next)=>{
-    const {userId,productId,quantity} = req.body
-    if(!userId ||!productId ){
+    const {productId,quantity} = req.body
+    if(!productId ){
         next(new CustomError("UserId and ProductId required",400))
     }
     if(quantity<1){
@@ -41,7 +41,7 @@ export const updateCart = async(req,res,next)=>{
     }
     else{
         cart = new Cart({
-            userId,
+            userId:req.user.id,
             products:[{productId,quantity:1}],
         });
         
@@ -63,7 +63,6 @@ export const updateCart = async(req,res,next)=>{
 export const removeCartItem = async (req, res, next) => {
   const { userId, productId } = req.body;
 
- 
   if (!userId || !productId) {
     return next(new CustomError("User ID and Product ID are required", 400));
   }
