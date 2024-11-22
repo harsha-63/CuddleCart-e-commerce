@@ -9,8 +9,8 @@ const createToken = (id) =>{
 
 //controller to registerUser
 export const registerUser = async (req,res)=>{
-    const {name,email,password} = req.body
-    try{
+  try{
+      const {name,email,password} = req.body
   
     // Check if user already exists
     const existingUser = await User.findOne({email});

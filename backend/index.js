@@ -3,8 +3,8 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import connectDB from './Config/mongodb.js'
 import connectCloudinary from './Config/cloudinary.js'
-import userRouter from './Routes/userRoute.js'
-import productRouter from './Routes/authRoute.js'
+import authRouter from './Routes/authRoute.js'
+import productRouter from './Routes/userRoute.js'
 
 dotenv.config()
 
@@ -20,7 +20,7 @@ app.use(express.json())
 app.use(cors())
 
 //api endpoints
-app.use('/api/auth',userRouter)
+app.use('/api/auth',authRouter)
 app.use('/api/user',productRouter)
 app.get('/',(req,res)=>{
     res.send('Api Working')
