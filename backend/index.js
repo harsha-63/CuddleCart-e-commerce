@@ -22,8 +22,8 @@ app.use(cors())
 
 
 //api endpoints
-app.use('/api/auth',authRouter)
-app.use('/api/user',router)
+app.use('/auth',authRouter)
+app.use('/user',router)
 app.get('/',(req,res)=>{
     res.send('Api Working')
 })
