@@ -1,4 +1,4 @@
-import CustomError from "../Utils/customError.js";
+import CustomError from "../Utils/customError.js"
 
 const errorHandler = (err,req,res,next)=>{
     if(err instanceof CustomError){

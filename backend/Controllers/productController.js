@@ -8,7 +8,7 @@ export const getAllProducts = async(req,res)=>{
         if(!products){
             res.status(404).json({success:false,message:"No products"})
         }
-          res.json({successs:true,data:products})
+          res.json({data:products})
     }
     catch(error){
         res.json({success:false,message:error.message})
@@ -23,7 +23,7 @@ export const getProductById = async(req,res)=>{
     if(!product){
         res.status(404).json({success:false,message:"Product not found"})
     }
-    res.status(200).json({success:true,data:product})
+    res.status(200).json({data:product})
    } 
    catch(error){
     console.log(error);
@@ -40,7 +40,7 @@ export const getProductsByCategory = async(req,res)=>{
         if(!products){
             res.status(404).json({success:false,message:"No products found"})
         }
-        res.status(200).json({success:true,data:products})
+        res.status(200).json({data:products})
     }
     catch(error){
         console.log(error);

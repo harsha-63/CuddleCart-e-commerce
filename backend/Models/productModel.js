@@ -6,7 +6,8 @@ const productSchema = new mongoose.Schema({
     price:{type:Number , required:true},
     image:{type:Array , required:true},
     category:{type:String , required:true},
-    newArrival:{type:Boolean,required:true}
+    newArrival:{type:Boolean,required:true},
+    isDeleted:{type:Boolean,required:true,default:false}
     
 })
 

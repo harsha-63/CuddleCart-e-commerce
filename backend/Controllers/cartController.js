@@ -1,91 +1,90 @@
-import Cart from '../Models/cartModel.js'
-import CustomError from '../Utils/customError.js'
-
-
-
-
+import Cart from "../Models/cartModel.js";
+import CustomError from "../Utils/customError.js";
 
 //fuction for getUserCart
-export const getUserCart = async(req,res)=>{
-
-    const {userId} = req.params
-
-    const cart = await Cart.findOne({userId}).populate({path:"products.productId",select:"name price image"})
-    if(cart){
-        res.status(200).json(cart)    
-    }
-    else{
-        res.status(200).json({products:[]})
-    }
-}
+export const getUserCart = async (req, res) => {
+  const cart = await Cart.findOne({ userId: req.user.id }).populate({
+    path: "products.productId",
+    select: "name price image",
+  });
+  if (cart) {
+    res.status(200).json(cart);
+    console.log(cart);
+  } else {
+    res.status(200).json({ products: [], userId: req.user.id });
+  }
+};
 
 //function for addToCart& updateCart
-export const updateCart = async(req,res,next)=>{
-    const {productId,quantity} = req.body
-    if(!productId ){
-        next(new CustomError("UserId and ProductId required",400))
+export const updateCart = async (req, res, next) => {
+  const { productId, quantity } = req.body;
+
+  if (!productId) {
+    return next(new CustomError("ProductId is required", 400));
+  }
+  if (quantity < 1) {
+    return next(new CustomError("Quantity is not valid", 400));
+  }
+
+  let cart = await Cart.findOne({ userId: req.user.id });
+
+  if (!cart) {
+    cart = new Cart({
+      userId: req.user.id,
+      products: [{ productId, quantity }],
+    });
+    // Check if the product exists in the cart
+  } else {
+    const existingProductIndex = cart.products.findIndex(
+      (p) => p.productId.toString() == productId
+    );
+
+    if (existingProductIndex > -1) {
+      // Update the quantity of the existing product
+      cart.products[existingProductIndex].quantity = quantity;
+    } else {
+      // If product doesn't exist, add it to the cart
+      cart.products.push({ productId, quantity });
     }
-    if(quantity<1){
-        next(CustomError("Quantity is not valid",400))
-    }
-    const cart = await Cart.findOne({userId})
-    if(cart){
-        const existingProduct = cart.products.find((p)=>p.productId.equals(productId))
-        if(existingProduct> -1){
-            cart.products[existingProduct].quantity = quantity
-        }
-        else{
-            cart.products.push({productId,quantity});
-        }
-      
-    }
-    else{
-        cart = new Cart({
-            userId:req.user.id,
-            products:[{productId,quantity:1}],
-        });
-        
-    }
-    await cart.save()
-    //populate the cart
-    await cart.populate({
-        path: "products.productId",
-        select: "name price image",
-      });
-      res.status(200).json({message:"Product added to cart",cart});
-    
-    
-    
-}
+  }
+
+  await cart.save();
+  console.log(cart);
+
+  res.status(200).json({ message: "Cart updated successfully" });
+};
 
 //function for DeleteProduct from cart
 
 export const removeCartItem = async (req, res, next) => {
-  const { userId, productId } = req.body;
+    const { productId } = req.body;
 
-  if (!userId || !productId) {
-    return next(new CustomError("User ID and Product ID are required", 400));
-  }
+    if (!productId) {
+      return next(new CustomError("Product ID is required", 400));
+    }
+    const cart = await Cart.findOne({ userId: req.user.id });
 
-  // Find the user's cart
-  const cart = await Cart.findOne({ userId })
-  if (!cart) {
-    return next(new CustomError("Cart not found for the user", 404));
-  }
-  // Check if the product exists in the cart
-  const productIndex = cart.products.find((p) =>
-    p.productId.equals(productId)
-  );
+    if (!cart) {
+      return next(new CustomError("Cart not found for the user", 404));
+    }
 
-  if (productIndex === -1) {
-    return next(
-      new CustomError("Product not found in the user's cart", 404)
+    // Find the index of the product in the cart
+    const productIndex = cart.products.findIndex(
+      (p) =>p.productId.toString() == productId
     );
-  }
-  // If product is found, remove it from the cart
-  cart.products.splice(productIndex, 1);
-  await cart.save()
-  res.status(200).json({ message: "Product removed from cart", cart });
-};
 
-    
+    // If product not found, return an error
+    if (productIndex === -1) {
+      return next(new CustomError("Product not found in the user's cart", 404));
+    }
+
+    // Remove the product from the cart
+    cart.products.splice(productIndex, 1);
+
+    // Save the updated cart
+    await cart.save();
+    console.log(cart);
+
+    // Return success response
+    res.status(200).json({ message: "Product removed from cart" });
+  };

@@ -24,9 +24,9 @@ export const registerUser = async (req,res)=>{
     const user = new User({name,email,password:hashedPassword});
     await user.save();
     //create token for newuser
-    const token = createToken(user._id)
+    createToken(user._id)
      
-    res.status(201).json({message:'User registered successfully! ',token,user})
+    res.status(201).json({message:'User registered successfully! '})
   }
   catch(error){
     res.status(500).json({message:error.message})
@@ -46,7 +46,7 @@ export const loginUser = async (req,res)=>{
       //check the password is valid
       if(isMatch){
         const token =createToken(user._id)
-        res.json({success:true,token})
+        res.json({success:true,token:token})
       }
       else{
         res.json({success:false,message:"Invalid credentials"})
