@@ -23,14 +23,14 @@ const orderSchema = new mongoose.Schema({
         dafault:Date.now
 
     },
-    orderId:{
-        type:String,
-        required:true
-    },
-    totalPrice:{
-        type:Number,
-        required:true
-    },
+    // // orderId:{
+    // //     type:String,
+    // //     required:true
+    // // },
+    // // totalPrice:{
+    // //     type:Number,
+    // //     required:true
+    // },
     paymentStatus:{
         type:String,
         default:"pending"
@@ -41,7 +41,6 @@ const orderSchema = new mongoose.Schema({
     },
     userDetails: {
         name: { type: String, required: true },
-        place: { type: String, required: true },
         phone: { type: String, required: true },
         address: { type: String, required: true }
       }

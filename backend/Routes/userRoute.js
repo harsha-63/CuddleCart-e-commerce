@@ -29,7 +29,7 @@ router
 //route for order
     .get('/order',verifyToken,trycatch(getOrders))
     .get('/order/:orderId',verifyToken,trycatch(getOneOrder))
-    .post('/order/payment',verifyToken,trycatch(createOrder))
+    .post('/order/cod',verifyToken,trycatch(createOrder))
     .patch('/order/cancel/:orderId',verifyToken,trycatch(cancelOrder))
     
     
