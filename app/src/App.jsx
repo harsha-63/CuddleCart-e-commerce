@@ -10,6 +10,7 @@ import Signup from './Pages/Signup'
 import Cart from './Pages/Cart'
 import Navbar from './Component/Navbar'
 import Details from './Pages/Details'
+import CategoryPage from './Pages/Category';
 import PaymentPage from './Pages/Payment'
 import Userdata from './Pages/Userdata'
 import SearchBar from './Pages/Search'
@@ -76,6 +77,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path="/collection/:category" element={<CategoryPage />} />
           <Route path='/product/:id' element={<Details />} />
           
           

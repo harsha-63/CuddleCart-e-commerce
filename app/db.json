@@ -16,10 +16,23 @@
           "description": "Cute and cozy clothes set for babies",
           "review": "The Twin Cute Bunny Set Combo is an adorable and delightful addition for children or as a charming gift for any bunny lover. Featuring two beautifully designed plush bunnies, this combo brings joy and comfort, making it a perfect choice for playtime or cuddling.",
           "price": 50,
-          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-11.jpg",
+          "image": "https://i.pinimg.com/736x/34/4a/cd/344acdec7e3639a74b844aedc2fff2e4.jpg",
           "category": "Clothing",
           "stars": 4,
-          "quantity": 4
+          "newArrivel": false,
+          "quantity": 1
+        },
+        {
+          "id": "6",
+          "name": "Teddy Bear Ready To Flight Doll",
+          "description": "Spacious diaper bag with multiple compartments",
+          "review": "The Teddy Bear Ready To Flight Doll is an adorable companion that combines the charm of a classic teddy bear with a fun travel theme. This plush toy is perfect for children who love imaginative play and adventure, making it an ideal gift for birthdays, holidays, or special occasions.",
+          "price": 39,
+          "image": "https://i.pinimg.com/736x/a9/4a/f3/a94af332d2b8f9571dde0743597ecc67.jpg",
+          "category": "Toys",
+          "stars": 4.1,
+          "newArrival": false,
+          "quantity": 1
         }
       ]
     },
@@ -153,7 +166,7 @@
       "image": "https://i.pinimg.com/736x/34/4a/cd/344acdec7e3639a74b844aedc2fff2e4.jpg",
       "category": "Clothing",
       "stars": 4,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "3",
@@ -164,7 +177,7 @@
       "image": "https://i.pinimg.com/736x/8b/0e/7e/8b0e7e9ad4d0f9c64f6646584bf2c47d.jpg",
       "category": "Feeding",
       "stars": 3.2,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "4",
@@ -175,7 +188,7 @@
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-9.jpg",
       "category": "Protein",
       "stars": 3.4,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "5",
@@ -186,7 +199,7 @@
       "image": "https://i.pinimg.com/736x/1f/3c/47/1f3c47da140f627b3d90b96e88bab361.jpg",
       "category": "Clothing",
       "stars": 4.3,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "6",
@@ -197,7 +210,7 @@
       "image": "https://i.pinimg.com/736x/a9/4a/f3/a94af332d2b8f9571dde0743597ecc67.jpg",
       "category": "Toys",
       "stars": 4.1,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "7",
@@ -208,7 +221,7 @@
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-6.jpg",
       "category": "Protein",
       "stars": 4.4,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "8",
@@ -216,21 +229,21 @@
       "description": "Soft and soothing teething toy for babies",
       "review": "The Frosted White Plastic Bottle (400ml) is an excellent choice for those seeking a stylish, functional, and versatile container for various beverages. With its sleek design and practical features, this bottle stands out in both aesthetics and functionality.",
       "price": 19,
-      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-5.jpg",
+      "image": "https://i.pinimg.com/736x/02/9c/92/029c92827e6255d93513841c80edef32.jpg",
       "category": "Feeding",
       "stars": 4.6,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "9",
-      "name": "ZooMate 3 Animal Set Toys",
-      "description": "Comfortable and secure bath tub for babies",
-      "review": "The ZooMate 3 Animal Set Toys offer a delightful play experience for children, encouraging imaginative play and learning about wildlife. This set is perfect for young animal lovers and provides a fun and educational addition to any toy collection.",
+      "name": "ZooMate  Animal Set Toys",
+      "description": "an exciting collection of miniature animal figurines, perfect for kids",
+      "review": "The ZooMate  Animal Set Toys offer a delightful play experience for children, encouraging imaginative play and learning about wildlife. This set is perfect for young animal lovers and provides a fun and educational addition to any toy collection.",
       "price": 39,
-      "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-4.jpg",
-      "category": "Bath",
+      "image": "https://i.pinimg.com/736x/f8/3c/11/f83c111a2627e8a85b99152bd986da91.jpg",
+      "category": "Toys",
       "stars": 4.2,
-      "newArrivel":true
+      "newArrival": false
     },
     {
       "id": "10",
@@ -241,7 +254,7 @@
       "image": "https://i.pinimg.com/736x/d8/1c/30/d81c3041bbddcaa8853a4bc377ba0022.jpg",
       "category": "Clothing",
       "stars": 4,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "11",
@@ -252,18 +265,18 @@
       "image": "https://i.pinimg.com/736x/82/fc/f6/82fcf64d1cfeda42579ff34108475cab.jpg",
       "category": "Clothing",
       "stars": 4.3,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "12",
-      "name": "Baby Mobile",
-      "description": "Colorful and engaging mobile for baby cribs",
-      "review": "The Baby Mobile is a delightful nursery accessory that captivates infants with its colorful designs and gentle movement, promoting visual and auditory stimulation. Made from safe materials, it enhances the room's decor while providing a soothing atmosphere for your little one.",
+      "name": "Baby Mobilephone",
+      "description": "a fun and interactive toy ",
+      "review": "The Baby Mobile is designed to keep your little one engaged and entertained. This colorful pretend phone features buttons with sounds, lights, and cheerful melodies to stimulate your baby's senses and encourage early learning",
       "price": 24,
       "image": "https://i.pinimg.com/736x/ae/fa/e7/aefae766e86399ffcd924f1990986571.jpg",
       "category": "Toys",
       "stars": 4.5,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "13",
@@ -274,7 +287,7 @@
       "image": "https://i.pinimg.com/736x/5b/34/8c/5b348c01e85c0392bc29bb8b8bf11c34.jpg",
       "category": "Bath",
       "stars": 4,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "14",
@@ -283,11 +296,15 @@
       "price": 25.99,
       "stock": 50,
       "description": "Set of 2 organic cotton bodysuits in neutral colors, suitable for sensitive skin.",
-      "sizes": ["0-3 months", "3-6 months", "6-9 months"],
+      "sizes": [
+        "0-3 months",
+        "3-6 months",
+        "6-9 months"
+      ],
       "stars": 4.8,
       "review": "The Organic Cotton Bodysuit Set is gentle on your baby's skin, offering comfort and breathability. Parents love how soft and stretchy the fabric is, making it easy to dress and move around in.",
       "image": "https://i.pinimg.com/736x/28/5c/98/285c988cc3485b2cc5c519a4aa0d2d1a.jpg",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "15",
@@ -296,11 +313,14 @@
       "price": 19.99,
       "stock": 30,
       "description": "A beautiful floral dress for special occasions, made from soft, breathable fabric.",
-      "sizes": ["3-6 months", "6-12 months"],
+      "sizes": [
+        "3-6 months",
+        "6-12 months"
+      ],
       "stars": 4.7,
       "review": "The Floral Print Baby Dress is perfect for special occasions. The vibrant colors and soft fabric make it both stylish and comfortable, and it's easy to put on with snap closures.",
       "image": "https://i.pinimg.com/736x/4b/36/13/4b36130c0d8c452d29ee34293457e315.jpg",
-      "newArrivel":true
+      "newArrival": true
     },
     {
       "id": "16",
@@ -309,11 +329,15 @@
       "price": 15.99,
       "stock": 60,
       "description": "Warm and cozy pajamas with a zip closure, perfect for bedtime.",
-      "sizes": ["0-3 months", "3-6 months", "6-9 months"],
+      "sizes": [
+        "0-3 months",
+        "3-6 months",
+        "6-9 months"
+      ],
       "stars": 4.6,
       "review": "These Cozy Baby Pajamas are a parent's favorite for bedtime. The zip closure makes it easy to change your baby, and the soft fabric ensures a peaceful sleep throughout the night.",
       "image": "https://i.pinimg.com/736x/6f/f4/a2/6ff4a236da2fe3d633f43b6e938d3641.jpg",
-      "newArrivel":true
+      "newArrival": true
     },
     {
       "id": "17",
@@ -322,11 +346,16 @@
       "price": 29.99,
       "stock": 100,
       "description": "Hypoallergenic diapers with leak-proof technology, perfect for overnight use.",
-      "sizeOptions": ["Newborn", "Small", "Medium", "Large"],
+      "sizeOptions": [
+        "Newborn",
+        "Small",
+        "Medium",
+        "Large"
+      ],
       "stars": 4.9,
       "review": "Parents trust these Super Absorbent Diapers for their baby's comfort. The leak-proof design and hypoallergenic materials provide all-night protection, ensuring your baby stays dry and happy.",
       "image": "url-to-diapers-image",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "18",
@@ -338,7 +367,7 @@
       "stars": 4.8,
       "review": "These Soft Cotton Baby Blankets are a must-have for any nursery. They're light yet warm, providing the perfect comfort for swaddling or cuddling your baby to sleep.",
       "image": "https://i.pinimg.com/736x/b1/a8/05/b1a805bca2179d19e627c9da56533f4c.jpg",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "19",
@@ -350,7 +379,7 @@
       "stars": 4.7,
       "review": "The Waterproof Bib Set is a parent's lifesaver during mealtime. They’re easy to clean and feature fun patterns that make feeding time a little brighter.",
       "image": "https://i.pinimg.com/736x/0c/ed/a7/0ceda71b42c64864fdbf3c1858b0ab46.jpg",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "20",
@@ -362,7 +391,7 @@
       "stars": 4.8,
       "review": "The Interactive Baby Rattle captures your baby's attention with its bright colors and soothing sounds. It’s designed to help develop motor skills while providing hours of entertainment.",
       "image": "https://i.pinimg.com/736x/4a/9e/a8/4a9ea8f8569c231cd4407eb7f6a73736.jpg",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "21",
@@ -374,7 +403,7 @@
       "stars": 4.7,
       "review": "The Plush Toy Set is perfect for cuddling and play. The soft, plush material makes it safe for babies, and the variety of characters helps stimulate imagination and sensory development.",
       "image": "https://i.pinimg.com/736x/52/cd/04/52cd045f5eaafedca636270ffb483e48.jpg",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "22",
@@ -386,7 +415,7 @@
       "stars": 4.9,
       "review": "The Baby Play Gym provides a fun, safe space for your baby to explore. With colorful hanging toys and a soft mat, it encourages tummy time and strengthens baby’s muscles.",
       "image": "https://i.pinimg.com/736x/68/ee/fd/68eefd77ab1a29d65cd42b47cbc6588c.jpg",
-      "newArrivel":true
+      "newArrival": false
     },
     {
       "id": "23",
@@ -398,7 +427,7 @@
       "stars": 4.8,
       "review": "The Baby Bottle Set is a top choice for new parents. With an anti-colic design and easy-to-clean bottles, feeding time is made simpler and more comfortable for both baby and parents.",
       "image": "https://i.pinimg.com/736x/61/b5/a6/61b5a61647cb5b20e67fdbbcd6b1d79c.jpg",
-      "newArrivel":true
+      "newArrival": true
     },
     {
       "id": "24",
@@ -410,7 +439,7 @@
       "stars": 4.7,
       "review": "The Portable Baby Food Warmer ensures that your baby’s food is always at the right temperature. It’s easy to carry and heats bottles and jars quickly, making it perfect for travel.",
       "image": "https://i.pinimg.com/736x/c9/97/a2/c997a29c7e2e1bc423c8d0b6c27a08dd.jpg",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "25",
@@ -422,7 +451,7 @@
       "stars": 4.6,
       "review": "This Silicone Baby Feeding Set is durable, non-toxic, and easy to clean. Its vibrant colors and practical design make mealtime fun for both babies and parents.",
       "image": "https://i.pinimg.com/736x/31/96/dc/3196dccd41e7e01cd69ce0c79973e4fd.jpg",
-      "newArrivel":true
+      "newArrival": true
     },
     {
       "id": "26",
@@ -434,7 +463,7 @@
       "stars": 4.9,
       "review": "The Baby Crib Mattress provides a safe and comfortable sleeping environment. It’s breathable and firm to support your baby’s developing spine, ensuring a peaceful night’s sleep.",
       "image": "https://i.pinimg.com/736x/db/5e/d9/db5ed91d75223ce4daa7124c6bb6825d.jpg",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "27",
@@ -446,7 +475,7 @@
       "stars": 4.8,
       "review": "The Baby Mobile with Lights and Music is perfect for creating a calming atmosphere in your nursery. It engages babies with soothing music and gentle movements while enhancing room decor.",
       "image": "https://i.pinimg.com/736x/93/c9/3e/93c93e2a4c009d4655452695754ea988.jpg",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "28",
@@ -458,7 +487,7 @@
       "stars": 4.7,
       "review": "These Soft Cotton Baby Sheets are gentle on your baby's skin, offering comfort and breathability throughout the night. The soft fabric keeps your baby cozy in any season.",
       "image": "https://i.pinimg.com/736x/98/07/21/980721236f07b2c36ab057d8bde8bb5a.jpg",
-      "newArrivel":true
+      "newArrival": true
     },
     {
       "id": "29",
@@ -470,7 +499,7 @@
       "stars": 4.9,
       "review": "The Baby Safety Gate is a must-have for any home with a curious baby. It’s easy to install and provides a secure barrier, ensuring your baby stays safe in different areas of the house.",
       "image": "url-to-safety-gate-image",
-      "newArrivel":true
+      "newArrival": false
     },
     {
       "id": "30",
@@ -482,7 +511,7 @@
       "stars": 4.7,
       "review": "The Corner Protectors Set helps protect your baby from sharp edges. The soft cushioning absorbs impact, making it a practical addition to any home with young children.",
       "image": "https://i.pinimg.com/736x/b4/4d/17/b44d177882f447f03172a283995c580a.jpg",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "31",
@@ -494,7 +523,8 @@
       "stars": 4.8,
       "review": "The Baby Monitor with Camera provides peace of mind to parents. With clear video and audio, it allows you to keep an eye on your baby, day or night, from anywhere in your home.",
       "image": "https://i.pinimg.com/736x/df/8c/bc/df8cbcd24cad13c4ed4b52cbe37b0883.jpg",
-      "newArrivel":true    },
+      "newArrival": true
+    },
     {
       "id": "32",
       "category": "Travel",
@@ -505,8 +535,8 @@
       "stars": 4.8,
       "review": "The Lightweight Stroller is perfect for busy parents on the go. Its compact design and one-hand fold feature make it easy to store and carry, while the sturdy build ensures safety and comfort for your baby.",
       "image": "https://i.pinimg.com/736x/7d/ef/7b/7def7b7a01406cb4359dd60012351095.jpg",
-      "newArrivel":true
-        },
+      "newArrival": false
+    },
     {
       "id": "33",
       "category": "Travel",
@@ -517,7 +547,7 @@
       "stars": 4.9,
       "review": "The Convertible Car Seat provides superior safety and comfort. It easily transitions from rear-facing to forward-facing as your child grows, offering an adjustable harness and side-impact protection.",
       "image": "https://i.pinimg.com/736x/98/26/25/9826251194754e60254385157f4d86d0.jpg",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "34",
@@ -529,7 +559,7 @@
       "stars": 4.7,
       "review": "The Multi-functional Diaper Bag is both stylish and practical. With its spacious compartments, insulated bottle holders, and comfortable straps, it makes on-the-go parenting much easier.",
       "image": "https://i.pinimg.com/736x/b9/97/57/b99757defe1a6fbba43cc2370e8b83c6.jpg",
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "35",
@@ -541,9 +571,8 @@
       "stars": 4.8,
       "review": "The Baby Carrier Backpack allows you to carry your baby hands-free while ensuring both comfort and safety. Its ergonomic design reduces strain on your back and shoulders, making it ideal for long walks and hikes.",
       "image": "https://i.pinimg.com/736x/18/5a/62/185a62c062eb66ad649d2b3b5eaa2850.jpg",
-      "newArrivel":true
-        },
-  
+      "newArrival": true
+    },
     {
       "id": "80d3",
       "name": "Extra Soft Touch Lamb Doll",
@@ -552,7 +581,7 @@
       "image": "https://i.pinimg.com/736x/8d/4d/38/8d4d3833e24fdad1a9f22d32b527af9d.jpg",
       "category": "Toys",
       "stars": 5,
-      "newArrivel":false
+      "newArrival": false
     },
     {
       "id": "ae74",
@@ -562,7 +591,7 @@
       "image": "https://i.pinimg.com/736x/df/c8/02/dfc8020008d7c15f0686ca6c43ff3f76.jpg",
       "category": "Toys",
       "stars": 4.7,
-      "newArrivel":true
+      "newArrival": false
     }
   ]
 }

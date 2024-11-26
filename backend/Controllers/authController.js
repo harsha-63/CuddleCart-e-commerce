@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 
 const createToken = (id) =>{
-  return jwt.sign({id},process.env.JWT_TOKEN)
+  return jwt.sign({id},process.env.JWT_TOKEN,{ expiresIn: '1h' })
 }
 
 //controller to registerUser
@@ -23,9 +23,8 @@ export const registerUser = async (req,res)=>{
      // Create a new user & add to db
     const user = new User({name,email,password:hashedPassword});
     await user.save();
-    //create token for newuser
-    createToken(user._id)
-     
+    // //create token for newuser
+    // createToken(user._id)
     res.status(201).json({message:'User registered successfully! '})
   }
   catch(error){

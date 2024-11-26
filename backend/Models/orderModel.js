@@ -23,14 +23,14 @@ const orderSchema = new mongoose.Schema({
         dafault:Date.now
 
     },
-    // // orderId:{
-    // //     type:String,
-    // //     required:true
-    // // },
-    // // totalPrice:{
-    // //     type:Number,
-    // //     required:true
-    // },
+    orderId:{
+        type:String,
+       
+    },
+    totalPrice:{
+        type:Number,
+       
+    },
     paymentStatus:{
         type:String,
         default:"pending"

@@ -9,9 +9,8 @@ export const getUserCart = async (req, res) => {
   });
   if (cart) {
     res.status(200).json(cart);
-    console.log(cart);
   } else {
-    res.status(200).json({ products: [], userId: req.user.id });
+    res.status(200).json({ products: []});
   }
 };
 
@@ -33,8 +32,9 @@ export const updateCart = async (req, res, next) => {
       userId: req.user.id,
       products: [{ productId, quantity }],
     });
-    // Check if the product exists in the cart
+   
   } else {
+     // Check if the product exists in the cart
     const existingProductIndex = cart.products.findIndex(
       (p) => p.productId.toString() == productId
     );
