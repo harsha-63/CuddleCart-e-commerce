@@ -1,4 +1,5 @@
 import Product from "../Models/productModel.js"
+import CustomError from "../Utils/customError.js"
 
 
 //function for getAllProducts
@@ -50,6 +51,42 @@ export const getProductsByCategory = async(req,res)=>{
     
 }
 
+                                    //admin functionalities
+  
+//function for create product
+export const createProduct  = async (req,res,next)=>{
+    const {name,category,price,image,description} = req.body
+    if (!name || !category || !price || !description || !image) {
+        return next(new CustomError("All fields are required", 400));
+      }
+    const product = new Product({
+        name,
+        category,
+        price,
+        description,
+        stock,
+        image, 
+    }) ;
+    await product.save()  
 
+    res.status(201).json({success: true, message: "Product created successfully",product:product});
+}  
+
+//function for deleteProduct
+export const deleteProduct = async (req, res,next) => {
+   
+      const { productId } = req.params;
+      const product = await Product.findByIdAndDelete(productId);
+      if (!product) {
+       return next(new CustomError("product not found",404))
+      }
+      res.status(200).json({ message: "product delete successfully" })
+    
+  };
+
+  //function for updateProduct
+  export const updateProduct = async (req,es,next)=>{
+    
+  }
 
 

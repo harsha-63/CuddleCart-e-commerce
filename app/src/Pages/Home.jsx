@@ -49,11 +49,11 @@ const Home = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         {/* Category Links */}
         <Link
           to="/collection/Toys"
-          className="flex flex-col items-center justify-center bg-pink-100 hover:bg-pink-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
+          className="flex flex-col items-center justify-center bg-pink-100 hover:bg-pink-200 p-2 rounded-lg shadow-md transition-transform transform hover:scale-105"
         >
           <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
             <img
@@ -119,6 +119,58 @@ const Home = () => {
             />
           </div>
           <h4 className="text-lg font-semibold text-gray-800">Travel</h4>
+        </Link>
+        <Link
+          to="/collection/Feeding"
+          className="flex flex-col items-center justify-center bg-purple-100 hover:bg-purple-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
+        >
+          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
+            <img
+              src="https://via.placeholder.com/50"
+              alt="Travel"
+              className="w-10 h-10"
+            />
+          </div>
+          <h4 className="text-lg font-semibold text-gray-800">Feeding</h4>
+        </Link>
+        <Link
+          to="/collection/Safety"
+          className="flex flex-col items-center justify-center bg-purple-100 hover:bg-purple-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
+        >
+          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
+            <img
+              src="https://via.placeholder.com/50"
+              alt="Travel"
+              className="w-10 h-10"
+            />
+          </div>
+          <h4 className="text-lg font-semibold text-gray-800">Safety</h4>
+        </Link>
+        <Link
+          to="/collection/Bath"
+          className="flex flex-col items-center justify-center bg-purple-100 hover:bg-purple-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
+        >
+          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
+            <img
+              src="https://via.placeholder.com/50"
+              alt="Travel"
+              className="w-10 h-10"
+            />
+          </div>
+          <h4 className="text-lg font-semibold text-gray-800">Bath</h4>
+        </Link>
+        <Link
+          to="/collection/Protein"
+          className="flex flex-col items-center justify-center bg-purple-100 hover:bg-purple-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
+        >
+          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
+            <img
+              src="https://via.placeholder.com/50"
+              alt="Travel"
+              className="w-10 h-10"
+            />
+          </div>
+          <h4 className="text-lg font-semibold text-gray-800">Protein</h4>
         </Link>
       </div>
 
