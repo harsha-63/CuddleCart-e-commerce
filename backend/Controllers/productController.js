@@ -1,5 +1,6 @@
 import Products from "../Models/productModel.js"
 import CustomError from "../Utils/customError.js"
+import Order from '../Models/orderModel.js'
 
 
 //function for getAllProducts
@@ -64,10 +65,12 @@ export const createProduct  = async (req,res,next)=>{
         category,
         price,
         description,
-        stock,
         image, 
     }) ;
+
+    
     await product.save()  
+    console.log(product);
 
     res.status(201).json({success: true, message: "Product created successfully",product:product});
 }  
@@ -109,5 +112,32 @@ export const deleteProduct = async (req, res,next) => {
     res.status(200).json({success:true,message:"product updated successfully"})
     
   }
+
+
+
+  //function for getTotalPurchase
+  export const getTotalPurchase = async (req, res, next) => {
+    const totalPurchase = new Order.aggregate([
+        {$unwind:"$products"},{$group:{_id:null,totalProducts:{$sum:"$products.quantity"}}}
+    ])
+  
+    if (!totalPurchase || totalPurchase.length === 0) {
+      return next(new CustomError("No products purchased found", 404));
+    }
+  
+    const total = totalPurchase[0].totalProducts;
+  
+    res.status(200).json({success: true,totalPurchase: total});
+  };
+
+  //function for getTotalRevenue
+  export const getTotalRevenue = async(req,res,next)=>{
+    const totalRevenue = new Order.aggregate([
+        {$unwind:"$products"},{$group:{$multiply}}
+      ])
+  }
+  
+
+  
 
 

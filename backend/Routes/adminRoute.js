@@ -1,8 +1,9 @@
 import express from "express";
 import { getAllUsers ,getUserById,blockUser } from "../controllers/userController.js";
-import { createProduct,deleteProduct,updateProduct } from "../Controllers/productController.js";
+import { createProduct,deleteProduct,getTotalPurchase,getTotalRevenue,updateProduct } from "../Controllers/productController.js";
 import trycatch from "../Utils/tryCatch.js";
 import { verifyToken } from "../Middlewares/verifyToken.js";
+
 
 
 const admin = express.Router();
@@ -18,5 +19,7 @@ admin
     .post("/products",verifyToken, trycatch(createProduct))
     .delete("/products/:productId",verifyToken,trycatch(deleteProduct))
     .put("/products/:productId",verifyToken,trycatch (updateProduct))
+    .get('/purchase',verifyToken,trycatch(getTotalPurchase))
+    .get('/revenue',verifyToken,trycatch(getTotalRevenue))
 
 export default admin;
