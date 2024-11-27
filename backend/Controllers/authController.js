@@ -39,7 +39,10 @@ export const loginUser = async (req,res)=>{
       const {email,password} = req.body;
       const user = await User.findOne({email});
       if(!user){
-        return res.json({success:false,message:"User is not found"})
+        return res.status(401).json({success:false,message:"User is not found"})
+      }
+      if (user.isBlocked) {
+        return res.json({ success: false, message: "Your account is blocked" });
       }
       const isMatch = await bcrypt.compare(password,user.password);
       //check the password is valid

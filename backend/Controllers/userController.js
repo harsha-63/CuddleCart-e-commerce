@@ -1,9 +1,9 @@
-import User from '../Models/userModel.js'
+import Users from '../Models/userModel.js'
 import CustomError from '../Utils/customError.js'
 
 //function for getAllUsers
 export const getAllUsers = async (req,res,next)=>{
-    const users = await User.find({},{password:0})
+    const users = await Users.find({},{password:0})
     if (!users || users.length === 0) {
         return next(new CustomError("No users found", 404));
     }
@@ -14,14 +14,28 @@ export const getAllUsers = async (req,res,next)=>{
 
 //function for getAllUsers
 export const getUserById = async (req,res,next)=>{
-    const { id } = req.params;
-    const user = await User.findById(id, { password: 0 }); 
+    const {id} = req.params
+    const user = await Users.findById(id, { password: 0 }); 
     if (!user) {
         return next( new CustomError("User not found", 404)); 
       }
     res.status(200).json({success: true,user:user});
     
 }
+
+//funtion for managing block key
+export const blockUser = async(req,res,next)=>{
+    const {id} = req.params;
+    const user = await Users.findById(id)
+    if (!user) {
+        return next(new CustomError("User not found", 404));
+      }
+      user.isBlock = !user.isBlock
+      await user.save();
+      res.status(200).json({success:true,message:`User has been ${user.isBlocked ? "blocked" : "unblocked"} successfully.`})
+}
+
+
 
 
 

@@ -1,5 +1,5 @@
 import express from 'express'
-import{getAllProducts,getProductById,getProductsByCategory } from '../Controllers/productController.js'
+import {getAllProducts,getProductById,getProductsByCategory } from '../Controllers/productController.js'
 import { updateCart,removeCartItem, getUserCart } from '../Controllers/cartController.js'
 import {getUserWishlist,addToWishlist,removeFromWishlist} from '../Controllers/wishlistController.js'
 import { getOrders,getOneOrder,createOrder,cancelOrder } from '../Controllers/orderController.js'

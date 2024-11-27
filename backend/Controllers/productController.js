@@ -1,11 +1,11 @@
-import Product from "../Models/productModel.js"
+import Products from "../Models/productModel.js"
 import CustomError from "../Utils/customError.js"
 
 
 //function for getAllProducts
 export const getAllProducts = async(req,res)=>{
     try{
-        const products = await Product.find()
+        const products = await Products.find()
         if(!products){
             res.status(404).json({success:false,message:"No products"})
         }
@@ -20,7 +20,7 @@ export const getAllProducts = async(req,res)=>{
 //function for getProductById
 export const getProductById = async(req,res)=>{
     try{
-    const product = await Product.findById(req.params.id)
+    const product = await Products.findById(req.params.id)
     if(!product){
         res.status(404).json({success:false,message:"Product not found"})
     }
@@ -37,7 +37,7 @@ export const getProductById = async(req,res)=>{
 export const getProductsByCategory = async(req,res)=>{
     try{
         const {category} = req.params
-        const products = await Product.find({category}) 
+        const products = await Products.find({category}) 
         if(!products){
             res.status(404).json({success:false,message:"No products found"})
         }
@@ -59,7 +59,7 @@ export const createProduct  = async (req,res,next)=>{
     if (!name || !category || !price || !description || !image) {
         return next(new CustomError("All fields are required", 400));
       }
-    const product = new Product({
+    const product = new Products({
         name,
         category,
         price,
@@ -76,16 +76,37 @@ export const createProduct  = async (req,res,next)=>{
 export const deleteProduct = async (req, res,next) => {
    
       const { productId } = req.params;
-      const product = await Product.findByIdAndDelete(productId);
+      const product = await Products.findByIdAndDelete(productId);
       if (!product) {
        return next(new CustomError("product not found",404))
       }
+      product.isDeleted = true
+      await product.save()
       res.status(200).json({ message: "product delete successfully" })
     
   };
 
   //function for updateProduct
-  export const updateProduct = async (req,es,next)=>{
+  export const updateProduct = async (req,res,next)=>{
+     const {productId} = req.params
+     const {name,price,description,image,category} = req.body
+
+     const product = await Products.findById(productId)
+     if(!product){
+        return next(new CustomError("Product not found", 404))
+     }
+     if(product.isDeleted){
+        return next(new CustomError("Cannot update a deleted product",400))
+     }
+
+    product.name = name || product.name;
+    product.price = price || product.price;
+    product.category = category || product.category;
+    product.description = description || product.description;
+    product.image = image || product.image
+
+    await product.save()
+    res.status(200).json({success:true,message:"product updated successfully"})
     
   }
 

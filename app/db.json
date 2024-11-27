@@ -765,7 +765,56 @@
         "image": "https://i.pinimg.com/736x/00/85/0a/00850afea039139497134d9bf72d1b0d.jpg",
         "description": "Soft, dimmable night light to gently illuminate the nursery without disturbing your baby's sleep.",
         "stars": 4.6
+      },
+      {
+        "id": "58",
+        "name": "Children's Electronic Piano",
+        "category": "Toys",
+        "price": 49.99,
+        "image": "https://i.pinimg.com/736x/b2/0a/98/b20a98667affa16bc21a60f1dfdbbd5c.jpg",
+        "description": "A fun and educational electronic piano designed for young children with interactive keys and built-in melodies.",
+        "stars": 4.8
+      },
+      {
+        "id": "59",
+        "name": "Wooden Stacking Toy",
+        "category": "Toys",
+        "price": 19.99,
+        "image": "https://i.pinimg.com/736x/08/ff/ec/08ffec23d99cf75804176a82654e61f4.jpg",
+        "description": "A colorful and durable wooden stacking toy designed to improve hand-eye coordination and motor skills.",
+        "stars": 4.6
+      },
+      {
+        "id": "60",
+        "name": "Infant-to-Toddler Toothbrush",
+        "category": "Essentials",
+        "price": 5.99,
+        "image": "https://i.pinimg.com/736x/b1/07/25/b107252e5fecb28ed1d9e1dffdb737bc.jpg",
+        "description": "A safe and soft-bristled toothbrush designed for gentle cleaning of infants' and toddlers' teeth.",
+        "stars": 4.7
+      },
+      {
+        "id": "61",
+        "name": "Baby Pacifier Feeder",
+        "category": "Essentials",
+        "price": 8.99,
+        "image": "https://i.pinimg.com/736x/cb/ce/22/cbce22652d6fb33faa1406b3191b33d4.jpg",
+        "description": "A safe and convenient baby pacifier feeder that introduces fruits and purees while soothing teething gums.",
+        "stars": 4.5
       }
+      
+      
+      
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
     
     
   ]

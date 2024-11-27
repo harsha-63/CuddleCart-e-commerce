@@ -22,7 +22,7 @@ const Home = () => {
   {/* Left Section - Text */}
   <div className="w-full md:w-1/2 text-left">
     <h1 className="text-4xl md:text-6xl font-extrabold leading-snug text-gray-800 tracking-wide">
-      Welcome to <span className="text-pink-500">CuddleCart</span>
+      Welcome to <span className="text-amber-900">CuddleCart</span>
     </h1>
     <p className="text-lg md:text-2xl mt-4 text-gray-600">
       – Where Every Little Moment Matters!
