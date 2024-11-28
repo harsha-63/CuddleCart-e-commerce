@@ -1,12 +1,13 @@
 import Products from "../Models/productModel.js"
 import CustomError from "../Utils/customError.js"
 import Order from '../Models/orderModel.js'
+import {joiProductSchema} from '../Models/validation.js'
 
 
 //function for getAllProducts
 export const getAllProducts = async(req,res)=>{
     try{
-        const products = await Products.find()
+        const products = await Products.find({isDeleted:false})
         if(!products){
             res.status(404).json({success:false,message:"No products"})
         }
@@ -56,64 +57,44 @@ export const getProductsByCategory = async(req,res)=>{
   
 //function for create product
 export const createProduct  = async (req,res,next)=>{
-    const {name,category,price,image,description} = req.body
-    if (!name || !category || !price || !description || !image) {
-        return next(new CustomError("All fields are required", 400));
+    const {error } = joiProductSchema.validate(req.body);
+    if (error) {
+        return next(new CustomError(error.details[0].message, 400));
       }
+      const { name, description, price, image, category, stars } = req.body;
     const product = new Products({
-        name,
-        category,
-        price,
-        description,
-        image, 
+        name, description, price, image, category, stars
     }) ;
-
-    
     await product.save()  
     console.log(product);
 
     res.status(201).json({success: true, message: "Product created successfully",product:product});
 }  
-
-//function for deleteProduct
-export const deleteProduct = async (req, res,next) => {
-   
-      const { productId } = req.params;
-      const product = await Products.findByIdAndDelete(productId);
-      if (!product) {
-       return next(new CustomError("product not found",404))
-      }
-      product.isDeleted = true
-      await product.save()
-      res.status(200).json({ message: "product delete successfully" })
-    
-  };
-
   //function for updateProduct
   export const updateProduct = async (req,res,next)=>{
      const {productId} = req.params
-     const {name,price,description,image,category} = req.body
-
-     const product = await Products.findById(productId)
+     const product = await Products.findById(productId,{...req.body},{new:true})
      if(!product){
         return next(new CustomError("Product not found", 404))
      }
      if(product.isDeleted){
         return next(new CustomError("Cannot update a deleted product",400))
      }
-
-    product.name = name || product.name;
-    product.price = price || product.price;
-    product.category = category || product.category;
-    product.description = description || product.description;
-    product.image = image || product.image
-
-    await product.save()
     res.status(200).json({success:true,message:"product updated successfully"})
     
   }
-
-
+  //function for deleteProduct
+export const deleteProduct = async (req, res,next) => {
+   
+    const { productId } = req.params;
+    const product = await Products.findByIdAndDelete(productId,{$set:{isDeleted:true}});
+    if (!product) {
+     return next(new CustomError("product not found",404))
+    }
+    await product.save()
+    res.status(200).json({ message: "product delete successfully" })
+  
+};
 
   //function for getTotalPurchase
   export const getTotalPurchase = async (req, res, next) => {
@@ -132,9 +113,9 @@ export const deleteProduct = async (req, res,next) => {
 
   //function for getTotalRevenue
   export const getTotalRevenue = async(req,res,next)=>{
-    const totalRevenue = new Order.aggregate([
-        {$unwind:"$products"},{$group:{$multiply}}
-      ])
+    // const totalRevenue = new Order.aggregate([
+    //     {$unwind:"$products"},{$group:{$multiply:}}
+    //   ])
   }
   
 

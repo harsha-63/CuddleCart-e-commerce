@@ -20,7 +20,7 @@ export const createOrder = async (req, res, next) => {
         return next(new CustomError("Cart is empty. Cannot place the order", 400));
     }
 
-    // Check for invalid products in the cart
+    // // Check for invalid products in the cart
     const invalidProducts = cart.products.filter((p) => !p.productId);
     if (invalidProducts.length > 0) {
         return next(new CustomError("Cart contains invalid products", 400));
@@ -36,14 +36,9 @@ export const createOrder = async (req, res, next) => {
     });
     console.log(order);
     await order.save();
-    
-    
-
     // Clear the cart
     cart.products = [];
     await cart.save();
-
-    // Respond with the order and updated cart
     res.status(201).json({success: true, message: "Order created successfully"});
 };
 
@@ -90,3 +85,32 @@ export const cancelOrder = async (req, res, next) => {
     }
     res.status(200).json({ message: "Order cancelled" });
   };
+                             
+
+
+                                        //functions for orderDetails to admin
+
+//function for getTotalOrders
+export const getTotalOrders = async(req,res)  =>{
+    const orders = await Order.find()
+      .populate("products.productId", "name price image")
+      .sort({ createdAt: -1 });
+    if(!orders){
+      return res.status(404).json({message:"No orders found"})
+    }
+    res.status(200).json({data:orders})
+    
+}  
+
+//funtion for getOrderByUser
+export const getOrderByUser = async(req,res)=>{
+    const orders = await Order.find({userId:req.params.id})
+    .populate("products.productId", "name price image")
+    .sort({ createdAt: -1 });
+  if (!orders) {
+    return res.status(200).json({ message: "No orders found" });
+  }
+  res.status(200).json({ data: orders });
+
+}
+

@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 
 const createToken = (id) =>{
-  return jwt.sign({id},process.env.JWT_TOKEN,{ expiresIn: '1h' })
+  return jwt.sign({id},process.env.JWT_TOKEN,{ expiresIn: '1D' })
 }
 
 //controller to registerUser

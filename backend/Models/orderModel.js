@@ -18,27 +18,11 @@ const orderSchema = new mongoose.Schema({
         }
      }
     ],
-    purchaseDate:{
-        type:Date,
-        dafault:Date.now
-
-    },
-    orderId:{
-        type:String,
-       
-    },
-    totalPrice:{
-        type:Number,
-       
-    },
-    paymentStatus:{
-        type:String,
-        default:"pending"
-    },
-    shippingStatus:{
-        type:String,
-        dafault:"pending"
-    },
+    purchaseDate:{type:Date,dafault:Date.now},
+    orderId:{type:String},
+    totalPrice:{type:Number},
+    paymentStatus:{type:String,default:"pending"},
+    shippingStatus:{type:String,dafault:"pending"},
     userDetails: {
         name: { type: String, required: true },
         phone: { type: String, required: true },
