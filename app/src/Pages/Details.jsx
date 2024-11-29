@@ -14,7 +14,9 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
   useEffect(() => {
     if (products) {
       const foundProduct = products.find(item => item.id === id);

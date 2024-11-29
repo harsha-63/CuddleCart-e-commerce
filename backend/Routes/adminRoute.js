@@ -16,7 +16,7 @@ admin
 
 //admin routes for managing products
     .post("/products",verifyToken, trycatch(createProduct))
-    .delete("/products/:productId",verifyToken,trycatch(deleteProduct))
+    .delete("/product/:productId",verifyToken,trycatch(deleteProduct))
     .put("/products/:productId",verifyToken,trycatch (updateProduct))
     .get('/purchase',verifyToken,trycatch(getTotalPurchase))
     .get('/revenue',verifyToken,trycatch(getTotalRevenue))

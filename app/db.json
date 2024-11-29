@@ -593,229 +593,212 @@
       "stars": 4.7,
       "newArrival": false
     },
-    
-      {
-        "id": "38",
-        "name": "Cotton Onesie",
-        "category": "Clothing",
-        "price": 12.99,
-        "image": "https://i.pinimg.com/736x/4c/09/0a/4c090a71b3fcc07cbebb006b9993b2d0.jpg",
-        "description": "Soft, breathable cotton onesie for all-day comfort.",
-        "stars": 4.5
-      },
-      {
-        "id": "39",
-        "name": "Polka Dot Baby Dress",
-        "category": "Clothing",
-        "price": 18.99,
-        "image": "https://i.pinimg.com/736x/69/65/a2/6965a23fc19622f9bb98152b7600a2c5.jpg",
-        "description": "Adorable polka dot dress for baby girls, perfect for a casual day out.",
-        "stars": 4.6
-      },
-      
-      {
-        "id": "40",
-        "name": "Denim Overalls",
-        "category": "Clothing",
-        "price": 18.99,
-        "image": "https://i.pinimg.com/736x/cd/27/91/cd2791326b2c350cda4ce0eb163d6c78.jpg",
-        "description": "Classic denim overalls, comfortable and stylish.",
-        "stars": 4.7
-      },
-      {
-        "id": "41",
-        "name": "Fleece Hoodie set",
-        "category": "Clothing",
-        "price": 14.99,
-        "image": "https://i.pinimg.com/736x/d8/27/00/d82700833ffd215a1279ea1eb75efa07.jpg",
-        "description": "Warm fleece hoodie to keep your baby cozy in winter.",
-        "stars": 4.6
-      },
-      {
-        "id": "42",
-        "name": "Sleepwear Set",
-        "category": "Clothing",
-        "price": 22.99,
-        "image": "https://i.pinimg.com/736x/57/ef/ff/57efff46cd739c0d601f85fe21c5cdd2.jpg",
-        "description": "Comfortable and soft sleepwear for a peaceful night.",
-        "stars": 4.9
-      },
-      {
-        "id": "43",
-        "name": "Striped Baby tee and shorts set",
-        "category": "Clothing",
-        "price": 15.99,
-        "image": "https://i.pinimg.com/736x/12/3f/6c/123f6c0cb31fcba87384fd17353a4407.jpg",
-        "description": "Cute striped tee and shorts for casual days out.",
-        "stars": 4.4
-      },
-      {
-        "id": "44",
-        "name": "Baby Romper",
-        "category": "Clothing",
-        "price": 13.49,
-        "image": "https://i.pinimg.com/736x/88/20/e7/8820e720bc9fef3c5a88d6a6c6687897.jpg",
-        "description": "Comfortable and easy-to-wear romper for everyday activities.",
-        "stars": 4.3
-      },
-      {
-        "id": "45",
-        "name": " Baby Leggings 3 set",
-        "category": "Clothing",
-        "price": 9.99,
-        "image": "https://i.pinimg.com/736x/81/f4/4f/81f44f5f2fd8c1df7410e20c9c3ea573.jpg",
-        "description": "Soft, stretchy leggings for a perfect fit and all-day comfort.",
-        "stars": 4.6
-      },
-      {
-        "id": "46",
-        "name": "Baby Knit Sweater",
-        "category": "Clothing",
-        "price": 20.99,
-        "image": "https://i.pinimg.com/736x/4e/36/88/4e368837db0bdd6a850fdfb0a5fa38e8.jpg",
-        "description": "Warm knitted sweater to keep your baby warm and cozy.",
-        "stars": 4.7
-      },
-      {
-        "id": "47",
-        "name": "Animal Print T-Shirt and shorts",
-        "category": "Clothing",
-        "price": 11.99,
-        "image": "https://i.pinimg.com/736x/89/c7/72/89c772e248231bf045948b0cc184e3b0.jpg",
-        "description": "Fun animal print t-shirt and shorts for playful days.",
-        "stars": 4.2
-      },
-      {
-        "id": "48",
-        "name": "Baby Pajama Set",
-        "category": "Clothing",
-        "price": 17.99,
-        "image": "https://i.pinimg.com/736x/69/69/c5/6969c5050cc6c37d10950877dec17e87.jpg",
-        "description": "Soft and snug pajama set for a good night’s sleep.",
-        "stars": 4.8
-      },
-      {
-        "id": "49",
-        "name": " Baby Plaid print flap Pocket Shirt & Trousers",
-        "category": "Clothing",
-        "price": 16.49,
-        "image": "https://i.pinimg.com/736x/97/ea/cb/97eacbf090d387456904f62882209ccd.jpg",
-        "description": "Classic plaid shirt & trousers for baby boys, perfect for casual outings.",
-        "stars": 4.5
-      },
-      {
-        "id": "50",
-        "name": "Cute Baby Shorts",
-        "category": "Clothing",
-        "price": 10.99,
-        "image": "https://i.pinimg.com/736x/53/c9/1f/53c91fe8fb431e72f1eca9baf71c94b3.jpg",
-        "description": "Light and breathable shorts for the warmer days.",
-        "stars": 4.4
-      },
-      {
-        "id": "51",
-        "name": "Baby Summer Dress for boy",
-        "category": "Clothing",
-        "price": 14.99,
-        "image": "https://i.pinimg.com/736x/9d/e8/f6/9de8f67e3cb20dcdfc39234f7983b9d2.jpg",
-        "description": "Sweet summer dress for your little one.",
-        "stars": 4.6
-      },
-      {
-        "id": "52",
-        "name": "Knitted Baby Cap",
-        "category": "Clothing",
-        "price": 8.99,
-        "image": "https://i.pinimg.com/736x/d7/6a/6e/d76a6eef347a1032508b878e281c284b.jpg",
-        "description": "Warm knitted cap to protect your baby’s head from the cold.",
-        "stars": 4.5
-      },
-      {
-        "id": "53",
-        "name": "Baby Winter Coat",
-        "category": "Clothing",
-        "price": 30.99,
-        "image": "https://i.pinimg.com/736x/28/ff/2e/28ff2e722625aa79cbedc3a56225b4ee.jpg",
-        "description": "Stylish and warm winter coat to keep your baby snug in cold weather.",
-        "stars": 4.8
-      },
-      {
-        "id": "55",
-        "name": "Baby Changing Table",
-        "category": "Nursery",
-        "price": 129.99,
-        "image": "https://i.pinimg.com/736x/5f/bb/4f/5fbb4f31774079f19a5152278b0d0454.jpg",
-        "description": "Wooden changing table with ample storage for diapers, wipes, and baby essentials.",
-        "stars": 4.5
-      },
-      {
-        "id": "56",
-        "name": "Rocking Chair",
-        "category": "Nursery",
-        "price": 89.99,
-        "image": "https://i.pinimg.com/736x/3a/54/4f/3a544f34e5807d3e50427930fa3824f9.jpg",
-        "description": "Comfortable rocking chair for soothing your baby during feedings and bedtime.",
-        "stars": 4.8
-      },
-      {
-        "id": "57",
-        "name": "Nursery Night Light",
-        "category": "Nursery",
-        "price": 15.99,
-        "image": "https://i.pinimg.com/736x/00/85/0a/00850afea039139497134d9bf72d1b0d.jpg",
-        "description": "Soft, dimmable night light to gently illuminate the nursery without disturbing your baby's sleep.",
-        "stars": 4.6
-      },
-      {
-        "id": "58",
-        "name": "Children's Electronic Piano",
-        "category": "Toys",
-        "price": 49.99,
-        "image": "https://i.pinimg.com/736x/b2/0a/98/b20a98667affa16bc21a60f1dfdbbd5c.jpg",
-        "description": "A fun and educational electronic piano designed for young children with interactive keys and built-in melodies.",
-        "stars": 4.8
-      },
-      {
-        "id": "59",
-        "name": "Wooden Stacking Toy",
-        "category": "Toys",
-        "price": 19.99,
-        "image": "https://i.pinimg.com/736x/08/ff/ec/08ffec23d99cf75804176a82654e61f4.jpg",
-        "description": "A colorful and durable wooden stacking toy designed to improve hand-eye coordination and motor skills.",
-        "stars": 4.6
-      },
-      {
-        "id": "60",
-        "name": "Infant-to-Toddler Toothbrush",
-        "category": "Essentials",
-        "price": 5.99,
-        "image": "https://i.pinimg.com/736x/b1/07/25/b107252e5fecb28ed1d9e1dffdb737bc.jpg",
-        "description": "A safe and soft-bristled toothbrush designed for gentle cleaning of infants' and toddlers' teeth.",
-        "stars": 4.7
-      },
-      {
-        "id": "61",
-        "name": "Baby Pacifier Feeder",
-        "category": "Essentials",
-        "price": 8.99,
-        "image": "https://i.pinimg.com/736x/cb/ce/22/cbce22652d6fb33faa1406b3191b33d4.jpg",
-        "description": "A safe and convenient baby pacifier feeder that introduces fruits and purees while soothing teething gums.",
-        "stars": 4.5
-      }
-      
-      
-      
-      
-      
-      
-
-      
-      
-      
-      
-      
-      
-    
-    
+    {
+      "id": "38",
+      "name": "Cotton Onesie",
+      "category": "Clothing",
+      "price": 12.99,
+      "image": "https://i.pinimg.com/736x/4c/09/0a/4c090a71b3fcc07cbebb006b9993b2d0.jpg",
+      "description": "Soft, breathable cotton onesie for all-day comfort.",
+      "stars": 4.5
+    },
+    {
+      "id": "39",
+      "name": "Polka Dot Baby Dress",
+      "category": "Clothing",
+      "price": 18.99,
+      "image": "https://i.pinimg.com/736x/69/65/a2/6965a23fc19622f9bb98152b7600a2c5.jpg",
+      "description": "Adorable polka dot dress for baby girls, perfect for a casual day out.",
+      "stars": 4.6
+    },
+    {
+      "id": "40",
+      "name": "Denim Overalls",
+      "category": "Clothing",
+      "price": 18.99,
+      "image": "https://i.pinimg.com/736x/cd/27/91/cd2791326b2c350cda4ce0eb163d6c78.jpg",
+      "description": "Classic denim overalls, comfortable and stylish.",
+      "stars": 4.7
+    },
+    {
+      "id": "41",
+      "name": "Fleece Hoodie set",
+      "category": "Clothing",
+      "price": 14.99,
+      "image": "https://i.pinimg.com/736x/d8/27/00/d82700833ffd215a1279ea1eb75efa07.jpg",
+      "description": "Warm fleece hoodie to keep your baby cozy in winter.",
+      "stars": 4.6
+    },
+    {
+      "id": "42",
+      "name": "Sleepwear Set",
+      "category": "Clothing",
+      "price": 22.99,
+      "image": "https://i.pinimg.com/736x/57/ef/ff/57efff46cd739c0d601f85fe21c5cdd2.jpg",
+      "description": "Comfortable and soft sleepwear for a peaceful night.",
+      "stars": 4.9
+    },
+    {
+      "id": "43",
+      "name": "Striped Baby tee and shorts set",
+      "category": "Clothing",
+      "price": 15.99,
+      "image": "https://i.pinimg.com/736x/12/3f/6c/123f6c0cb31fcba87384fd17353a4407.jpg",
+      "description": "Cute striped tee and shorts for casual days out.",
+      "stars": 4.4
+    },
+    {
+      "id": "44",
+      "name": "Baby Romper",
+      "category": "Clothing",
+      "price": 13.49,
+      "image": "https://i.pinimg.com/736x/88/20/e7/8820e720bc9fef3c5a88d6a6c6687897.jpg",
+      "description": "Comfortable and easy-to-wear romper for everyday activities.",
+      "stars": 4.3
+    },
+    {
+      "id": "45",
+      "name": " Baby Leggings 3 set",
+      "category": "Clothing",
+      "price": 9.99,
+      "image": "https://i.pinimg.com/736x/81/f4/4f/81f44f5f2fd8c1df7410e20c9c3ea573.jpg",
+      "description": "Soft, stretchy leggings for a perfect fit and all-day comfort.",
+      "stars": 4.6
+    },
+    {
+      "id": "46",
+      "name": "Baby Knit Sweater",
+      "category": "Clothing",
+      "price": 20.99,
+      "image": "https://i.pinimg.com/736x/4e/36/88/4e368837db0bdd6a850fdfb0a5fa38e8.jpg",
+      "description": "Warm knitted sweater to keep your baby warm and cozy.",
+      "stars": 4.7
+    },
+    {
+      "id": "47",
+      "name": "Animal Print T-Shirt and shorts",
+      "category": "Clothing",
+      "price": 11.99,
+      "image": "https://i.pinimg.com/736x/89/c7/72/89c772e248231bf045948b0cc184e3b0.jpg",
+      "description": "Fun animal print t-shirt and shorts for playful days.",
+      "stars": 4.2
+    },
+    {
+      "id": "48",
+      "name": "Baby Pajama Set",
+      "category": "Clothing",
+      "price": 17.99,
+      "image": "https://i.pinimg.com/736x/69/69/c5/6969c5050cc6c37d10950877dec17e87.jpg",
+      "description": "Soft and snug pajama set for a good night’s sleep.",
+      "stars": 4.8
+    },
+    {
+      "id": "49",
+      "name": " Baby Plaid print flap Pocket Shirt & Trousers",
+      "category": "Clothing",
+      "price": 16.49,
+      "image": "https://i.pinimg.com/736x/97/ea/cb/97eacbf090d387456904f62882209ccd.jpg",
+      "description": "Classic plaid shirt & trousers for baby boys, perfect for casual outings.",
+      "stars": 4.5
+    },
+    {
+      "id": "50",
+      "name": "Cute Baby Shorts",
+      "category": "Clothing",
+      "price": 10.99,
+      "image": "https://i.pinimg.com/736x/53/c9/1f/53c91fe8fb431e72f1eca9baf71c94b3.jpg",
+      "description": "Light and breathable shorts for the warmer days.",
+      "stars": 4.4
+    },
+    {
+      "id": "51",
+      "name": "Baby Summer Dress for boy",
+      "category": "Clothing",
+      "price": 14.99,
+      "image": "https://i.pinimg.com/736x/9d/e8/f6/9de8f67e3cb20dcdfc39234f7983b9d2.jpg",
+      "description": "Sweet summer dress for your little one.",
+      "stars": 4.6
+    },
+    {
+      "id": "52",
+      "name": "Knitted Baby Cap",
+      "category": "Clothing",
+      "price": 8.99,
+      "image": "https://i.pinimg.com/736x/d7/6a/6e/d76a6eef347a1032508b878e281c284b.jpg",
+      "description": "Warm knitted cap to protect your baby’s head from the cold.",
+      "stars": 4.5
+    },
+    {
+      "id": "53",
+      "name": "Baby Winter Coat",
+      "category": "Clothing",
+      "price": 30.99,
+      "image": "https://i.pinimg.com/736x/28/ff/2e/28ff2e722625aa79cbedc3a56225b4ee.jpg",
+      "description": "Stylish and warm winter coat to keep your baby snug in cold weather.",
+      "stars": 4.8
+    },
+    {
+      "id": "55",
+      "name": "Baby Changing Table",
+      "category": "Nursery",
+      "price": 129.99,
+      "image": "https://i.pinimg.com/736x/5f/bb/4f/5fbb4f31774079f19a5152278b0d0454.jpg",
+      "description": "Wooden changing table with ample storage for diapers, wipes, and baby essentials.",
+      "stars": 4.5
+    },
+    {
+      "id": "56",
+      "name": "Rocking Chair",
+      "category": "Nursery",
+      "price": 89.99,
+      "image": "https://i.pinimg.com/736x/3a/54/4f/3a544f34e5807d3e50427930fa3824f9.jpg",
+      "description": "Comfortable rocking chair for soothing your baby during feedings and bedtime.",
+      "stars": 4.8
+    },
+    {
+      "id": "57",
+      "name": "Nursery Night Light",
+      "category": "Nursery",
+      "price": 15.99,
+      "image": "https://i.pinimg.com/736x/00/85/0a/00850afea039139497134d9bf72d1b0d.jpg",
+      "description": "Soft, dimmable night light to gently illuminate the nursery without disturbing your baby's sleep.",
+      "stars": 4.6
+    },
+    {
+      "id": "58",
+      "name": "Children's Electronic Piano",
+      "category": "Toys",
+      "price": 49.99,
+      "image": "https://i.pinimg.com/736x/b2/0a/98/b20a98667affa16bc21a60f1dfdbbd5c.jpg",
+      "description": "A fun and educational electronic piano designed for young children with interactive keys and built-in melodies.",
+      "stars": 4.8
+    },
+    {
+      "id": "59",
+      "name": "Wooden Stacking Toy",
+      "category": "Toys",
+      "price": 19.99,
+      "image": "https://i.pinimg.com/736x/08/ff/ec/08ffec23d99cf75804176a82654e61f4.jpg",
+      "description": "A colorful and durable wooden stacking toy designed to improve hand-eye coordination and motor skills.",
+      "stars": 4.6
+    },
+    {
+      "id": "60",
+      "name": "Infant-to-Toddler Toothbrush",
+      "category": "Essentials",
+      "price": 5.99,
+      "image": "https://i.pinimg.com/736x/b1/07/25/b107252e5fecb28ed1d9e1dffdb737bc.jpg",
+      "description": "A safe and soft-bristled toothbrush designed for gentle cleaning of infants' and toddlers' teeth.",
+      "stars": 4.7
+    },
+    {
+      "id": "61",
+      "name": "Baby Pacifier Feeder",
+      "category": "Essentials",
+      "price": 8.99,
+      "image": "https://i.pinimg.com/736x/cb/ce/22/cbce22652d6fb33faa1406b3191b33d4.jpg",
+      "description": "A safe and convenient baby pacifier feeder that introduces fruits and purees while soothing teething gums.",
+      "stars": 4.5
+    }
   ]
 }

@@ -1,6 +1,6 @@
 import {v2 as cloudinary} from "cloudinary"
 
-const connectCloudinary = async ()=>{
+export const connectCloudinary = async ()=>{
 
     cloudinary.config({
         cloud_name:process.env.CLOUDINARY_NAME,
@@ -10,4 +10,4 @@ const connectCloudinary = async ()=>{
 
 
 }
-export default connectCloudinary
+export default cloudinary
