@@ -21,14 +21,18 @@ const orderSchema = new mongoose.Schema({
     purchaseDate:{type:Date,dafault:Date.now},
     orderId:{type:String},
     totalAmount:{type:Number},
-    paymentMethod:{type:String},
-    paymentStatus:{type:String,default:"pending"},
-    shippingStatus:{type:String,dafault:"pending"},
+    paymentMethod:{type:String,enum: ['cash on delivery', 'stripe'],
+        default: 'cash on delivery'},
+    paymentStatus:{type:String, enum: ['pending', 'completed', 'failed'],default:"pending"},
+    shippingStatus:{type:String, enum: ['processing', 'shipped', 'delivered', 'cancelled'],dafault:"processing"},
     userDetails: {
         name: { type: String, required: true },
         phone: { type: String, required: true },
         address: { type: String, required: true }
-      }
+      },
+      sessionId: {  // For Stripe session tracking
+        type: String,
+      },
 
 
 },{timestamps:true})

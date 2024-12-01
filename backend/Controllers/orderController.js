@@ -8,47 +8,7 @@ import stripe from 'stripe'
 //function for createOrder by COD
 
 export const placeOrder = async (req, res, next) => {
-    const { userDetails,totalAmount } = req.body;
-
-    if (!userDetails) {
-        return next(new CustomError("User details are required to place the order", 400));
-    }
-
-    // Find the cart for the user
-    const cart = await Cart.findOne({ userId: req.user.id });
-
-    if (!cart || cart.products.length === 0) {
-        return next(new CustomError("Cart is empty. Cannot place the order", 400));
-    }
-
-    // // Check for invalid products in the cart
-    const invalidProducts = cart.products.filter((p) => !p.productId);
-    if (invalidProducts.length > 0) {
-        return next(new CustomError("Cart contains invalid products", 400));
-    }
-
-    // Create a new order
-    let order = new Order({
-        userId: req.user.id,
-        products: cart.products,
-        userDetails,
-        totalAmount,
-        paymentStatus: "cash on delivery",
-        shippingStatus: "processing",
-    });
-    console.log(order);
-    await order.save();
-    // Clear the cart
-    cart.products = [];
-    await cart.save();
-    res.status(201).json({success: true, message: "Order created successfully"});
-};
-
-//function for placeOrder by Stripe
-
-
-export const orderStripe = async (req, res, next) => {
-  const { userDetails, totalAmount } = req.body;
+  const { userDetails } = req.body;  // Remove totalAmount from body
 
   // Validate user details
   if (!userDetails) {
@@ -62,6 +22,60 @@ export const orderStripe = async (req, res, next) => {
     return next(new CustomError("Cart is empty. Cannot place the order", 400));
   }
 
+  // Calculate total amount from the cart products
+  const totalAmount = cart.products.reduce((acc, product) => {
+    return acc + (product.price * product.quantity); // Assuming price is per item
+  }, 0);
+
+  // Check for invalid products in the cart
+  const invalidProducts = cart.products.filter((p) => !p.productId);
+  if (invalidProducts.length > 0) {
+    return next(new CustomError("Cart contains invalid products", 400));
+  }
+
+  // Create a new order
+  let order = new Order({
+    userId: req.user.id,
+    products: cart.products,
+    userDetails,
+    totalAmount,  // No need to pass totalAmount from the body
+    paymentStatus: "cash on delivery",
+    shippingStatus: "processing",
+  });
+
+  // Save the order
+  await order.save();
+
+  // Clear the cart
+  cart.products = [];
+  await cart.save();
+
+  res.status(201).json({ success: true, message: "Order created successfully", order });
+};
+
+
+//function for placeOrder by Stripe
+
+export const orderStripe = async (req, res, next) => {
+  const { userDetails } = req.body;  // Remove totalAmount from body
+
+  // Validate user details
+  if (!userDetails) {
+    return next(new CustomError("User details are required to place the order", 400));
+  }
+
+  // Find the cart for the user
+  const cart = await Cart.findOne({ userId: req.user.id });
+
+  if (!cart || cart.products.length === 0) {
+    return next(new CustomError("Cart is empty. Cannot place the order", 400));
+  }
+
+  // Calculate total amount from the cart products
+  const totalAmount = cart.products.reduce((acc, product) => {
+    return acc + (product.price * product.quantity); // Assuming price is per item
+  }, 0);
+
   // Prepare line items for Stripe
   const line_items = cart.products.map((product) => ({
     price_data: {
@@ -69,11 +83,13 @@ export const orderStripe = async (req, res, next) => {
       product_data: {
         name: product.name, 
       },
-      unit_amount: product.price * 100,
+      unit_amount: product.price * 100,  // Stripe expects the amount in cents
     },
     quantity: product.quantity,
   }));
-  const stripeClient = new stripe(process.env.STRIPE_SECRET_KEY);
+
+  const stripeClient = stripe(process.env.STRIPE_SECRET_KEY);
+
   // Create a Stripe session
   const session = await stripeClient.checkout.sessions.create({
     payment_method_types: ['card'],
@@ -109,6 +125,7 @@ export const orderStripe = async (req, res, next) => {
     stripeUrl: session.url,
   });
 };
+
 
 
 
@@ -184,32 +201,52 @@ export const getOrderByUser = async(req,res)=>{
 
  //function for getTotalPurchase
  export const getTotalPurchase = async (req, res, next) => {
-  const totalPurchase = new Order.aggregate([
-      {$unwind:"$products"},{$group:{_id:null,totalProducts:{$sum:"$products.quantity"}}}
-  ])
+  // Aggregate query to calculate total products purchased
+  const totalPurchase = await Order.aggregate([
+    { $unwind: "$products" }, // Flatten the products array
+    { $group: { _id: null, totalProducts: { $sum: "$products.quantity" } } } // Calculate total quantity
+  ]);
 
+  // If no products are found
   if (!totalPurchase || totalPurchase.length === 0) {
     return next(new CustomError("No products purchased found", 404));
   }
 
+  // Extract the total products quantity
   const total = totalPurchase[0].totalProducts;
 
-  res.status(200).json({success: true,totalPurchase: total});
+  // Return the total purchase quantity
+  res.status(200).json({ success: true, totalPurchase: total });
 };
+
+
 
 //function for getTotalRevenue
 export const getTotalRevenue = async (req, res) => {
-  const totalOrders = await Order.find();
-  if (!totalOrders) {
+  // Find all orders
+  const orders = await Order.find();
+
+  // Check if orders exist
+  if (!orders || orders.length === 0) {
     return res.status(200).json({ message: "No orders found" });
   }
-  const nonCancelledOrders = totalOrders.filter(
+
+  // Filter out cancelled orders
+  const nonCancelledOrders = orders.filter(
     (order) => order.shippingStatus !== "Cancelled"
-  )
+  );
+
+  // Calculate total revenue
   const revenue = nonCancelledOrders.reduce((acc, order) => {
-    return acc + order.totalAmount;
+    if (order.totalAmount && !isNaN(order.totalAmount)) {
+      return acc + order.totalAmount;
+    }
+    return acc; // Skip invalid or missing totalAmount values
   }, 0);
+
+  // Return the revenue
   res.status(200).json({ data: revenue });
 };
+
 
 

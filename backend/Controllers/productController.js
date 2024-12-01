@@ -74,42 +74,66 @@ export const createProduct  = async (req,res,next)=>{
     res.status(201).json({success: true, message: "Product created successfully",product:product});
 }  
   //function for updateProduct
-  export const updateProduct = async (req,res,next)=>{
-     const {productId} = req.params
-     const product = await Products.findById(productId)
-     if(!product){
-        return next(new CustomError("Product not found", 404))
-     }
-     if(product.isDeleted){
-        return next(new CustomError("Cannot update a deleted product",400))
-     }
-     let updatedData = { ...req.body }
-     if (req.file) {
-        updatedData.image = req.file.path; 
-      }
-     const updatedProduct = await Products.findByIdAndUpdate(
-        productId,  
-       updatedData,   
-        { new: true }
-      );
-      if (!updatedProduct) {
-        return next(new CustomError("Failed to update product", 500));
-      }
-    res.status(200).json({success:true,message:"product updated successfully"})
-    
-  }
-  //function for deleteProduct
-export const deleteProduct = async (req, res,next) => {
-   
+  export const updateProduct = async (req, res, next) => {
     const { productId } = req.params;
-    const product = await Products.findByIdAndDelete(productId,{$set:{isDeleted:true}});
-    if (!product) {
-     return next(new CustomError("product not found",404))
-    }
-    await product.save()
-    res.status(200).json({ message: "product delete successfully" })
   
-};
+    // Find the product
+    const product = await Products.findById(productId);
+    if (!product) {
+      return next(new CustomError("Product not found", 404));
+    }
+  
+    // Check if the product is deleted
+    if (product.isDeleted) {
+      return next(new CustomError("Cannot update a deleted product", 400));
+    }
+  
+    // Prepare updated data
+    let updatedData = {};
+    if (req.body) {
+      updatedData = { ...req.body };
+    }
+  
+    // Include the new image path if a file is uploaded
+    if (req.file) {
+      updatedData.image = req.file.path;
+    }
+  
+    // Update the product with only provided fields
+    const updatedProduct = await Products.findByIdAndUpdate(
+      productId,
+      { $set: updatedData }, // Use $set to update only specified fields
+      { new: true } // Return updated doc and apply validation
+    );
+  
+    // Check if the update was successful
+    if (!updatedProduct) {
+      return next(new CustomError("Failed to update product", 500));
+    }
+  
+    res.status(200).json({
+      success: true,
+      message: "Product updated successfully",
+      product: updatedProduct,
+    });
+  };
+  
+  //function for deleteProduct
+  export const deleteProduct = async (req, res, next) => {
+    const { productId } = req.params;
+  
+    // Soft delete the product by setting isDeleted to true
+    const product = await Products.findById(productId);
+  
+    if (!product) {
+      return next(new CustomError("Product not found", 404));
+    }
+    product.isDeleted = !product.isDeleted;
+    await product.save();
+  
+    res.status(200).json({ success: true, message: "Product deleted successfully", product });
+  };
+  
 
  
   
