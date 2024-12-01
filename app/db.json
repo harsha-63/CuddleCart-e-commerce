@@ -8,7 +8,25 @@
       "confirmpassword": "harsha",
       "isAdmin": true,
       "isBlock": false,
-      "cart": [],
+      "cart": [
+        {
+          "id": "15",
+          "category": "Clothing",
+          "name": "Floral Print Dress Babygirl",
+          "price": 19.99,
+          "stock": 30,
+          "description": "A beautiful floral dress for special occasions, made from soft, breathable fabric.",
+          "sizes": [
+            "3-6 months",
+            "6-12 months"
+          ],
+          "stars": 4.7,
+          "review": "The Floral Print Baby Dress is perfect for special occasions. The vibrant colors and soft fabric make it both stylish and comfortable, and it's easy to put on with snap closures.",
+          "image": "https://i.pinimg.com/736x/4b/36/13/4b36130c0d8c452d29ee34293457e315.jpg",
+          "newArrival": true,
+          "quantity": 1
+        }
+      ],
       "order": [
         {
           "id": "2",
