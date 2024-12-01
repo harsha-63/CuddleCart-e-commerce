@@ -1,13 +1,14 @@
 import Order from '../Models/orderModel.js'
 import CustomError from '../Utils/customError.js'
 import Cart from '../Models/cartModel.js'
+import stripe from 'stripe'
 
 
 
-//function for createOrder
+//function for createOrder by COD
 
-export const createOrder = async (req, res, next) => {
-    const { userDetails } = req.body;
+export const placeOrder = async (req, res, next) => {
+    const { userDetails,totalAmount } = req.body;
 
     if (!userDetails) {
         return next(new CustomError("User details are required to place the order", 400));
@@ -31,6 +32,7 @@ export const createOrder = async (req, res, next) => {
         userId: req.user.id,
         products: cart.products,
         userDetails,
+        totalAmount,
         paymentStatus: "cash on delivery",
         shippingStatus: "processing",
     });
@@ -40,6 +42,72 @@ export const createOrder = async (req, res, next) => {
     cart.products = [];
     await cart.save();
     res.status(201).json({success: true, message: "Order created successfully"});
+};
+
+//function for placeOrder by Stripe
+
+
+export const orderStripe = async (req, res, next) => {
+  const { userDetails, totalAmount } = req.body;
+
+  // Validate user details
+  if (!userDetails) {
+    return next(new CustomError("User details are required to place the order", 400));
+  }
+
+  // Find the cart for the user
+  const cart = await Cart.findOne({ userId: req.user.id });
+
+  if (!cart || cart.products.length === 0) {
+    return next(new CustomError("Cart is empty. Cannot place the order", 400));
+  }
+
+  // Prepare line items for Stripe
+  const line_items = cart.products.map((product) => ({
+    price_data: {
+      currency: 'inr',
+      product_data: {
+        name: product.name, 
+      },
+      unit_amount: product.price * 100,
+    },
+    quantity: product.quantity,
+  }));
+  const stripeClient = new stripe(process.env.STRIPE_SECRET_KEY);
+  // Create a Stripe session
+  const session = await stripeClient.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items,
+    mode: 'payment',
+    success_url: `http://localhost:3000/success/{CHECKOUT_SESSION_ID}`,
+    cancel_url: `http://localhost:3000/cancel`,
+  });
+
+  // Create an order in the database
+  const orderData = new Order({
+    userId: req.user.id,
+    products: cart.products,
+    userDetails,
+    totalAmount,
+    paymentMethod: 'stripe',
+    paymentStatus: 'pending',
+    shippingStatus: 'pending',
+    sessionId: session.id, // Save Stripe session ID for tracking
+  });
+
+  await orderData.save();
+
+  // Clear the cart
+  cart.products = [];
+  await cart.save();
+
+  // Respond with the session ID and URL
+  res.status(201).json({
+    success: true,
+    message: 'Order created successfully. Proceed to payment.',
+    sessionId: session.id,
+    stripeUrl: session.url,
+  });
 };
 
 
@@ -113,4 +181,35 @@ export const getOrderByUser = async(req,res)=>{
   res.status(200).json({ data: orders });
 
 }
+
+ //function for getTotalPurchase
+ export const getTotalPurchase = async (req, res, next) => {
+  const totalPurchase = new Order.aggregate([
+      {$unwind:"$products"},{$group:{_id:null,totalProducts:{$sum:"$products.quantity"}}}
+  ])
+
+  if (!totalPurchase || totalPurchase.length === 0) {
+    return next(new CustomError("No products purchased found", 404));
+  }
+
+  const total = totalPurchase[0].totalProducts;
+
+  res.status(200).json({success: true,totalPurchase: total});
+};
+
+//function for getTotalRevenue
+export const getTotalRevenue = async (req, res) => {
+  const totalOrders = await Order.find();
+  if (!totalOrders) {
+    return res.status(200).json({ message: "No orders found" });
+  }
+  const nonCancelledOrders = totalOrders.filter(
+    (order) => order.shippingStatus !== "Cancelled"
+  )
+  const revenue = nonCancelledOrders.reduce((acc, order) => {
+    return acc + order.totalAmount;
+  }, 0);
+  res.status(200).json({ data: revenue });
+};
+
 

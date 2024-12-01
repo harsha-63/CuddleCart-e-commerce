@@ -1,6 +1,5 @@
 import Products from "../Models/productModel.js"
 import CustomError from "../Utils/customError.js"
-import Order from '../Models/orderModel.js'
 import {joiProductSchema} from '../Models/validation.js'
 
 
@@ -61,9 +60,13 @@ export const createProduct  = async (req,res,next)=>{
     if (error) {
         return next(new CustomError(error.details[0].message, 400));
       }
-      const { name, description, price, image, category, stars } = req.body;
+      const { name, description, price,image, category, stars } = req.body;
+      if (!req.file || !req.file.path) {
+        return next(new CustomError("Product image is required", 400));
+      }
+    
     const product = new Products({
-        name, description, price, image, category, stars
+        name, description, price, image:req.file.path, category, stars
     }) ;
     await product.save()  
     console.log(product);
@@ -73,13 +76,25 @@ export const createProduct  = async (req,res,next)=>{
   //function for updateProduct
   export const updateProduct = async (req,res,next)=>{
      const {productId} = req.params
-     const product = await Products.findById(productId,{...req.body},{new:true})
+     const product = await Products.findById(productId)
      if(!product){
         return next(new CustomError("Product not found", 404))
      }
      if(product.isDeleted){
         return next(new CustomError("Cannot update a deleted product",400))
      }
+     let updatedData = { ...req.body }
+     if (req.file) {
+        updatedData.image = req.file.path; 
+      }
+     const updatedProduct = await Products.findByIdAndUpdate(
+        productId,  
+       updatedData,   
+        { new: true }
+      );
+      if (!updatedProduct) {
+        return next(new CustomError("Failed to update product", 500));
+      }
     res.status(200).json({success:true,message:"product updated successfully"})
     
   }
@@ -96,29 +111,7 @@ export const deleteProduct = async (req, res,next) => {
   
 };
 
-  //function for getTotalPurchase
-  export const getTotalPurchase = async (req, res, next) => {
-    const totalPurchase = new Order.aggregate([
-        {$unwind:"$products"},{$group:{_id:null,totalProducts:{$sum:"$products.quantity"}}}
-    ])
-  
-    if (!totalPurchase || totalPurchase.length === 0) {
-      return next(new CustomError("No products purchased found", 404));
-    }
-  
-    const total = totalPurchase[0].totalProducts;
-  
-    res.status(200).json({success: true,totalPurchase: total});
-  };
-
-  //function for getTotalRevenue
-  export const getTotalRevenue = async(req,res,next)=>{
-    // const totalRevenue = new Order.aggregate([
-    //     {$unwind:"$products"},{$group:{$multiply:}}
-    //   ])
-  }
-  
-
+ 
   
 
 

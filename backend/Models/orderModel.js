@@ -20,7 +20,8 @@ const orderSchema = new mongoose.Schema({
     ],
     purchaseDate:{type:Date,dafault:Date.now},
     orderId:{type:String},
-    totalPrice:{type:Number},
+    totalAmount:{type:Number},
+    paymentMethod:{type:String},
     paymentStatus:{type:String,default:"pending"},
     shippingStatus:{type:String,dafault:"pending"},
     userDetails: {

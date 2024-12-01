@@ -54,8 +54,9 @@ const AddProduct = () => {
     }
 
     return (
-        <div className="max-w-md mx-auto mt-10 p-4 border rounded shadow-lg">
-            <h1 className="text-2xl font-bold mb-4 text-center">Add New Product</h1>
+        <div className=" mx-auto mt-10 p-4 border rounded shadow-lg">
+       
+            <h1 className="text-3xl font-bold mb-4 text-center">Add New Product</h1>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <div className="mb-2">
@@ -137,9 +138,12 @@ const AddProduct = () => {
                         />
                     </div>
                 </div>
-                <button  onSubmit={Saveproduct} type="submit" className="w-full bg-green-600 text-white p-2 rounded">Save</button>
+                <div className=" flex flex-row justify-center items-center">
+                <button  onSubmit={Saveproduct} type="submit" className="w-1/4 bg-green-600 text-white p-2 rounded ">Save</button>
+                </div>
             </form>
-        </div>
+         </div>
+       
     );
 };
 

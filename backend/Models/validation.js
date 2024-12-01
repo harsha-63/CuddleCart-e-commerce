@@ -15,7 +15,7 @@ export const joiProductSchema = joi.object({
     name:joi.string().required(),
     description:joi.string().required(),
     price:joi.number().required(),
-    image:joi.string().required(),
+    image:joi.string(),
     category:joi.string().required(),
     newArrival:joi.boolean().required(),
     isDeleted:joi.boolean().required().default(false)

@@ -70,10 +70,12 @@ const Edit = () => {
     };
 
     return (
-        <div className="container mx-auto p-6">
+        <div>
             <div className="flex justify-center items-center">
-                <div className="border p-4 rounded-lg shadow-lg hover:shadow-xl w-full md:w-2/3 flex flex-col md:flex-row gap-6">
-                    <div className="w-full md:w-1/2">
+            
+                <div className="border p-6 rounded-lg shadow-lg hover:shadow-xl w-full md:w-3/4 flex flex-col md:flex-row gap-6">
+                
+                    <div className=" md:w-1/2">
                         <img 
                             src={product?.image || 'default-image-url.jpg'} 
                             alt={product?.name} 
@@ -81,7 +83,7 @@ const Edit = () => {
                         />
                     </div>
                     <div className="w-full md:w-1/2 flex flex-col justify-center">
-                        <h2 className="text-lg font-bold mb-4">Edit Product: {product?.name}</h2>
+                    <h2 className="text-lg font-bold mb-4">Edit Product: {product?.name}</h2>    
                         
                         <div className="mt-2">
                             <span className="block text-center font-semibold">Name</span>
