@@ -5,8 +5,8 @@ export const joiUserSchema = joi.object({
     name:joi.string(),
     email:joi.string().email().required(),
     password:joi.string().min(6).required(),
-    isBlock:joi.boolean().default(false).required(),
-    isAdmin:joi.boolean().default(false).required()
+    isBlock:joi.boolean().default(false),
+    isAdmin:joi.boolean().default(false)
 
 
 })

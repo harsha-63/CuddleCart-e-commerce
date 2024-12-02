@@ -1,6 +1,6 @@
 import express from "express";
 import { getAllUsers ,getUserById,blockUser } from "../Controllers/userController.js"
-import { createProduct,deleteProduct,updateProduct } from "../Controllers/productController.js";
+import { createProduct,deleteProduct,updateProduct,getAllProducts,getProductById,getProductsByCategory } from "../Controllers/productController.js";
 import trycatch from "../Utils/tryCatch.js";
 import { verifyToken } from "../Middlewares/verifyToken.js";
 import upload from '../Middlewares/multer.js'
@@ -16,9 +16,12 @@ admin
     .patch('/users/block/:id',blockUser)
 
 //admin routes for managing products
+    .get('/products',(getAllProducts))
+    .get('/product/:id',(getProductById))
+    .get('/products/category/:category',(getProductsByCategory))
     .post("/products",verifyToken,upload.single("image"), trycatch(createProduct))
-    .delete("/product/:productId",verifyToken, trycatch(deleteProduct))
     .put("/products/:productId",verifyToken,upload.single("image"),trycatch (updateProduct))
+    .delete("/product/:productId",verifyToken, trycatch(deleteProduct))
     
 
 //admin routes for managing orderDetails

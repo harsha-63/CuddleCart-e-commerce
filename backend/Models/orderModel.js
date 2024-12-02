@@ -23,7 +23,7 @@ const orderSchema = new mongoose.Schema({
     totalAmount:{type:Number},
     paymentMethod:{type:String,enum: ['cash on delivery', 'stripe'],
         default: 'cash on delivery'},
-    paymentStatus:{type:String, enum: ['pending', 'completed', 'failed'],default:"pending"},
+    paymentStatus:{type:String, enum: ['pending', 'paid', 'cancelled'],default:"pending"},
     shippingStatus:{type:String, enum: ['processing', 'shipped', 'delivered', 'cancelled'],dafault:"processing"},
     userDetails: {
         name: { type: String, required: true },

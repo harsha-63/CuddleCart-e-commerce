@@ -8,9 +8,8 @@ import stripe from 'stripe'
 //function for createOrder by COD
 
 export const placeOrder = async (req, res, next) => {
-  const { userDetails,totalAmount } = req.body;  // Remove totalAmount from body
+  const { userDetails,totalAmount } = req.body;  
 
-  // Validate user details
   if (!userDetails) {
     return next(new CustomError("User details are required to place the order", 400));
   }
@@ -23,11 +22,12 @@ export const placeOrder = async (req, res, next) => {
   }
   
 
-  // Check for invalid products in the cart
-  const invalidProducts = cart.products.filter((p) => !p.productId);
-  if (invalidProducts.length > 0) {
-    return next(new CustomError("Cart contains invalid products", 400));
+  // Check for unavailable products in the cart
+  const unAvailableProducts = cart.products.some((product) => product.isDeleted === true);
+  if (unAvailableProducts) {
+    return next(new CustomError("some products are not available", 400));
   }
+
 
   // Create a new order
   let order = new Order({
@@ -180,8 +180,7 @@ export const getOneOrder = async (req, res, next) => {
   };
 
 //function for cancelOrder
-export const cancelOneOrder = async (req, res, next) => {
-  //  getting the order id by params and updating the delivery status to cancelled
+export const cancelOrder = async (req, res, next) => {
   const order = await Order.findOne({
     _id: req.params.orderId,
     userId: req.user.id,
@@ -189,12 +188,12 @@ export const cancelOneOrder = async (req, res, next) => {
   if (!order) {
     return next(new CustomError("Order not found", 404));
   }
-  if (order.paymentStatus === "Paid") {
+  if (order.paymentStatus === "paid") {
     return next(new CustomError("You can't cancel this order", 400));
   }
 
-  order.shippingStatus = "Cancelled";
-  order.paymentStatus = "Cancelled";
+  order.shippingStatus = "cancelled";
+  order.paymentStatus = "cancelled";
   await order.save();
   res.status(200).json({ status: "success", message: "Order cancelled" });
 };
@@ -234,6 +233,7 @@ export const getOrderByUser = async(req,res)=>{
  export const getTotalPurchase = async (req, res, next) => {
   // Aggregate query to calculate total products purchased
   const totalPurchase = await Order.aggregate([
+    { $match: { shippingStatus: { $ne: "Cancelled" } } },
     { $unwind: "$products" }, // Flatten the products array
     { $group: { _id: null, totalProducts: { $sum: "$products.quantity" } } } // Calculate total quantity
   ]);
@@ -274,7 +274,7 @@ export const getTotalRevenue = async (req, res) => {
     }
     return acc; 
   }, 0);
-  res.status(200).json({ data: revenue });
+  res.status(200).json({success:true, data: revenue });
 };
 
 //update ShippingStatus

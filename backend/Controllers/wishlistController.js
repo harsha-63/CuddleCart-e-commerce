@@ -3,7 +3,10 @@ import CustomError from '../Utils/customError.js'
 
 //function for getUserWishlist
 export const getUserWishlist = async(req,res)=>{
-    const wishlist = await Wishlist.findOne({userId:req.user.id}).populate("products")
+    const wishlist = await Wishlist.findOne({userId:req.user.id}).populate({
+      path: "products.productId",
+      select: "name price image",
+    })
   if(wishlist){
     res.status(200).json(wishlist)
   }
