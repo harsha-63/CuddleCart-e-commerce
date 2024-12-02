@@ -52,6 +52,7 @@ const Collection = () => {
                             <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded mb-2" />
                             <h2 className="text-lg font-bold truncate">{product.name}</h2>
                             <p className="text-gray-700 mt-1">${product.price.toFixed(2)}</p>
+                            <span className=""></span>
                         </div>
                     </NavLink>
                 ))}

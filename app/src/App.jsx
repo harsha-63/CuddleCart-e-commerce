@@ -30,6 +30,7 @@ import Action from './Admin/Pages/Action'
 import Collection from './Pages/Collection'
 import { UserContext } from './Context/UserContext'
 import Users from './Admin/Pages/Users'
+import Wishlist from './Pages/Wishlist';
 
 
 
@@ -87,6 +88,7 @@ function App() {
               <Route path='/cart' element={<Cart />} />
               <Route path='/payment' element={<PaymentPage />} />
               <Route path='/order' element={<Order />} />
+              <Route path='/wishlist' element={<Wishlist />} />
             </>
           )}
 

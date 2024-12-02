@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import babyImage from "../assets/baby1.jpg";
 import { Link, NavLink } from "react-router-dom";
-import { ShopContext } from "../Context/ShopContext";
+import { ShopContext } from "../Context/ShopContext"
 
 const Home = () => {
   const { products } = useContext(ShopContext); // Access products from context

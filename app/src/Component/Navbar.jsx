@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faShoppingCart, faBars, faSearch, faSignIn } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faShoppingCart, faBars, faSearch, faSignIn, faHeart } from '@fortawesome/free-solid-svg-icons';
 import logo from '../assets/logo.jpg';
 import { NavLink } from 'react-router-dom';
 import { useContext, useState } from 'react';
@@ -43,6 +43,7 @@ const Navbar = () => {
           />
 
           {currentUser && (
+            <>
             <NavLink to="/cart" className="hover:text-gray-800 relative">
               <FontAwesomeIcon icon={faShoppingCart} size="lg" />
               {userCart.length > 0 && (
@@ -51,6 +52,10 @@ const Navbar = () => {
                 </p>
               )}
             </NavLink>
+            <NavLink to="/wishlist" className="hover:text-gray-800 relative">
+              <FontAwesomeIcon icon={faHeart} size="lg" />
+            </NavLink>
+            </>
           )}
 
           {currentUser ? (
