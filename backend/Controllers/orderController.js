@@ -8,7 +8,7 @@ import stripe from 'stripe'
 //function for createOrder by COD
 
 export const placeOrder = async (req, res, next) => {
-  const { userDetails } = req.body;  // Remove totalAmount from body
+  const { userDetails,totalAmount } = req.body;  // Remove totalAmount from body
 
   // Validate user details
   if (!userDetails) {
@@ -21,11 +21,7 @@ export const placeOrder = async (req, res, next) => {
   if (!cart || cart.products.length === 0) {
     return next(new CustomError("Cart is empty. Cannot place the order", 400));
   }
-
-  // Calculate total amount from the cart products
-  const totalAmount = cart.products.reduce((acc, product) => {
-    return acc + (product.price * product.quantity); // Assuming price is per item
-  }, 0);
+  
 
   // Check for invalid products in the cart
   const invalidProducts = cart.products.filter((p) => !p.productId);
@@ -38,8 +34,9 @@ export const placeOrder = async (req, res, next) => {
     userId: req.user.id,
     products: cart.products,
     userDetails,
-    totalAmount,  // No need to pass totalAmount from the body
-    paymentStatus: "cash on delivery",
+    totalAmount,
+    paymentMethod: "cash on delivery",
+    paymentStatus:"pending",
     shippingStatus: "processing",
   });
 
@@ -57,58 +54,62 @@ export const placeOrder = async (req, res, next) => {
 //function for placeOrder by Stripe
 
 export const orderStripe = async (req, res, next) => {
-  const { userDetails } = req.body;  // Remove totalAmount from body
-
+  const { userDetails,totalAmount } = req.body;  
+  // const {origin} = req.headers
   // Validate user details
   if (!userDetails) {
     return next(new CustomError("User details are required to place the order", 400));
   }
 
   // Find the cart for the user
-  const cart = await Cart.findOne({ userId: req.user.id });
+  const cart = await Cart.findOne({ userId: req.user.id }).populate({
+    path: "products.productId",
+    select: "name price image",
+  });
+  // console.log(cart.products)
 
   if (!cart || cart.products.length === 0) {
     return next(new CustomError("Cart is empty. Cannot place the order", 400));
   }
-
-  // Calculate total amount from the cart products
-  const totalAmount = cart.products.reduce((acc, product) => {
-    return acc + (product.price * product.quantity); // Assuming price is per item
-  }, 0);
-
   // Prepare line items for Stripe
-  const line_items = cart.products.map((product) => ({
+  const line_items = cart.products.map((product) => (
+    {
     price_data: {
       currency: 'inr',
       product_data: {
-        name: product.name, 
+        name: product.productId.name, 
       },
-      unit_amount: product.price * 100,  // Stripe expects the amount in cents
+      unit_amount: Math.round(product.productId.price * product.quantity*100), 
     },
     quantity: product.quantity,
-  }));
+  }
+));
+console.log(line_items);
 
-  const stripeClient = stripe(process.env.STRIPE_SECRET_KEY);
+
+  const stripeClient = new stripe(process.env.STRIPE_SECRET_KEY);
 
   // Create a Stripe session
   const session = await stripeClient.checkout.sessions.create({
     payment_method_types: ['card'],
     line_items,
     mode: 'payment',
-    success_url: `http://localhost:3000/success/{CHECKOUT_SESSION_ID}`,
+    success_url: `http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `http://localhost:3000/cancel`,
   });
+
+  const newTotal=Math.round(totalAmount*100)
 
   // Create an order in the database
   const orderData = new Order({
     userId: req.user.id,
     products: cart.products,
     userDetails,
-    totalAmount,
+    totalAmount:newTotal,
     paymentMethod: 'stripe',
     paymentStatus: 'pending',
-    shippingStatus: 'pending',
-    sessionId: session.id, // Save Stripe session ID for tracking
+    shippingStatus: 'processing',
+    sessionId: session.id, 
   });
 
   await orderData.save();
@@ -125,6 +126,26 @@ export const orderStripe = async (req, res, next) => {
     stripeUrl: session.url,
   });
 };
+
+//function for successStripe
+ export const stripeSuccess = async (req, res, next) => {
+  const sessionId = req.params.sessionId;
+
+  // Find the order by sessionId
+  const order = await Order.findOne({ sessionId: sessionId });
+  if (!order) {
+    return next(new CustomError("Order not found", 404));
+  }
+
+  // Update the order status
+  order.shippingStatus = "shipped";
+  order.paymentStatus = "Paid";
+  await order.save();
+
+  // Respond with success message
+  res.status(200).json({success:true,message: "Order placed successfully!"});
+};
+
 
 
 
@@ -159,17 +180,27 @@ export const getOneOrder = async (req, res, next) => {
   };
 
 //function for cancelOrder
-export const cancelOrder = async (req, res, next) => {
-    const order = await Order.findOneAndUpdate(
-      { _id: req.params.orderId, userId: req.user.id },
-      { $set: { shippingStatus: "Cancelled" } },
-      { new: true }
-    );
-    if (!order) {
-      return next(new CustomError("Order not found", 404));
-    }
-    res.status(200).json({ message: "Order cancelled" });
-  };
+export const cancelOneOrder = async (req, res, next) => {
+  //  getting the order id by params and updating the delivery status to cancelled
+  const order = await Order.findOne({
+    _id: req.params.orderId,
+    userId: req.user.id,
+  });
+  if (!order) {
+    return next(new CustomError("Order not found", 404));
+  }
+  if (order.paymentStatus === "Paid") {
+    return next(new CustomError("You can't cancel this order", 400));
+  }
+
+  order.shippingStatus = "Cancelled";
+  order.paymentStatus = "Cancelled";
+  await order.save();
+  res.status(200).json({ status: "success", message: "Order cancelled" });
+};
+export const publicKeySend = async (req, res) => {
+  res.status(200).json({ publicKey: process.env.STRIPE_PUBLIC_KEY });
+};
                              
 
 
@@ -241,11 +272,41 @@ export const getTotalRevenue = async (req, res) => {
     if (order.totalAmount && !isNaN(order.totalAmount)) {
       return acc + order.totalAmount;
     }
-    return acc; // Skip invalid or missing totalAmount values
+    return acc; 
   }, 0);
-
-  // Return the revenue
   res.status(200).json({ data: revenue });
+};
+
+//update ShippingStatus
+export const shippingStatus = async (req, res, next) => {
+  const order = await Order.findOneAndUpdate(
+    { _id: req.params.id },
+    { $set: { shippingStatus: req.body.status } },
+    { new: true }
+  );
+  if (!order) {
+    return next(new CustomError("Order not found", 404));
+  }
+  res
+    .status(200)
+    .json({ status: "success", message: "Order status updated successfully" });
+};
+
+
+//update paymentStatus
+export const paymentStatus = async (req, res, next) => {
+  const order = await Order.findOne({ _id: req.params.id });
+  if (!order) {
+    return next(new CustomError("Order not found", 404));
+  }
+  if (order.paymentStatus === "Paid") {
+    return next(new CustomError("You can't update this order", 400));
+  }
+  order.paymentStatus = "Paid";
+  await order.save();
+  res
+    .status(200)
+    .json({ status: "success", message: "Order status updated successfully" });
 };
 
 

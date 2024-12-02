@@ -68,6 +68,7 @@ export const createProduct  = async (req,res,next)=>{
     const product = new Products({
         name, description, price, image:req.file.path, category, stars
     }) ;
+    product.newArrival = true
     await product.save()  
     console.log(product);
 
@@ -102,8 +103,8 @@ export const createProduct  = async (req,res,next)=>{
     // Update the product with only provided fields
     const updatedProduct = await Products.findByIdAndUpdate(
       productId,
-      { $set: updatedData }, // Use $set to update only specified fields
-      { new: true } // Return updated doc and apply validation
+      { $set: updatedData },
+      { new: true } 
     );
   
     // Check if the update was successful
