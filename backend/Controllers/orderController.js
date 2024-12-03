@@ -47,7 +47,7 @@ export const placeOrder = async (req, res, next) => {
   cart.products = [];
   await cart.save();
 
-  res.status(201).json({ success: true, message: "Order created successfully", order });
+  res.status(201).json({ success: true, message: "Order created successfully"});
 };
 
 
@@ -55,7 +55,6 @@ export const placeOrder = async (req, res, next) => {
 
 export const orderStripe = async (req, res, next) => {
   const { userDetails,totalAmount } = req.body;  
-  // const {origin} = req.headers
   // Validate user details
   if (!userDetails) {
     return next(new CustomError("User details are required to place the order", 400));
@@ -234,8 +233,8 @@ export const getOrderByUser = async(req,res)=>{
   // Aggregate query to calculate total products purchased
   const totalPurchase = await Order.aggregate([
     { $match: { shippingStatus: { $ne: "Cancelled" } } },
-    { $unwind: "$products" }, // Flatten the products array
-    { $group: { _id: null, totalProducts: { $sum: "$products.quantity" } } } // Calculate total quantity
+    { $unwind: "$products" }, 
+    { $group: { _id: null, totalProducts: { $sum: "$products.quantity" } } } 
   ]);
 
   // If no products are found
@@ -261,20 +260,14 @@ export const getTotalRevenue = async (req, res) => {
   if (!orders || orders.length === 0) {
     return res.status(200).json({ message: "No orders found" });
   }
+  
+   // Aggregate query to calculate total revenue
+   const totalRevenue = await Order.aggregate([
+    {$match:{shippingStatus: { $ne: "Cancelled"}}},
+    {$group:{_id:null,totalRevenue:{$sum:"$totalAmount"}}}
+   ])
 
-  // Filter out cancelled orders
-  const nonCancelledOrders = orders.filter(
-    (order) => order.shippingStatus !== "Cancelled"
-  );
-
-  // Calculate total revenue
-  const revenue = nonCancelledOrders.reduce((acc, order) => {
-    if (order.totalAmount && !isNaN(order.totalAmount)) {
-      return acc + order.totalAmount;
-    }
-    return acc; 
-  }, 0);
-  res.status(200).json({success:true, data: revenue });
+  res.status(200).json({success:true, data: totalRevenue });
 };
 
 //update ShippingStatus

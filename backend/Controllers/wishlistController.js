@@ -35,7 +35,6 @@ export const addToWishlist = async(req,res,next)=>{
             
         })
         await wishlist.save()
-        return res.status(201).json(wishlist)
     }
     res.status(200).json({success:true,message:"Product added to wishlist"})
     
