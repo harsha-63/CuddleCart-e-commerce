@@ -18,6 +18,7 @@ const Home = () => {
 
   return (
     <>
+    
   <div className="h-screen flex items-center justify-between bg-white px-10 md:px-20">
   {/* Left Section - Text */}
   <div className="w-full md:w-1/2 text-left">

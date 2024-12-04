@@ -60,7 +60,7 @@ export const createProduct  = async (req,res,next)=>{
     if (error) {
         return next(new CustomError(error.details[0].message, 400));
       }
-      const { name, description, price,image, category, stars } = req.body;
+      const { name, description, price, category, stars } = req.body;
       if (!req.file || !req.file.path) {
         return next(new CustomError("Product image is required", 400));
       }

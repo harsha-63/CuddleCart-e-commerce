@@ -24,6 +24,7 @@ import Order from './Pages/Order'
 import Notfound from './Pages/Notfound'
 
 import { useContext } from 'react'
+import { useLocation } from 'react-router-dom';
 
 import Dashbord from './Admin/Pages/Dashbord'
 import Action from './Admin/Pages/Action'
@@ -50,19 +51,25 @@ function AdminLayout() {
 
 
 function UserLayout() {
+  const location = useLocation();  // Get the current route
+
+  // Only render Navbar and Footer if the current route is not '/login' or '/signup'
+  const hideNavbarFooter = location.pathname === '/login' || location.pathname === '/signup';
+
   return (
     <>
-    <ToastContainer/>
-    <div className='px-4 sm:px-[5vw] md:px-[7vm] lg:px-[9vw]'>
-      
-      <Navbar />
-      <SearchBar />
-       <Outlet />
-      <Footer/>
-    </div>
+      <ToastContainer />
+      <div className='px-6 sm:px-[8vw] md:px-[10vw] lg:px-[12vw]'>
+        {/* Conditionally render Navbar and Footer */}
+        {!hideNavbarFooter && <Navbar />}
+        <SearchBar />
+        <Outlet />
+        {!hideNavbarFooter && <Footer />}
+      </div>
     </>
   );
 }
+
 
 function App() {
   const { currentUser } = useContext(UserContext)
