@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken'
+import CustomError from '../Utils/customError.js'
 
 
 export const verifyToken = (req,res,next)=>{
@@ -17,9 +18,7 @@ export const verifyToken = (req,res,next)=>{
                     return res.status(401).json({success:false,message:"Invalid Token",error:err})
                 }
                 req.user = user;
-                req.isAdmin = user.isAdmin
                 next();
-
             })
         }
         catch(err){
@@ -27,4 +26,19 @@ export const verifyToken = (req,res,next)=>{
         }
         
     }
+
+    export const verifyAdminToken = (req, res, next) => {
+        verifyToken(req, res, async() => {
+            
+            if (!req.user) {
+                return next(new CustomError("You are not authorized", 403));
+              }
+          if (!req.user.isAdmin) {
+            return next(new CustomError("Access denied. Admin only.", 403));
+          }
+          req.isAdmin = req.user.isAdmin
+          next();
+        });
+      };
+      
 

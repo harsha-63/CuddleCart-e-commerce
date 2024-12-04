@@ -25,14 +25,14 @@ export const getUserById = async (req,res,next)=>{
 
 //funtion for managing block key of user
 export const blockUser = async (req, res, next) => {
-    const user = await Users.findById(req.params.id);
-    if (!user) {
-      return next(new CustomError("User not found", 404));
-    }
-    user.isBlocked = !user.isBlocked;
-    await user.save();
-    res.status(200).json({status: "success",message: user.isBlocked ? "User blocked" : "User unblocked"});
-  };
+  const user = await Users.findById(req.params.id);
+  if (!user) {
+    return next(new CustomError("User not found", 404));
+  }
+  user.isBlock = !user.isBlock;
+  await user.save();
+  res.status(200).json({success:true,message: user.isBlock ? "User blocked" : "User unblocked"});
+};
 
 
 
