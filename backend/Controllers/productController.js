@@ -1,56 +1,45 @@
 import Products from "../Models/productModel.js"
 import CustomError from "../Utils/customError.js"
 import {joiProductSchema} from '../Models/validation.js'
+import mongoose from "mongoose"
 
 
 //function for getAllProducts
-export const getAllProducts = async(req,res)=>{
-    try{
-        const products = await Products.find({isDeleted:false})
-        if(!products){
-            res.status(404).json({success:false,message:"No products"})
-        }
-          res.json({data:products})
-    }
-    catch(error){
-        res.json({success:false,message:error.message})
+export const getAllProducts = async (req, res, next) => {
+  const products = await Products.find({ isDeleted: false });
 
-    } 
-}
+  if (!products || products.length === 0) {
+    return next(new CustomError("No products available", 404));
+  }
+
+  res.status(200).json({ success: true, data: products });
+};
+
 
 //function for getProductById
-export const getProductById = async(req,res)=>{
-    try{
-    const product = await Products.findById(req.params.id)
-    if(!product){
-        res.status(404).json({success:false,message:"Product not found"})
-    }
-    res.status(200).json({data:product})
-   } 
-   catch(error){
-    console.log(error);
-    res.status(500).json({success:false,message:error.message})
-    
-   }
-}
+export const getProductById = async (req, res, next) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return next(new CustomError("Invalid product ID format", 400));
+  }
+  const product = await Products.findById(id);
+  if (!product) {
+    return next(new CustomError("Product not found", 404));
+  }
+  res.status(200).json({ success: true, data: product });
+};
+
 
 //function for getProductsByCategory
-export const getProductsByCategory = async(req,res)=>{
-    try{
-        const {category} = req.params
-        const products = await Products.find({category}) 
-        if(!products){
-            res.status(404).json({success:false,message:"No products found"})
-        }
-        res.status(200).json({data:products})
-    }
-    catch(error){
-        console.log(error);
-        res.status(500).json({success:false,message:error.message})
-        
-    }
-    
-}
+export const getProductsByCategory = async (req, res, next) => {
+  const { category } = req.params;
+  const products = await Products.find({ category });
+  if (!products || products.length === 0) {
+    return next(new CustomError("No products found for the given category", 404));
+  }
+  res.status(200).json({ success: true, data: products });
+};
+
 
                                     //admin functionalities
   
@@ -63,6 +52,10 @@ export const createProduct  = async (req,res,next)=>{
       const { name, description, price, category, stars } = req.body;
       if (!req.file || !req.file.path) {
         return next(new CustomError("Product image is required", 400));
+      }
+      const existingProduct = await Products.findOne({ name });
+      if (existingProduct) {
+        return next(new CustomError("A product with the same name already exists", 400));
       }
     
     const product = new Products({
@@ -77,6 +70,9 @@ export const createProduct  = async (req,res,next)=>{
   //function for updateProduct
   export const updateProduct = async (req, res, next) => {
     const { productId } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+      return next(new CustomError("Invalid user ID format", 400));
+    }
   
     // Find the product
     const product = await Products.findById(productId);

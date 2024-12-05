@@ -2,6 +2,7 @@ import Order from '../Models/orderModel.js'
 import CustomError from '../Utils/customError.js'
 import Cart from '../Models/cartModel.js'
 import stripe from 'stripe'
+import mongoose from 'mongoose'
 
 
 
@@ -78,7 +79,7 @@ export const orderStripe = async (req, res, next) => {
       product_data: {
         name: product.productId.name, 
       },
-      unit_amount: Math.round(product.productId.price * product.quantity*100), 
+      unit_amount: Math.round(product.productId.price * product.quantity), 
     },
     quantity: product.quantity,
   }
@@ -138,7 +139,7 @@ console.log(line_items);
 
   // Update the order status
   order.shippingStatus = "shipped";
-  order.paymentStatus = "Paid";
+  order.paymentStatus = "paid";
   await order.save();
 
   // Respond with success message
@@ -152,36 +153,45 @@ console.log(line_items);
 
 //function for getUserOrders
 export const getOrders = async(req,res)=>{
-        const orders = await Order.find({userId:req.user.id})
-          .populate("products.productId", "name price image")
-          .sort({ createdAt: -1 });
+     const orders = await Order.find({userId:req.user.id})
+      .populate("products.productId", "name price image")
+      .sort({ createdAt: -1 });
       
         // sending the orders or an empty array if none found
-        if (orders) {
-          res.status(200).json({ data: orders });
-        } else {
-          res.status(200).json({message:"No orders for this user "});
-        }
-      };
+     if (orders) {
+        res.status(200).json({ data: orders });
+     } else {
+        res.status(200).json({message:"No orders for this user "});
+    }
+};
 
 
 
 //function for getSingleOrder
 export const getOneOrder = async (req, res, next) => {
-    const order = await Order.findOne({
-      _id: req.params.orderId,
-      userId: req.user.id,
-    }).populate("products.productId", "name price image");
-    if (!order) {
-      return next(new CustomError("Order not found", 404));
-    }
-    res.status(200).json({ order });
-  };
+  const { orderId } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(orderId)) {
+    return next(new CustomError("Invalid order ID format", 400));
+  }
+  const order = await Order.findOne({
+    _id: orderId,
+    userId: req.user.id,
+  }).populate("products.productId", "name price image");
+  if (!order) {
+    return next(new CustomError("Order not found", 404));
+  }
+  res.status(200).json({ order });
+};
+
 
 //function for cancelOrder
 export const cancelOrder = async (req, res, next) => {
+  const { orderId } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(orderId)) {
+    return next(new CustomError("Invalid order ID format", 400));
+  }
   const order = await Order.findOne({
-    _id: req.params.orderId,
+    _id: orderId,
     userId: req.user.id,
   });
   if (!order) {
@@ -190,13 +200,13 @@ export const cancelOrder = async (req, res, next) => {
   if (order.paymentStatus === "paid") {
     return next(new CustomError("You can't cancel this order", 400));
   }
-
   order.shippingStatus = "cancelled";
   order.paymentStatus = "cancelled";
   await order.save();
-  res.status(200).json({ status: "success", message: "Order cancelled" });
+  res.status(200).json({ success: true, message: "Order cancelled" });
 };
-export const publicKeySend = async (req, res) => {
+
+export const publicKey = async (req, res) => {
   res.status(200).json({ publicKey: process.env.STRIPE_PUBLIC_KEY });
 };
                              
@@ -217,22 +227,26 @@ export const getTotalOrders = async(req,res)  =>{
 }  
 
 //funtion for getOrderByUser
-export const getOrderByUser = async(req,res)=>{
-    const orders = await Order.find({userId:req.params.id})
+export const getOrderByUser = async (req, res, next) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return next(new CustomError("Invalid user ID format", 400));
+  }
+  const orders = await Order.find({ userId: id })
     .populate("products.productId", "name price image")
     .sort({ createdAt: -1 });
-  if (!orders) {
-    return res.status(200).json({ message: "No orders found" });
+  if (!orders || orders.length === 0) {
+    return next(new CustomError("No orders found", 404));
   }
   res.status(200).json({ data: orders });
+};
 
-}
 
  //function for getTotalPurchase
  export const getTotalPurchase = async (req, res, next) => {
   // Aggregate query to calculate total products purchased
   const totalPurchase = await Order.aggregate([
-    { $match: { shippingStatus: { $ne: "Cancelled" } } },
+    { $match: { shippingStatus: { $ne: "cancelled" } } },
     { $unwind: "$products" }, 
     { $group: { _id: null, totalProducts: { $sum: "$products.quantity" } } } 
   ]);
@@ -263,7 +277,7 @@ export const getTotalRevenue = async (req, res) => {
   
    // Aggregate query to calculate total revenue
    const totalRevenue = await Order.aggregate([
-    {$match:{shippingStatus: { $ne: "Cancelled"}}},
+    {$match:{shippingStatus: { $ne: "cancelled"}}},
     {$group:{_id:null,totalRevenue:{$sum:"$totalAmount"}}}
    ])
 
@@ -272,6 +286,9 @@ export const getTotalRevenue = async (req, res) => {
 
 //update ShippingStatus
 export const shippingStatus = async (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return next(new CustomError("Invalid order ID format", 400));
+  }
   const order = await Order.findOneAndUpdate(
     { _id: req.params.id },
     { $set: { shippingStatus: req.body.status } },
@@ -280,26 +297,25 @@ export const shippingStatus = async (req, res, next) => {
   if (!order) {
     return next(new CustomError("Order not found", 404));
   }
-  res
-    .status(200)
-    .json({ status: "success", message: "Order status updated successfully" });
+  res.status(200).json({ status: "success", message: "Order status updated successfully" });
 };
 
 
 //update paymentStatus
 export const paymentStatus = async (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return next(new CustomError("Invalid order ID format", 400));
+  }
   const order = await Order.findOne({ _id: req.params.id });
   if (!order) {
     return next(new CustomError("Order not found", 404));
   }
-  if (order.paymentStatus === "Paid") {
+  if (order.paymentStatus === "paid") {
     return next(new CustomError("You can't update this order", 400));
   }
-  order.paymentStatus = "Paid";
+  order.paymentStatus = "paid";
   await order.save();
-  res
-    .status(200)
-    .json({ status: "success", message: "Order status updated successfully" });
+  res.status(200).json({ status: "success", message: "Order status updated successfully" });
 };
 
 

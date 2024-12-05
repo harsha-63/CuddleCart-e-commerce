@@ -12,7 +12,7 @@ const admin = express.Router();
 admin
 // Admin routes for managing users 
     .get('/users', verifyAdminToken,(getAllUsers))
-    .get('/users/:id',verifyAdminToken,(getUserById))
+    .get('/user/:id',verifyAdminToken,(getUserById))
     .patch('/users/block/:id',verifyAdminToken,(blockUser))
 
 //admin routes for managing products

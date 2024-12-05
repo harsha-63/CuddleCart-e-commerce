@@ -1,5 +1,6 @@
 import Users from '../Models/userModel.js'
 import CustomError from '../Utils/customError.js'
+import mongoose from 'mongoose'
 
 //function for getAllUsers
 export const getAllUsers = async (req,res,next)=>{
@@ -13,19 +14,28 @@ export const getAllUsers = async (req,res,next)=>{
 
 
 //function for getAllUsers
-export const getUserById = async (req,res,next)=>{
-    const {id} = req.params
-    const user = await Users.findById(id, { password: 0 }); 
-    if (!user) {
-        return next( new CustomError("User not found", 404)); 
-      }
-    res.status(200).json({success: true,user:user});
-    
-}
+export const getUserById = async (req, res, next) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return next(new CustomError("Invalid user ID format", 400));
+  }
+  const user = await Users.findById(id, { password: 0 });
+  if (!user) {
+    return next(new CustomError("User not found", 404));
+  }
+  res.status(200).json({ success: true, user });
+};
+
 
 //funtion for managing block key of user
 export const blockUser = async (req, res, next) => {
-  const user = await Users.findById(req.params.id);
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return next(new CustomError("Invalid user ID format", 400));
+  }
+  const user = await Users.findById(id);
+
   if (!user) {
     return next(new CustomError("User not found", 404));
   }

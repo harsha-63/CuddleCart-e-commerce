@@ -55,7 +55,7 @@ const Signup = () => {
 
       {/* Right Side: Form */}
       <div className="w-1/2 h-full flex justify-center items-center">
-      <div className="w-2/3 max-w-md p-8 bg-white rounded-lg shadow-lg hover:scale-105 focus:scale-105 transition-transform duration-200 bg-gradient-to-r from-amber-600  to-amber-100">
+      <div className="w-2/3 max-w-md p-8 bg-white rounded-lg shadow-lg hover:scale-105 focus:scale-105 transition-transform duration-200 bg-gradient-to-r from-amber-100  to-amber-100">
     <h2 className="text-4xl font-serif text-gray-800 text-center mb-6">Sign Up</h2>
 
     <form onSubmit={handleSubmit}>
@@ -110,7 +110,7 @@ const Signup = () => {
 
       <button
         type="submit"
-        className=" w-full bg-amber-800 text-white p-2 rounded-md hover:bg-amber-800 transition duration-200">
+        className=" w-full bg-amber-700 text-white p-2 rounded-md hover:bg-amber-800 transition duration-200">
         Sign Up
       </button>
     </form>
