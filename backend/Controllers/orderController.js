@@ -98,7 +98,7 @@ console.log(line_items);
     cancel_url: `http://localhost:3000/cancel`,
   });
 
-  const newTotal=Math.round(totalAmount*100)
+  const newTotal=Math.round(totalAmount)
 
   // Create an order in the database
   const orderData = new Order({
@@ -276,12 +276,13 @@ export const getTotalRevenue = async (req, res) => {
   }
   
    // Aggregate query to calculate total revenue
-   const totalRevenue = await Order.aggregate([
+   const revenue = await Order.aggregate([
     {$match:{shippingStatus: { $ne: "cancelled"}}},
     {$group:{_id:null,totalRevenue:{$sum:"$totalAmount"}}}
    ])
+   const totalRevenue =revenue[0].totalRevenue
 
-  res.status(200).json({success:true, data: totalRevenue });
+  res.status(200).json({success:true,  totalRevenue:totalRevenue });
 };
 
 //update ShippingStatus

@@ -24,13 +24,13 @@ const Navbar = () => {
           <img src={logo} className="w-20 sm:w-28 lg:w-40" alt="Logo" />
         </NavLink>
 
-        <nav className="hidden sm:flex gap-6 text-lg text-gray-600">
-          <NavLink to="/" className="hover:text-gray-800 transition">Home</NavLink>
-          <NavLink to="/collection" className="hover:text-gray-800 transition">Collection</NavLink>
-          <NavLink to="/about" className="hover:text-gray-800 transition">About</NavLink>
-          <NavLink to="/contact" className="hover:text-gray-800 transition">Contact</NavLink>
+        <nav className="hidden sm:flex gap-6 text-base text-gray-600">
+          <NavLink to="/" className="hover:text-amber-800 transition">Home</NavLink>
+          <NavLink to="/collection" className="hover:text-amber-800 transition">Collection</NavLink>
+          <NavLink to="/about" className="hover:text-amber-800 transition">About</NavLink>
+          <NavLink to="/contact" className="hover:text-amber-800 transition">Contact</NavLink>
           {currentUser && currentUser.isAdmin ? (
-            <NavLink to="/admin" className="hover:text-gray-800 transition">Admin</NavLink>
+            <NavLink to="/admin" className="hover:text-amber-800 transition">Admin</NavLink>
           ) : null}
         </nav>
 
@@ -64,7 +64,7 @@ const Navbar = () => {
             </NavLink>
           ) : (
             <NavLink to="/login">
-              <button className="text-lg hover:text-gray-800 transition">
+              <button className="text-base hover:text-amber-800 transition">
                 Log in <FontAwesomeIcon icon={faSignIn} />
               </button>
             </NavLink>

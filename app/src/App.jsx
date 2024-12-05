@@ -20,12 +20,9 @@ import Edit from './Admin/Pages/Edit'
 import Footer from './Component/Footer'
 import AddProduct from './Admin/Pages/AddProduct'
 import Order from './Pages/Order'
-
 import Notfound from './Pages/Notfound'
-
 import { useContext } from 'react'
 import { useLocation } from 'react-router-dom';
-
 import Dashbord from './Admin/Pages/Dashbord'
 import Action from './Admin/Pages/Action'
 import Collection from './Pages/Collection'
@@ -42,7 +39,7 @@ function AdminLayout() {
        <div className="w-1/5">
         <AdminSideBar />
       </div>
-      <div className="w-4/5 p-6">
+      <div className="w-4/5 p-6 flex flex-col h-full">
         <Outlet/>
       </div>
     </div>

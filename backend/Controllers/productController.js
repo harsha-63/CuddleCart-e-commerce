@@ -71,7 +71,7 @@ export const createProduct  = async (req,res,next)=>{
   export const updateProduct = async (req, res, next) => {
     const { productId } = req.params;
     if (!mongoose.Types.ObjectId.isValid(productId)) {
-      return next(new CustomError("Invalid user ID format", 400));
+      return next(new CustomError("Invalid product ID format", 400));
     }
   
     // Find the product
@@ -79,19 +79,13 @@ export const createProduct  = async (req,res,next)=>{
     if (!product) {
       return next(new CustomError("Product not found", 404));
     }
-  
-    // Check if the product is deleted
     if (product.isDeleted) {
       return next(new CustomError("Cannot update a deleted product", 400));
     }
-  
-    // Prepare updated data
     let updatedData = {};
     if (req.body) {
       updatedData = { ...req.body };
     }
-  
-    // Include the new image path if a file is uploaded
     if (req.file) {
       updatedData.image = req.file.path;
     }
@@ -118,6 +112,9 @@ export const createProduct  = async (req,res,next)=>{
   //function for deleteProduct
   export const deleteProduct = async (req, res, next) => {
     const { productId } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+      return next(new CustomError("Invalid product ID format", 400));
+    }
   
     // Soft delete the product by setting isDeleted to true
     const product = await Products.findById(productId);

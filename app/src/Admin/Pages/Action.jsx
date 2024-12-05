@@ -45,7 +45,6 @@ const Action = () => {
         setIsBlocked(newBlockStatus);
         if (user) {
             const updatedUser = { ...user, isBlock: !user.isBlock };
-
             try {
                 await axios.patch(`http://localhost:4000/user/${user.id}`, { isBlock: updatedUser.isBlock });
                 setUser(updatedUser);

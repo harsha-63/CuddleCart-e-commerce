@@ -4,6 +4,8 @@ import { CartContext } from '../Context/CartContext';
 import { ShopContext } from '../Context/ShopContext';
 import { UserContext } from '../Context/UserContext';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -83,6 +85,7 @@ const ProductDetails = () => {
                   Add To Cart
                 </button>
               )}
+              <span> <FontAwesomeIcon icon={faHeart} /></span>
             </div>
           </div>
         </div>

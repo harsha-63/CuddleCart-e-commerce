@@ -40,9 +40,9 @@ const Login = () => {
   ></div>
 
   {/* Right side with login content */}
-  <div className="w-1/2 flex items-center justify-center bg-white">
-    <div className="w-full max-w-md p-8 space-y-8">
-      <h2 className="text-3xl font-bold text-gray-900 text-center">Login</h2>
+  <div className="w-1/2 h-full flex justify-center items-center">
+    <div className="w-2/3 max-w-md p-8 bg-white rounded-lg shadow-lg hover:scale-105 focus:scale-105 transition-transform duration-200 bg-gradient-to-r from-amber-100  to-amber-100">
+      <h2 className="text-4xl font-serif text-gray-800 text-center mb-6">Login</h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-4">
@@ -52,7 +52,7 @@ const Login = () => {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="appearance-none rounded-lg w-full px-4 py-3 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 text-gray-900"
+            className="appearance-none rounded-lg w-full px-4 py-2 font-medium border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 text-base"
             placeholder="Email address"
           />
           <input
@@ -61,7 +61,7 @@ const Login = () => {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="appearance-none rounded-lg w-full px-4 py-3 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 text-gray-900"
+            className="appearance-none rounded-lg w-full px-4 py-2 border font-medium border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 text-base"
             placeholder="Password"
           />
         </div>
@@ -69,8 +69,7 @@ const Login = () => {
         <div>
           <button
             type="submit"
-            className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 transition duration-200"
-          >
+            className="w-full bg-amber-700 text-white p-2 rounded-md hover:bg-amber-800 transition duration-200">
             Login
           </button>
         </div>
