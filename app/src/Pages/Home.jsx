@@ -19,26 +19,28 @@ const Home = () => {
   return (
     <>
     
-  <div className="h-screen flex items-center justify-between bg-white px-10 md:px-20">
+    <div className="h-screen flex items-center justify-between bg-white px-10 md:px-20 relative">
   {/* Left Section - Text */}
-  <div className="w-full md:w-1/2 text-left">
-    <h1 className="text-4xl md:text-6xl font-extrabold leading-snug text-gray-800 tracking-wide">
-      Welcome to <span className="text-amber-900">CuddleCart</span>
-    </h1>
-    <p className="text-lg md:text-2xl mt-4 text-gray-600">
-      – Where Every Little Moment Matters!
-    </p>
-  </div>
+  <div className="absolute left-0 z-10 text-left w-full md:w-1/2 ml-36 mb-36">
+  <h1 className="text-5xl md:text-5xl font-bold font-serif text-gray-800 ">
+    Tiny Comforts, Big Smiles 
+  </h1>
+  <p className=" mt-4 text-black">
+    Discover the softest,adorable baby essentials <p> that your little one will love.</p>
+  </p>
+  <Link to={'/collection'}><button className="font-sans text-white bg-amber-800 px-4 py-2 rounded-lg mt-5 flex items-center">
+    Shop Now <span className="ml-2">&#8594;</span>
+  </button></Link>
+</div>
+
 
   {/* Right Section - Image */}
-  <div className="relative w-full md:w-1/2 flex justify-center items-center">
-    <div className="w-80 h-80 md:w-96 md:h-96 bg-pink-100 rounded-tl-[80px] rounded-br-[80px] overflow-hidden shadow-lg">
-      <img
-        src={babyImage}
-        alt="Baby Products"
-        className="w-full h-full object-cover scale-105"
-      />
-    </div>
+  <div className="w-full md:w-full flex justify-center items-center overflow-hidden rounded-3xl">
+    <img
+      src={babyImage}
+      alt="Baby Products"
+      className="w-[2000px] h-[550px] object-cover scale-105"
+    />
   </div>
 </div>
 
@@ -50,133 +52,52 @@ const Home = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-        {/* Category Links */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
+  {/* Category Links */}
         <Link
           to="/collection/Toys"
-          className="flex flex-col items-center justify-center bg-pink-100 hover:bg-pink-200 p-2 rounded-lg shadow-md transition-transform transform hover:scale-105"
-        >
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Toys"
-              className="w-10 h-10"
-            />
-          </div>
-          <h4 className="text-lg font-semibold text-gray-800">Toys</h4>
+          className="flex flex-col items-center justify-center bg-cover bg-center p-2 rounded-lg shadow-md transition-transform transform hover:scale-105 h-96  "
+          style={{ backgroundImage: 'url(https://i.pinimg.com/736x/77/69/aa/7769aaac9fe0781943a8431e0208a289.jpg)' }}>
+            <div className="absolute inset-0 bg-black opacity-40 rounded-lg"></div>
+          <h4 className=" font-script font-normal text-black text-3xl p-2 rounded"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Toys</h4>
         </Link>
-
+        
         <Link
           to="/collection/Clothing"
-          className="flex flex-col items-center justify-center bg-blue-100 hover:bg-blue-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
-        >
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Clothes"
-              className="w-10 h-10"
-            />
-          </div>
-          <h4 className="text-lg font-semibold text-gray-800">Clothes</h4>
+          className="flex flex-col items-center justify-center bg-cover bg-center p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 h-96 "
+          style={{ backgroundImage: 'url(https://i.pinimg.com/736x/42/d9/69/42d96970eb999e5976e67c366f0a7257.jpg)' }}>
+            <div className="absolute inset-0 bg-black opacity-40 rounded-lg"></div>
+          <h4 className="text-3xl font-script font-normal text-black  p-2 rounded"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Clothes</h4>
         </Link>
-
-        <Link
-          to="/collection/Essentials"
-          className="flex flex-col items-center justify-center bg-green-100 hover:bg-green-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
-        >
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Essentials"
-              className="w-10 h-10"
-            />
-          </div>
-          <h4 className="text-lg font-semibold text-gray-800">Essentials</h4>
-        </Link>
-
+        
         <Link
           to="/collection/Nursery"
-          className="flex flex-col items-center justify-center bg-yellow-100 hover:bg-yellow-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
-        >
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Nursery"
-              className="w-10 h-10"
-            />
-          </div>
-          <h4 className="text-lg font-semibold text-gray-800">Nursery</h4>
+          className="flex flex-col items-center justify-center bg-cover bg-center p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 h-96 "
+          style={{ backgroundImage: 'url(https://i.pinimg.com/736x/95/60/2a/95602ac389bd5de7277fa21344a6cf14.jpg)' }}>
+          <div className="absolute inset-0 bg-black opacity-40 rounded-lg"></div>
+          <h4 className="text-3xl font-script font-normal text-black p-2 rounded"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Nursery</h4>
         </Link>
-
-        <Link
-          to="/collection/Travel"
-          className="flex flex-col items-center justify-center bg-purple-100 hover:bg-purple-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
-        >
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Travel"
-              className="w-10 h-10"
-            />
-          </div>
-          <h4 className="text-lg font-semibold text-gray-800">Travel</h4>
-        </Link>
+        
         <Link
           to="/collection/Feeding"
-          className="flex flex-col items-center justify-center bg-purple-100 hover:bg-purple-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
-        >
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Travel"
-              className="w-10 h-10"
-            />
-          </div>
-          <h4 className="text-lg font-semibold text-gray-800">Feeding</h4>
-        </Link>
-        <Link
-          to="/collection/Safety"
-          className="flex flex-col items-center justify-center bg-purple-100 hover:bg-purple-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
-        >
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Travel"
-              className="w-10 h-10"
-            />
-          </div>
-          <h4 className="text-lg font-semibold text-gray-800">Safety</h4>
-        </Link>
-        <Link
-          to="/collection/Bath"
-          className="flex flex-col items-center justify-center bg-purple-100 hover:bg-purple-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
-        >
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Travel"
-              className="w-10 h-10"
-            />
-          </div>
-          <h4 className="text-lg font-semibold text-gray-800">Bath</h4>
-        </Link>
-        <Link
-          to="/collection/Protein"
-          className="flex flex-col items-center justify-center bg-purple-100 hover:bg-purple-200 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
-        >
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-inner mb-4">
-            <img
-              src="https://via.placeholder.com/50"
-              alt="Travel"
-              className="w-10 h-10"
-            />
-          </div>
-          <h4 className="text-lg font-semibold text-gray-800">Protein</h4>
+          className="flex flex-col items-center justify-center bg-cover bg-center p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 h-96 "
+          style={{ backgroundImage: 'url(https://i.pinimg.com/736x/cd/dd/12/cddd123eb8c006b78e8a78b8501ad8b5.jpg)' }}>
+            <div className="absolute inset-0 bg-black opacity-40 rounded-lg"></div>
+          <h4 className="text-3xl font-script font-normal text-black p-2 rounded"style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}>Feeding</h4>
         </Link>
       </div>
+      <div className="flex justify-center">
+        <br></br>
+        <Link to={'/collection'}>
+          <button className="font-sans text-white bg-amber-800 px-4 py-2 rounded-lg mt-10 flex items-center ">
+            Show More <span className="ml-2">&#8594;</span>
+          </button>
+       </Link>
+     </div>
+
 
       {/* New Arrivals Section */}
-      <div className="mt-12">
+      <div className="mt-20">
         <h3 className="text-3xl font-bold text-gray-800 text-center">
           New Arrivals
         </h3>

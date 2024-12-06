@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingCart, faBars, faSearch, faSignIn, faHeart } from '@fortawesome/free-solid-svg-icons';
-import logo from '../assets/logo.jpg';
+// import logo from '../assets/logo.jpg';
 import { NavLink } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { ShopContext } from '../Context/ShopContext';
@@ -18,19 +18,17 @@ const Navbar = () => {
   };
 
   return (
-    <header className="relative">
-      <div className="flex justify-between items-center w-full max-w-7xl mx-auto py-0 ">
-        <NavLink to={'/'}>
-          <img src={logo} className="w-20 sm:w-28 lg:w-40" alt="Logo" />
-        </NavLink>
+    <header className="relative pt-6 pb-5">
 
-        <nav className="hidden sm:flex gap-6 text-base text-gray-600">
-          <NavLink to="/" className="hover:text-amber-800 transition">Home</NavLink>
-          <NavLink to="/collection" className="hover:text-amber-800 transition">Collection</NavLink>
-          <NavLink to="/about" className="hover:text-amber-800 transition">About</NavLink>
-          <NavLink to="/contact" className="hover:text-amber-800 transition">Contact</NavLink>
+      <div className="flex flex-grow justify-between items-center w-full max-w-7xl ">
+        <NavLink to='/' className="font-atma text-3xl font-semibold text-amber-950 ml-2">Cuddle Cart</NavLink>
+        <nav className="hidden sm:flex items-center gap-6 text-base">
+          <NavLink to="/" className="hover:text-amber-800  text-black transition">Home</NavLink>
+          <NavLink to="/collection" className="hover:text-amber-800 text-black transition">Collection</NavLink>
+          <NavLink to="/about" className="hover:text-amber-800 text-black transition">About</NavLink>
+          <NavLink to="/contact" className="hover:text-amber-800 text-black transition">Contact</NavLink>
           {currentUser && currentUser.isAdmin ? (
-            <NavLink to="/admin" className="hover:text-amber-800 transition">Admin</NavLink>
+            <NavLink to="/admin" className="hover:text-amber-800 text-black transition">Admin</NavLink>
           ) : null}
         </nav>
 
@@ -64,7 +62,7 @@ const Navbar = () => {
             </NavLink>
           ) : (
             <NavLink to="/login">
-              <button className="text-base hover:text-amber-800 transition">
+              <button className="text-base hover:text-amber-800 transition mr-3">
                 Log in <FontAwesomeIcon icon={faSignIn} />
               </button>
             </NavLink>

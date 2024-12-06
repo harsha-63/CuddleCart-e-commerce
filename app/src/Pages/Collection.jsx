@@ -27,9 +27,9 @@ const Collection = () => {
 
     return (
         <>
-            <div className="mt-8">
-                <div className="flex flex-row gap-10 sm:flex-row justify-between items-center mb-6 sm:mb-14">
-                    <h1 className="text-3xl sm:text-5xl mb-4 sm:mb-0">All Collections</h1>
+            <div className="mt-16">
+                <div className="flex flex-row gap-10 sm:flex-row justify-between  mb-6 sm:mb-14 ">
+                    <h1 className="text-3xl sm:text-5xl mb-4 sm:mb-0 text-center">All Collections</h1>
                     <select
                         value={selectedCategory}
                         onChange={(e) => setSelectedCategory(e.target.value)}
