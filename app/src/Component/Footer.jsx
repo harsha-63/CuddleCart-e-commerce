@@ -13,15 +13,9 @@ const Footer = () => {
     d="M0,0 L1440,0 L1440,30 Q1380,50 1320,30 Q1260,10 1200,30 Q1140,50 1080,30 Q1020,10 960,30 Q900,50 840,30 Q780,10 720,30 Q660,50 600,30 Q540,10 480,30 Q420,50 360,30 Q300,10 240,30 Q180,50 120,30 Q60,10 0,30 Z"
   />
 </svg>
-
-
-
-
-
-
   <div className="max-w-screen-xl mx-auto flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-10 px-4 sm:px-10 text-sm text-gray-700 relative z-10">
     <div className="flex flex-col sm:flex-row items-start sm:items-center">
-      <div>
+      <div >
         <NavLink to='/' className="font-atma text-3xl font-semibold text-amber-950">Cuddle Cart</NavLink>
       </div>
       <p className="ml-0 sm:ml-4">

@@ -12,15 +12,18 @@ const ShopProvider = ({children}) => {
     const [showSearch,setShowSearch]=useState(false)
     useEffect(()=>{
       async function fetchdata() {
-                try{
-                    const response=await axios.get("http://localhost:4000/products");
-                    setProducts(response.data);
-                    const uniqueCategories = [...new Set(response.data.map(product => product.category))];
-                    setCategories(['all', ...uniqueCategories]);
-               }
-               catch(error){
-                    console.log(error)
-              }  
+        try {
+          const {data} = await axios.get("http://localhost:3002/user/products", {
+              headers: {
+                  'Content-Type': 'application/json',
+              }
+          });
+          setProducts(data.data);
+          const uniqueCategories = [...new Set(data.data.map(product => product.category))];
+          setCategories(['all', ...uniqueCategories]);
+      } catch (error) {
+          console.error('Error fetching data:', error);
+      }
             }
             fetchdata()  ;  
       

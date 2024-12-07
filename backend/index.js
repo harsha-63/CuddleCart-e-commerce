@@ -12,14 +12,18 @@ dotenv.config()
 
 //App config
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3002
 connectDB()
 connectCloudinary()
 
 
 //Middleware config
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin:process.env.CLIENT_URL,
+    credentials:true,
+    allowedHeaders: ["Content-Type", "Authorization"]
+  }))
 
 
 //api endpoints

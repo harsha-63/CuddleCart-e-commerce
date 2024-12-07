@@ -1,70 +1,99 @@
+
+// import { faEnvelope, faLocation, faPhone } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
+
 const Contact = () => {
   return (
-    <div className="container mx-auto px-4 py-10">
-      {/* First Section: Contact Information */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
-        {/* Left Side: Image */}
-        <div className="flex justify-center">
-          <img
-            src="https://example.com/contact-image.jpg" // Replace with your contact image
-            alt="Contact Us"
-            className="w-full h-64 object-cover rounded-lg"
-          />
-        </div>
-
-        {/* Right Side: Contact Info */}
-        <div className="text-center lg:text-left">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Contact Us</h2>
-          <p className="text-gray-600 mb-4">
-            We would love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out.
-          </p>
-          <div className="mb-6">
-            <p className="font-semibold text-lg text-gray-600">Our Store</p>
-            <p className="text-gray-500">
-              Cuddle Cart <br />
-              Thurakkal Bypass, Manjeri
-            </p>
-            <p className="text-gray-500">
-              Tel: +91-123-456-7890 <br />
-              Email: cuddlecart@gmail.com
-            </p>
-          </div>
-          <div>
-            <p className="font-semibold text-lg text-gray-600">Careers at CuddleCart</p>
-            <p className="text-gray-500">Interested in joining our team? Send us an email!</p>
-          </div>
-        </div>
+    <div className="max-w-7xl mx-auto mt-10 px-6 sm:px-12 lg:px-24 ">
+    <div className="text-center  ">
+      <h2 className="text-4xl font-serif font-bold text-gray-800">Contact Us</h2>
+      <p className="text-gray-600 text-medium leading-relaxed">
+        We would love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out.
+      </p>
+    </div>
+    <div className="flex justify-center items-center mt-8 mb-10">
+      
+    <div className="grid grid-cols-1 lg:grid-cols-2 bg-orange-50 shadow-2xl rounded-3xl overflow-hidden max-w-4xl w-full">
+      {/* Left Section: Image */}
+      <div className=" hidden lg:block">
+        <img
+          src="https://i.pinimg.com/736x/53/0d/b4/530db4b6b208d338959ad3537fda9109.jpg"
+          alt="contact"
+          className="w-full h-full object-cover"
+        />
       </div>
-
-      {/* Second Section: Contact Form */}
-      <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-        <h3 className="text-2xl font-bold text-center text-gray-800 mb-6">Get in Touch</h3>
-        <form className="flex flex-col space-y-4">
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="p-3 border border-gray-300 rounded-md"
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            className="p-3 border border-gray-300 rounded-md"
-          />
-          <textarea
-            placeholder="Your Message"
-            className="p-3 border border-gray-300 rounded-md"
-            rows="4"
-          />
-          <button
-            type="submit"
-            className="bg-black text-white py-3 rounded-md hover:bg-amber-950 transition duration-300"
-          >
-            Send Message
-          </button>
-        </form>
+      {/* Right Section: Form */}
+      <div className="flex justify-center items-center p-6">
+        <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+        <h3 className="text-2xl font-serif font-semibold text-gray-800 mb-6">Get in Touch</h3>
+          <form>
+            <div className="mb-6">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="appearance-none rounded-lg w-full px-4 py-2 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 text-sm"
+                placeholder="Enter your name"
+              />
+            </div>
+            <div className="mb-6">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="appearance-none rounded-lg w-full px-4 py-2 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 text-sm"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div className="mb-6">
+              <textarea
+                id="message"
+                name="message"
+                className="appearance-none rounded-lg w-full px-4 py-2 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 text-sm"
+                rows="5"
+                placeholder="Enter your message"
+              ></textarea>
+            </div>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="w-full bg-amber-700 text-white p-2 rounded-md hover:bg-amber-800 transition duration-200"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
+  </div>
+  </div>
+  
+  
+
+
   );
 };
 
 export default Contact;
+
+
+
+
+ {/* Contact Info Section */}
+  {/* <div className="space-y-6">
+    <div className="flex items-center justify-center lg:justify-start">
+      <FontAwesomeIcon icon={faPhone} className="text-xl text-black mr-3" />
+      <span className="text-gray-600">+1 234 567 890</span>
+    </div>
+    <div className="flex items-center justify-center lg:justify-start">
+      <FontAwesomeIcon icon={faEnvelope} className="text-xl text-black mr-3" />
+      <span className="text-gray-600">cuddlecart@gmail.com</span>
+    </div>
+    <div className="flex items-center justify-center lg:justify-start">
+      <FontAwesomeIcon icon={faLocation} className="text-xl text-black mr-3" />
+      <span className="text-gray-600">Our Location</span>
+    </div>
+  </div> */}

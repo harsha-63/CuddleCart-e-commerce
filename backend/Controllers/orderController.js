@@ -15,22 +15,17 @@ export const placeOrder = async (req, res, next) => {
     return next(new CustomError("User details are required to place the order", 400));
   }
 
-  // Find the cart for the user
   const cart = await Cart.findOne({ userId: req.user.id });
 
   if (!cart || cart.products.length === 0) {
     return next(new CustomError("Cart is empty. Cannot place the order", 400));
   }
   
-
-  // Check for unavailable products in the cart
   const unAvailableProducts = cart.products.some((product) => product.isDeleted === true);
   if (unAvailableProducts) {
     return next(new CustomError("some products are not available", 400));
   }
 
-
-  // Create a new order
   let order = new Order({
     userId: req.user.id,
     products: cart.products,
@@ -41,7 +36,6 @@ export const placeOrder = async (req, res, next) => {
     shippingStatus: "processing",
   });
 
-  // Save the order
   await order.save();
 
   // Clear the cart
@@ -53,20 +47,17 @@ export const placeOrder = async (req, res, next) => {
 
 
 //function for placeOrder by Stripe
-
 export const orderStripe = async (req, res, next) => {
   const { userDetails,totalAmount } = req.body;  
-  // Validate user details
   if (!userDetails) {
     return next(new CustomError("User details are required to place the order", 400));
   }
 
-  // Find the cart for the user
   const cart = await Cart.findOne({ userId: req.user.id }).populate({
     path: "products.productId",
     select: "name price image",
   });
-  // console.log(cart.products)
+
 
   if (!cart || cart.products.length === 0) {
     return next(new CustomError("Cart is empty. Cannot place the order", 400));
@@ -244,22 +235,15 @@ export const getOrderByUser = async (req, res, next) => {
 
  //function for getTotalPurchase
  export const getTotalPurchase = async (req, res, next) => {
-  // Aggregate query to calculate total products purchased
   const totalPurchase = await Order.aggregate([
     { $match: { shippingStatus: { $ne: "cancelled" } } },
     { $unwind: "$products" }, 
     { $group: { _id: null, totalProducts: { $sum: "$products.quantity" } } } 
   ]);
-
-  // If no products are found
   if (!totalPurchase || totalPurchase.length === 0) {
     return next(new CustomError("No products purchased found", 404));
   }
-
-  // Extract the total products quantity
   const total = totalPurchase[0].totalProducts;
-
-  // Return the total purchase quantity
   res.status(200).json({ success: true, totalPurchase: total });
 };
 
@@ -267,15 +251,10 @@ export const getOrderByUser = async (req, res, next) => {
 
 //function for getTotalRevenue
 export const getTotalRevenue = async (req, res) => {
-  // Find all orders
   const orders = await Order.find();
-
-  // Check if orders exist
   if (!orders || orders.length === 0) {
     return res.status(200).json({ message: "No orders found" });
   }
-  
-   // Aggregate query to calculate total revenue
    const revenue = await Order.aggregate([
     {$match:{shippingStatus: { $ne: "cancelled"}}},
     {$group:{_id:null,totalRevenue:{$sum:"$totalAmount"}}}
@@ -290,16 +269,22 @@ export const shippingStatus = async (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return next(new CustomError("Invalid order ID format", 400));
   }
-  const order = await Order.findOneAndUpdate(
-    { _id: req.params.id },
-    { $set: { shippingStatus: req.body.status } },
-    { new: true }
-  );
+  
+  const order = await Order.findOne({ _id: req.params.id });
   if (!order) {
     return next(new CustomError("Order not found", 404));
   }
-  res.status(200).json({ status: "success", message: "Order status updated successfully" });
+
+  if (order.shippingStatus === "delivered") {
+    return next(new CustomError("You can't update this order", 400));
+  }
+
+  order.shippingStatus = "delivered" ;
+  await order.save();
+
+  res.status(200).json({ status: "success", message: "Order shipping status updated successfully" });
 };
+
 
 
 //update paymentStatus

@@ -29,7 +29,7 @@ const Cart = () => {
                         </thead>
                         <tbody>
                             {userCart.map((product) => (
-                                <tr key={product.id} className="border-t sm:table-row block mb-6 sm:mb-0">
+                                <tr key={product._id} className="border-t sm:table-row block mb-6 sm:mb-0">
                                     <td className="py-2 px-4 block sm:table-cell">
                                         <div className="flex items-center">
                                             <img src={product.image} alt={product.name} className="w-12 h-12 object-cover rounded mr-2" />
@@ -46,7 +46,7 @@ const Cart = () => {
                                         <span className="block sm:hidden font-semibold">Quantity: </span>
                                         <div className="flex items-center mt-2 sm:mt-0">
                                             <button
-                                                onClick={() => updateQuantity(product.id, 'decrement')}
+                                                onClick={() => updateQuantity(product._id, 'decrement')}
                                                 className="px-2 py-1 bg-gray-300 hover:bg-gray-400 rounded-l"
                                             >
                                                 -
@@ -58,7 +58,7 @@ const Cart = () => {
                                                 className="w-8 text-center border border-gray-300 mx-1"
                                             />
                                             <button
-                                                onClick={() => updateQuantity(product.id, 'increment')}
+                                                onClick={() => updateQuantity(product._id, 'increment')}
                                                 className="px-2 py-1 bg-gray-300 hover:bg-gray-400 rounded-r"
                                             >
                                                 +
@@ -68,7 +68,7 @@ const Cart = () => {
                                     <td className="py-2 px-4 block sm:table-cell">
                                         <span className="block sm:hidden font-semibold">Remove: </span>
                                         <button
-                                            onClick={() => removeFromCart(product.id)}
+                                            onClick={() => removeFromCart(product._id)}
                                             className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600 mt-2 sm:mt-0"
                                         >
                                             Remove

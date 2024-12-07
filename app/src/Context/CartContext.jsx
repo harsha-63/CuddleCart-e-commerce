@@ -52,7 +52,7 @@ const CartProvider = ({ children }) => {
 
   const removeFromCart = (productId) => {
     setUserCart((prevCart) => {
-      const updatedCart = prevCart.filter(product => product.id !== productId);
+      const updatedCart = prevCart.filter(product => product._id !== productId);
       patchUpdatedCart(updatedCart).catch(error => {
         console.error("Failed to update cart on the server:", error);
       });

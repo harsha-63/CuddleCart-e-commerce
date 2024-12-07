@@ -14,7 +14,7 @@ const CategoryPage = () => {
       <h1 className="text-3xl font-bold mb-6 text-center">{category} Collection</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map((product) => (
-          <NavLink to={`/product/${product.id}`} key={product.id} className="border rounded-lg shadow-lg p-4">
+          <NavLink to={`/product/${product._id}`} key={product._id} className="border rounded-lg shadow-lg p-4">
             <img
               src={product.image}
               alt={product.name}

@@ -1,41 +1,50 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import { CartContext } from '../Context/CartContext';
-import { ShopContext } from '../Context/ShopContext';
 import { UserContext } from '../Context/UserContext';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { products } = useContext(ShopContext);
+  console.log(id);
+  
   const { addToCart, userCart } = useContext(CartContext);
   const { currentUser } = useContext(UserContext);
-  const [added, setAdded] = useState(false);
-  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
-  useEffect(() => {
-    if (products) {
-      const foundProduct = products.find(item => item.id === id);
-      setProduct(foundProduct);
+  const [added, setAdded] = useState(false);
+  const navigate = useNavigate();
 
-      if (foundProduct) {
-        const related = products.filter(
-          item => item.category === foundProduct.category && item.id !== id
+  useEffect(() => {
+    // Fetch product details when component mounts
+    const fetchProductDetails = async () => {
+      try {
+        const {data} = await axios.get(`http://localhost:3002/user/product/${id}`)
+        .then(response => {
+          console.log('Product data:', response.data)})
+        setProduct(data);
+
+        // Fetch related products by category
+        const relatedResponse = await axios.get('http://localhost:3002/user/products');
+        const related = relatedResponse.data.filter(
+          (item) => item.category === data.data.category && item.id !== id
         );
         setRelatedProducts(related);
+      } catch (error) {
+        console.error('Error fetching product details:', error);
       }
-    }
-  }, [id, products]);
+    };
 
+    fetchProductDetails();
+  }, [id]);
+
+  // Check if product is already in cart
   useEffect(() => {
     if (product && userCart) {
-      const includedProduct = userCart.some(item => item.id === product.id);
+      const includedProduct = userCart.some(item => item.id === product._id);
       setAdded(includedProduct);
     }
   }, [product, userCart]);
@@ -67,7 +76,7 @@ const ProductDetails = () => {
           <div className="flex flex-col justify-between p-4">
             <h2 className="text-2xl font-bold text-start">{product.name}</h2>
             <p className="text-lg font-semibold text-start text-gray-800">
-              ${product.price.toFixed(2)}<span className="text-gray-600"> & Free shipping</span>
+              ${product.price.toFixed(2)} <span className="text-gray-600"> & Free shipping</span>
             </p>
             <p className="text-gray-700 text-start my-2 font-medium">{product.description}</p>
             <p className="text-gray-700 text-start my-2">{product.review}</p>
@@ -85,26 +94,21 @@ const ProductDetails = () => {
                   Add To Cart
                 </button>
               )}
-              <span> <FontAwesomeIcon icon={faHeart} /></span>
+              <span>
+                <FontAwesomeIcon icon={faHeart} />
+              </span>
             </div>
           </div>
         </div>
       </div>
-  
+
       {/* Related Products Section */}
       <div className="mt-10">
         <h3 className="text-2xl font-bold mb-6 text-gray-800">Related Products</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {relatedProducts.slice(0, 8).map(related => ( 
-            <NavLink
-              key={related.id} to={`/product/${related.id}`}
-              className="border rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
-            >
-              <img
-                src={related.image}
-                alt={related.name}
-                className="w-full h-48 object-cover"
-              />
+          {relatedProducts.slice(0, 8).map((related) => (
+            <NavLink key={related._id} to={`/product/${related._id}`} className="border rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+              <img src={related.image} alt={related.name} className="w-full h-48 object-cover" />
               <div className="p-4">
                 <h4 className="text-lg font-bold text-gray-900">{related.name}</h4>
                 <p className="text-gray-700 mt-2">${related.price.toFixed(2)}</p>
@@ -115,6 +119,7 @@ const ProductDetails = () => {
       </div>
     </div>
   );
-}  
+};
 
 export default ProductDetails;
+

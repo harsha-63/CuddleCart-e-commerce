@@ -12,7 +12,7 @@ const Order = () => {
         <div className="grid grid-row-1 sm:grid-rows-2 lg:grid-cols-3 gap-6">
           {userOrder.map((product) => (
             <div
-              key={product?.id}
+              key={product?._id}
               className="border p-4 rounded shadow hover:shadow-xl w-full flex flex-row sm:flex-row justify-between gap-4"
             >
               <div className="w-full sm:w-1/2">

@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="relative pt-6 pb-5">
+    <header className="relative pt-8 pb-5">
 
       <div className="flex flex-grow justify-between items-center w-full max-w-7xl ">
         <NavLink to='/' className="font-atma text-3xl font-semibold text-amber-950 ml-2">Cuddle Cart</NavLink>

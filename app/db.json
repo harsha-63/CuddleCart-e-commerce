@@ -5,61 +5,16 @@
       "name": "Harsha",
       "email": "harsha@gmail.com",
       "password": "harsha",
-      "confirmpassword": "harsha",
       "isAdmin": true,
       "isBlock": false,
-      "cart": [
-        {
-          "id": "15",
-          "category": "Clothing",
-          "name": "Floral Print Dress Babygirl",
-          "price": 19.99,
-          "stock": 30,
-          "description": "A beautiful floral dress for special occasions, made from soft, breathable fabric.",
-          "sizes": [
-            "3-6 months",
-            "6-12 months"
-          ],
-          "stars": 4.7,
-          "review": "The Floral Print Baby Dress is perfect for special occasions. The vibrant colors and soft fabric make it both stylish and comfortable, and it's easy to put on with snap closures.",
-          "image": "https://i.pinimg.com/736x/4b/36/13/4b36130c0d8c452d29ee34293457e315.jpg",
-          "newArrival": true,
-          "quantity": 1
-        }
-      ],
-      "order": [
-        {
-          "id": "2",
-          "name": " Twin Cute Bunny Set Combo",
-          "description": "Cute and cozy clothes set for babies",
-          "review": "The Twin Cute Bunny Set Combo is an adorable and delightful addition for children or as a charming gift for any bunny lover. Featuring two beautifully designed plush bunnies, this combo brings joy and comfort, making it a perfect choice for playtime or cuddling.",
-          "price": 50,
-          "image": "https://i.pinimg.com/736x/34/4a/cd/344acdec7e3639a74b844aedc2fff2e4.jpg",
-          "category": "Clothing",
-          "stars": 4,
-          "newArrivel": false,
-          "quantity": 1
-        },
-        {
-          "id": "6",
-          "name": "Teddy Bear Ready To Flight Doll",
-          "description": "Spacious diaper bag with multiple compartments",
-          "review": "The Teddy Bear Ready To Flight Doll is an adorable companion that combines the charm of a classic teddy bear with a fun travel theme. This plush toy is perfect for children who love imaginative play and adventure, making it an ideal gift for birthdays, holidays, or special occasions.",
-          "price": 39,
-          "image": "https://i.pinimg.com/736x/a9/4a/f3/a94af332d2b8f9571dde0743597ecc67.jpg",
-          "category": "Toys",
-          "stars": 4.1,
-          "newArrival": false,
-          "quantity": 1
-        }
-      ]
+      "cart": [],
+      "order": []
     },
     {
       "id": "d476",
       "name": "anshida",
       "email": "anshidaummattil@gmail.com",
       "password": "hhhhh",
-      "confirmpassword": "hhhhh",
       "isAdmin": false,
       "isBlock": false,
       "cart": [],
@@ -70,7 +25,6 @@
       "name": "Ayisha",
       "email": "Ayisha@gmail.com",
       "password": "aaaa",
-      "confirmpassword": "aaaa",
       "isAdmin": false,
       "isBlock": false,
       "cart": [],
@@ -81,7 +35,6 @@
       "name": "Navaf",
       "email": "na@gmail.com",
       "password": "nnnn",
-      "confirmpassword": "nnnn",
       "isAdmin": false,
       "isBlock": true,
       "cart": [],
@@ -92,48 +45,16 @@
       "name": "sithara",
       "email": "ss@gmail.com",
       "password": "ssss",
-      "confirmpassword": "ssss",
       "isAdmin": true,
       "isBlock": false,
       "cart": [],
-      "order": [
-        {
-          "id": "5",
-          "name": "Sunny Outdoor picnic Set Yellow",
-          "description": "Safe and comfortable car seat for babies",
-          "price": 149.99,
-          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-8.jpg",
-          "category": "Clothing",
-          "stars": 4.3,
-          "quantity": 1
-        },
-        {
-          "id": "3",
-          "name": "Baby Feeding Spoon",
-          "description": "Babies Bloom Pink Silicone Baby Feeding Spoon",
-          "price": 15.99,
-          "image": "https://babiesbloomstore.com/wp-content/uploads/2019/06/BBS-N17-FBP.jpg",
-          "category": "Feeding",
-          "stars": 3.2,
-          "quantity": 1
-        },
-        {
-          "id": "4",
-          "name": "Nutrikids Food Nutrition DHA+ Orange",
-          "description": "Monitor to keep an eye on your baby",
-          "price": 79.99,
-          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-9.jpg",
-          "category": "Protein",
-          "stars": 3.4,
-          "quantity": 1
-        }
-      ]
+      "order": []
+      
     },
     {
       "id": "d04f",
       "name": "sibi",
       "email": "sibi@gmail.com",
-      "confirmpassword": "ssss",
       "password": "ssss",
       "isAdmin": false,
       "isBlock": false,
@@ -145,21 +66,9 @@
       "name": "jifu",
       "email": "jif@gmail.com",
       "password": "jjjj",
-      "confirmpassword": "jjjj",
       "isAdmin": false,
       "isBlock": true,
-      "cart": [
-        {
-          "id": "1",
-          "name": "Extra Soft Touch Lamb Doll",
-          "description": "Comfortable and safe stroller for your baby",
-          "price": 100.99,
-          "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-12.jpg",
-          "category": "Toys",
-          "stars": 4.8,
-          "quantity": 1
-        }
-      ],
+      "cart": [],
       "order": []
     },
     {
@@ -170,7 +79,6 @@
       "isAdmin": false,
       "isBlock": false,
       "cart": [],
-      "confirmpassword": "pvpv",
       "order": []
     }
   ],
@@ -184,7 +92,8 @@
       "image": "https://i.pinimg.com/736x/34/4a/cd/344acdec7e3639a74b844aedc2fff2e4.jpg",
       "category": "Clothing",
       "stars": 4,
-      "newArrival": false
+      "newArrival": false,
+      "isDeleted":false
     },
     {
       "id": "3",
@@ -195,7 +104,8 @@
       "image": "https://i.pinimg.com/736x/8b/0e/7e/8b0e7e9ad4d0f9c64f6646584bf2c47d.jpg",
       "category": "Feeding",
       "stars": 3.2,
-      "newArrival": false
+      "newArrival": false,
+      "isDeleted":false
     },
     {
       "id": "4",
@@ -205,6 +115,7 @@
       "price": 79,
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-9.jpg",
       "category": "Protein",
+      "isDeleted":false,
       "stars": 3.4,
       "newArrival": false
     },
@@ -217,6 +128,7 @@
       "image": "https://i.pinimg.com/736x/1f/3c/47/1f3c47da140f627b3d90b96e88bab361.jpg",
       "category": "Clothing",
       "stars": 4.3,
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -228,6 +140,7 @@
       "image": "https://i.pinimg.com/736x/a9/4a/f3/a94af332d2b8f9571dde0743597ecc67.jpg",
       "category": "Toys",
       "stars": 4.1,
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -239,6 +152,7 @@
       "image": "https://websitedemos.net/baby-store-04/wp-content/uploads/sites/750/2020/12/baby-store-product-img-6.jpg",
       "category": "Protein",
       "stars": 4.4,
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -250,6 +164,7 @@
       "image": "https://i.pinimg.com/736x/02/9c/92/029c92827e6255d93513841c80edef32.jpg",
       "category": "Feeding",
       "stars": 4.6,
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -261,6 +176,7 @@
       "image": "https://i.pinimg.com/736x/f8/3c/11/f83c111a2627e8a85b99152bd986da91.jpg",
       "category": "Toys",
       "stars": 4.2,
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -272,6 +188,7 @@
       "image": "https://i.pinimg.com/736x/d8/1c/30/d81c3041bbddcaa8853a4bc377ba0022.jpg",
       "category": "Clothing",
       "stars": 4,
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -283,6 +200,7 @@
       "image": "https://i.pinimg.com/736x/82/fc/f6/82fcf64d1cfeda42579ff34108475cab.jpg",
       "category": "Clothing",
       "stars": 4.3,
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -294,6 +212,7 @@
       "image": "https://i.pinimg.com/736x/ae/fa/e7/aefae766e86399ffcd924f1990986571.jpg",
       "category": "Toys",
       "stars": 4.5,
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -305,6 +224,7 @@
       "image": "https://i.pinimg.com/736x/5b/34/8c/5b348c01e85c0392bc29bb8b8bf11c34.jpg",
       "category": "Bath",
       "stars": 4,
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -312,13 +232,8 @@
       "category": "Clothing",
       "name": "Organic Cotton Bodysuit Set",
       "price": 25.99,
-      "stock": 50,
+      "isDeleted":false,
       "description": "Set of 2 organic cotton bodysuits in neutral colors, suitable for sensitive skin.",
-      "sizes": [
-        "0-3 months",
-        "3-6 months",
-        "6-9 months"
-      ],
       "stars": 4.8,
       "review": "The Organic Cotton Bodysuit Set is gentle on your baby's skin, offering comfort and breathability. Parents love how soft and stretchy the fabric is, making it easy to dress and move around in.",
       "image": "https://i.pinimg.com/736x/28/5c/98/285c988cc3485b2cc5c519a4aa0d2d1a.jpg",
@@ -329,12 +244,8 @@
       "category": "Clothing",
       "name": "Floral Print Dress Babygirl",
       "price": 19.99,
-      "stock": 30,
+      "isDeleted":false,
       "description": "A beautiful floral dress for special occasions, made from soft, breathable fabric.",
-      "sizes": [
-        "3-6 months",
-        "6-12 months"
-      ],
       "stars": 4.7,
       "review": "The Floral Print Baby Dress is perfect for special occasions. The vibrant colors and soft fabric make it both stylish and comfortable, and it's easy to put on with snap closures.",
       "image": "https://i.pinimg.com/736x/4b/36/13/4b36130c0d8c452d29ee34293457e315.jpg",
@@ -345,13 +256,8 @@
       "category": "Clothing",
       "name": "Cozy Baby Pajamas",
       "price": 15.99,
-      "stock": 60,
       "description": "Warm and cozy pajamas with a zip closure, perfect for bedtime.",
-      "sizes": [
-        "0-3 months",
-        "3-6 months",
-        "6-9 months"
-      ],
+      "isDeleted":false,
       "stars": 4.6,
       "review": "These Cozy Baby Pajamas are a parent's favorite for bedtime. The zip closure makes it easy to change your baby, and the soft fabric ensures a peaceful sleep throughout the night.",
       "image": "https://i.pinimg.com/736x/6f/f4/a2/6ff4a236da2fe3d633f43b6e938d3641.jpg",
@@ -363,13 +269,8 @@
       "name": "Super Absorbent Diapers - Pack of 50",
       "price": 29.99,
       "stock": 100,
+      "isDeleted":false,
       "description": "Hypoallergenic diapers with leak-proof technology, perfect for overnight use.",
-      "sizeOptions": [
-        "Newborn",
-        "Small",
-        "Medium",
-        "Large"
-      ],
       "stars": 4.9,
       "review": "Parents trust these Super Absorbent Diapers for their baby's comfort. The leak-proof design and hypoallergenic materials provide all-night protection, ensuring your baby stays dry and happy.",
       "image": "url-to-diapers-image",
@@ -385,6 +286,7 @@
       "stars": 4.8,
       "review": "These Soft Cotton Baby Blankets are a must-have for any nursery. They're light yet warm, providing the perfect comfort for swaddling or cuddling your baby to sleep.",
       "image": "https://i.pinimg.com/736x/b1/a8/05/b1a805bca2179d19e627c9da56533f4c.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -397,6 +299,7 @@
       "stars": 4.7,
       "review": "The Waterproof Bib Set is a parent's lifesaver during mealtime. They’re easy to clean and feature fun patterns that make feeding time a little brighter.",
       "image": "https://i.pinimg.com/736x/0c/ed/a7/0ceda71b42c64864fdbf3c1858b0ab46.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -409,6 +312,7 @@
       "stars": 4.8,
       "review": "The Interactive Baby Rattle captures your baby's attention with its bright colors and soothing sounds. It’s designed to help develop motor skills while providing hours of entertainment.",
       "image": "https://i.pinimg.com/736x/4a/9e/a8/4a9ea8f8569c231cd4407eb7f6a73736.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -421,6 +325,7 @@
       "stars": 4.7,
       "review": "The Plush Toy Set is perfect for cuddling and play. The soft, plush material makes it safe for babies, and the variety of characters helps stimulate imagination and sensory development.",
       "image": "https://i.pinimg.com/736x/52/cd/04/52cd045f5eaafedca636270ffb483e48.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -433,6 +338,7 @@
       "stars": 4.9,
       "review": "The Baby Play Gym provides a fun, safe space for your baby to explore. With colorful hanging toys and a soft mat, it encourages tummy time and strengthens baby’s muscles.",
       "image": "https://i.pinimg.com/736x/68/ee/fd/68eefd77ab1a29d65cd42b47cbc6588c.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -445,6 +351,7 @@
       "stars": 4.8,
       "review": "The Baby Bottle Set is a top choice for new parents. With an anti-colic design and easy-to-clean bottles, feeding time is made simpler and more comfortable for both baby and parents.",
       "image": "https://i.pinimg.com/736x/61/b5/a6/61b5a61647cb5b20e67fdbbcd6b1d79c.jpg",
+      "isDeleted":false,
       "newArrival": true
     },
     {
@@ -457,6 +364,7 @@
       "stars": 4.7,
       "review": "The Portable Baby Food Warmer ensures that your baby’s food is always at the right temperature. It’s easy to carry and heats bottles and jars quickly, making it perfect for travel.",
       "image": "https://i.pinimg.com/736x/c9/97/a2/c997a29c7e2e1bc423c8d0b6c27a08dd.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -469,6 +377,7 @@
       "stars": 4.6,
       "review": "This Silicone Baby Feeding Set is durable, non-toxic, and easy to clean. Its vibrant colors and practical design make mealtime fun for both babies and parents.",
       "image": "https://i.pinimg.com/736x/31/96/dc/3196dccd41e7e01cd69ce0c79973e4fd.jpg",
+      "isDeleted":false,
       "newArrival": true
     },
     {
@@ -481,6 +390,7 @@
       "stars": 4.9,
       "review": "The Baby Crib Mattress provides a safe and comfortable sleeping environment. It’s breathable and firm to support your baby’s developing spine, ensuring a peaceful night’s sleep.",
       "image": "https://i.pinimg.com/736x/db/5e/d9/db5ed91d75223ce4daa7124c6bb6825d.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -493,6 +403,7 @@
       "stars": 4.8,
       "review": "The Baby Mobile with Lights and Music is perfect for creating a calming atmosphere in your nursery. It engages babies with soothing music and gentle movements while enhancing room decor.",
       "image": "https://i.pinimg.com/736x/93/c9/3e/93c93e2a4c009d4655452695754ea988.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -505,6 +416,7 @@
       "stars": 4.7,
       "review": "These Soft Cotton Baby Sheets are gentle on your baby's skin, offering comfort and breathability throughout the night. The soft fabric keeps your baby cozy in any season.",
       "image": "https://i.pinimg.com/736x/98/07/21/980721236f07b2c36ab057d8bde8bb5a.jpg",
+      "isDeleted":false,
       "newArrival": true
     },
     {
@@ -517,6 +429,7 @@
       "stars": 4.9,
       "review": "The Baby Safety Gate is a must-have for any home with a curious baby. It’s easy to install and provides a secure barrier, ensuring your baby stays safe in different areas of the house.",
       "image": "url-to-safety-gate-image",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -529,6 +442,7 @@
       "stars": 4.7,
       "review": "The Corner Protectors Set helps protect your baby from sharp edges. The soft cushioning absorbs impact, making it a practical addition to any home with young children.",
       "image": "https://i.pinimg.com/736x/b4/4d/17/b44d177882f447f03172a283995c580a.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -541,6 +455,7 @@
       "stars": 4.8,
       "review": "The Baby Monitor with Camera provides peace of mind to parents. With clear video and audio, it allows you to keep an eye on your baby, day or night, from anywhere in your home.",
       "image": "https://i.pinimg.com/736x/df/8c/bc/df8cbcd24cad13c4ed4b52cbe37b0883.jpg",
+      "isDeleted":false,
       "newArrival": true
     },
     {
@@ -553,6 +468,7 @@
       "stars": 4.8,
       "review": "The Lightweight Stroller is perfect for busy parents on the go. Its compact design and one-hand fold feature make it easy to store and carry, while the sturdy build ensures safety and comfort for your baby.",
       "image": "https://i.pinimg.com/736x/7d/ef/7b/7def7b7a01406cb4359dd60012351095.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -565,6 +481,7 @@
       "stars": 4.9,
       "review": "The Convertible Car Seat provides superior safety and comfort. It easily transitions from rear-facing to forward-facing as your child grows, offering an adjustable harness and side-impact protection.",
       "image": "https://i.pinimg.com/736x/98/26/25/9826251194754e60254385157f4d86d0.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -577,6 +494,7 @@
       "stars": 4.7,
       "review": "The Multi-functional Diaper Bag is both stylish and practical. With its spacious compartments, insulated bottle holders, and comfortable straps, it makes on-the-go parenting much easier.",
       "image": "https://i.pinimg.com/736x/b9/97/57/b99757defe1a6fbba43cc2370e8b83c6.jpg",
+      "isDeleted":false,
       "newArrival": false
     },
     {
@@ -589,6 +507,7 @@
       "stars": 4.8,
       "review": "The Baby Carrier Backpack allows you to carry your baby hands-free while ensuring both comfort and safety. Its ergonomic design reduces strain on your back and shoulders, making it ideal for long walks and hikes.",
       "image": "https://i.pinimg.com/736x/18/5a/62/185a62c062eb66ad649d2b3b5eaa2850.jpg",
+      "isDeleted":false,
       "newArrival": true
     },
     {
@@ -596,7 +515,9 @@
       "name": "Extra Soft Touch Lamb Doll",
       "description": "Comfortable and safe stroller for your baby",
       "price": 100,
+      "review":"",
       "image": "https://i.pinimg.com/736x/8d/4d/38/8d4d3833e24fdad1a9f22d32b527af9d.jpg",
+      "isDeleted":false,
       "category": "Toys",
       "stars": 5,
       "newArrival": false
@@ -606,7 +527,9 @@
       "name": "Soft Plush Elephant",
       "description": "A soft and cuddly elephant plush toy perfect for newborns and toddlers.",
       "price": 15,
+      "review":"",
       "image": "https://i.pinimg.com/736x/df/c8/02/dfc8020008d7c15f0686ca6c43ff3f76.jpg",
+      "isDeleted":false,
       "category": "Toys",
       "stars": 4.7,
       "newArrival": false
@@ -616,8 +539,11 @@
       "name": "Cotton Onesie",
       "category": "Clothing",
       "price": 12.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/4c/09/0a/4c090a71b3fcc07cbebb006b9993b2d0.jpg",
       "description": "Soft, breathable cotton onesie for all-day comfort.",
+      "isDeleted":false,
       "stars": 4.5
     },
     {
@@ -625,7 +551,10 @@
       "name": "Polka Dot Baby Dress",
       "category": "Clothing",
       "price": 18.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/69/65/a2/6965a23fc19622f9bb98152b7600a2c5.jpg",
+      "isDeleted":false,
       "description": "Adorable polka dot dress for baby girls, perfect for a casual day out.",
       "stars": 4.6
     },
@@ -634,8 +563,11 @@
       "name": "Denim Overalls",
       "category": "Clothing",
       "price": 18.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/cd/27/91/cd2791326b2c350cda4ce0eb163d6c78.jpg",
       "description": "Classic denim overalls, comfortable and stylish.",
+      "isDeleted":false,
       "stars": 4.7
     },
     {
@@ -643,8 +575,11 @@
       "name": "Fleece Hoodie set",
       "category": "Clothing",
       "price": 14.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/d8/27/00/d82700833ffd215a1279ea1eb75efa07.jpg",
       "description": "Warm fleece hoodie to keep your baby cozy in winter.",
+      "isDeleted":false,
       "stars": 4.6
     },
     {
@@ -652,8 +587,11 @@
       "name": "Sleepwear Set",
       "category": "Clothing",
       "price": 22.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/57/ef/ff/57efff46cd739c0d601f85fe21c5cdd2.jpg",
       "description": "Comfortable and soft sleepwear for a peaceful night.",
+      "isDeleted":false,
       "stars": 4.9
     },
     {
@@ -661,8 +599,11 @@
       "name": "Striped Baby tee and shorts set",
       "category": "Clothing",
       "price": 15.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/12/3f/6c/123f6c0cb31fcba87384fd17353a4407.jpg",
       "description": "Cute striped tee and shorts for casual days out.",
+      "isDeleted":false,
       "stars": 4.4
     },
     {
@@ -670,8 +611,11 @@
       "name": "Baby Romper",
       "category": "Clothing",
       "price": 13.49,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/88/20/e7/8820e720bc9fef3c5a88d6a6c6687897.jpg",
       "description": "Comfortable and easy-to-wear romper for everyday activities.",
+      "isDeleted":false,
       "stars": 4.3
     },
     {
@@ -679,8 +623,11 @@
       "name": " Baby Leggings 3 set",
       "category": "Clothing",
       "price": 9.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/81/f4/4f/81f44f5f2fd8c1df7410e20c9c3ea573.jpg",
       "description": "Soft, stretchy leggings for a perfect fit and all-day comfort.",
+      "isDeleted":false,
       "stars": 4.6
     },
     {
@@ -688,8 +635,11 @@
       "name": "Baby Knit Sweater",
       "category": "Clothing",
       "price": 20.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/4e/36/88/4e368837db0bdd6a850fdfb0a5fa38e8.jpg",
       "description": "Warm knitted sweater to keep your baby warm and cozy.",
+      "isDeleted":false,
       "stars": 4.7
     },
     {
@@ -697,8 +647,11 @@
       "name": "Animal Print T-Shirt and shorts",
       "category": "Clothing",
       "price": 11.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/89/c7/72/89c772e248231bf045948b0cc184e3b0.jpg",
       "description": "Fun animal print t-shirt and shorts for playful days.",
+      "isDeleted":false,
       "stars": 4.2
     },
     {
@@ -706,8 +659,11 @@
       "name": "Baby Pajama Set",
       "category": "Clothing",
       "price": 17.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/69/69/c5/6969c5050cc6c37d10950877dec17e87.jpg",
       "description": "Soft and snug pajama set for a good night’s sleep.",
+      "isDeleted":false,
       "stars": 4.8
     },
     {
@@ -715,8 +671,11 @@
       "name": " Baby Plaid print flap Pocket Shirt & Trousers",
       "category": "Clothing",
       "price": 16.49,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/97/ea/cb/97eacbf090d387456904f62882209ccd.jpg",
       "description": "Classic plaid shirt & trousers for baby boys, perfect for casual outings.",
+      "isDeleted":false,
       "stars": 4.5
     },
     {
@@ -724,8 +683,11 @@
       "name": "Cute Baby Shorts",
       "category": "Clothing",
       "price": 10.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/53/c9/1f/53c91fe8fb431e72f1eca9baf71c94b3.jpg",
       "description": "Light and breathable shorts for the warmer days.",
+      "isDeleted":false,
       "stars": 4.4
     },
     {
@@ -733,8 +695,11 @@
       "name": "Baby Summer Dress for boy",
       "category": "Clothing",
       "price": 14.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/9d/e8/f6/9de8f67e3cb20dcdfc39234f7983b9d2.jpg",
       "description": "Sweet summer dress for your little one.",
+      "isDeleted":false,
       "stars": 4.6
     },
     {
@@ -742,8 +707,11 @@
       "name": "Knitted Baby Cap",
       "category": "Clothing",
       "price": 8.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/d7/6a/6e/d76a6eef347a1032508b878e281c284b.jpg",
       "description": "Warm knitted cap to protect your baby’s head from the cold.",
+      "isDeleted":false,
       "stars": 4.5
     },
     {
@@ -751,8 +719,11 @@
       "name": "Baby Winter Coat",
       "category": "Clothing",
       "price": 30.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/28/ff/2e/28ff2e722625aa79cbedc3a56225b4ee.jpg",
       "description": "Stylish and warm winter coat to keep your baby snug in cold weather.",
+      "isDeleted":false,
       "stars": 4.8
     },
     {
@@ -760,8 +731,11 @@
       "name": "Baby Changing Table",
       "category": "Nursery",
       "price": 129.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/5f/bb/4f/5fbb4f31774079f19a5152278b0d0454.jpg",
       "description": "Wooden changing table with ample storage for diapers, wipes, and baby essentials.",
+      "isDeleted":false,
       "stars": 4.5
     },
     {
@@ -769,8 +743,11 @@
       "name": "Rocking Chair",
       "category": "Nursery",
       "price": 89.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/3a/54/4f/3a544f34e5807d3e50427930fa3824f9.jpg",
       "description": "Comfortable rocking chair for soothing your baby during feedings and bedtime.",
+      "isDeleted":false,
       "stars": 4.8
     },
     {
@@ -778,8 +755,11 @@
       "name": "Nursery Night Light",
       "category": "Nursery",
       "price": 15.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/00/85/0a/00850afea039139497134d9bf72d1b0d.jpg",
       "description": "Soft, dimmable night light to gently illuminate the nursery without disturbing your baby's sleep.",
+      "isDeleted":false,
       "stars": 4.6
     },
     {
@@ -787,7 +767,10 @@
       "name": "Children's Electronic Piano",
       "category": "Toys",
       "price": 49.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/b2/0a/98/b20a98667affa16bc21a60f1dfdbbd5c.jpg",
+      "isDeleted":false,
       "description": "A fun and educational electronic piano designed for young children with interactive keys and built-in melodies.",
       "stars": 4.8
     },
@@ -796,7 +779,10 @@
       "name": "Wooden Stacking Toy",
       "category": "Toys",
       "price": 19.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/08/ff/ec/08ffec23d99cf75804176a82654e61f4.jpg",
+      "isDeleted":false,
       "description": "A colorful and durable wooden stacking toy designed to improve hand-eye coordination and motor skills.",
       "stars": 4.6
     },
@@ -805,7 +791,10 @@
       "name": "Infant-to-Toddler Toothbrush",
       "category": "Essentials",
       "price": 5.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/b1/07/25/b107252e5fecb28ed1d9e1dffdb737bc.jpg",
+      "isDeleted":false,
       "description": "A safe and soft-bristled toothbrush designed for gentle cleaning of infants' and toddlers' teeth.",
       "stars": 4.7
     },
@@ -814,7 +803,10 @@
       "name": "Baby Pacifier Feeder",
       "category": "Essentials",
       "price": 8.99,
+      "review":"",
+      "newArrival":false,
       "image": "https://i.pinimg.com/736x/cb/ce/22/cbce22652d6fb33faa1406b3191b33d4.jpg",
+      "isDeleted":false,
       "description": "A safe and convenient baby pacifier feeder that introduces fruits and purees while soothing teething gums.",
       "stars": 4.5
     }

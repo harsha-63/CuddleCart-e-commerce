@@ -20,7 +20,7 @@ admin
     .get('/product/:id',(getProductById))
     .get('/products/category/:category',(getProductsByCategory))
     .post("/products",verifyAdminToken,upload.single("image"), trycatch(createProduct))
-    .put("/products/:productId",verifyAdminToken,upload.single("image"),trycatch (updateProduct))
+    .patch("/products/:productId",verifyAdminToken,upload.single("image"),trycatch (updateProduct))
     .delete("/product/:productId",verifyAdminToken, trycatch(deleteProduct))
     
 
