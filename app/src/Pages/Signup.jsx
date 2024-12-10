@@ -2,42 +2,46 @@ import { useContext, useState } from "react";
 import { useNavigate,Link } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../Context/UserContext";
+import { toast } from 'react-toastify';
+import axiosErrorManager from "../../utilities/axiosErrorManager";
 
 const Signup = () => {
-  const [formData, setFormData] = useState({
+  const [Data, setData] = useState({
     name: "",
     email: "",
     password: "",
-    confirmpassword: "",
-    isAdmin: false,
-    isBlocked: false,
-    cart: [],
-    order: []
   });
+  
 
   const navigate = useNavigate();
-  const { fetchUsers, setCurrentUser } = useContext(UserContext);
+  const [cPassword, setcPassword] = useState('');
+  const { setLoading } = useContext(UserContext);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
+  const registerUser = async (name, email, password) => {
+    const data = { name, email, password };
+    setLoading(true);
+    try {
+      const response = await axios.post("http://localhost:3002/auth/register", data);
+      toast.success(response.data.message);  
+      navigate("/login");  
+    } catch (error) {
+      toast.error(axiosErrorManager(error)); 
+    } finally {
+      setLoading(false); 
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.password && formData.password === formData.confirmpassword) {
-      try {
-        const response = await axios.post('http://localhost:4000/user', formData);
-        alert("Sign up successful");
-        setCurrentUser(response.data);
-        await fetchUsers();
-        navigate('/login');
-      } catch (error) {
-        console.error("Error signing up:", error);
-      }
+    if (Data.name && Data.email && Data.password && Data.password ===cPassword) {
+      await registerUser(Data.name, Data.email, Data.password);
     } else {
       alert("Please fill in all fields and ensure passwords match.");
     }
@@ -62,7 +66,7 @@ const Signup = () => {
             <input
               type="text"
               name="name"
-              value={formData.name}
+              value={Data.name}
               onChange={handleInputChange}
               className="appearance-none rounded-lg w-full px-4 py-2 font-sm border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 text-sm"
               placeholder="Username"
@@ -71,7 +75,7 @@ const Signup = () => {
             <input
               type="email"
               name="email"
-              value={formData.email}
+              value={Data.email}
               onChange={handleInputChange}
               className="appearance-none rounded-lg w-full px-4 py-2 font-sm border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 text-sm"
               placeholder="Email address"
@@ -80,7 +84,7 @@ const Signup = () => {
             <input
               type="password"
               name="password"
-              value={formData.password}
+              value={Data.password}
               onChange={handleInputChange}
               className="appearance-none rounded-lg w-full px-4 py-2 border font-sm border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 text-sm"
               placeholder="Password"
@@ -89,8 +93,8 @@ const Signup = () => {
             <input
               type="password"
               name="confirmpassword"
-              value={formData.confirmpassword}
-              onChange={handleInputChange}
+              value={cPassword}
+              onChange={(e)=>setcPassword(e.target.value)}
               className="appearance-none rounded-lg w-full px-4 py-2 border font-sm border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 text-sm"
               placeholder="Confirm Password"
               required
