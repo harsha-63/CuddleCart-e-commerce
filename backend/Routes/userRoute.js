@@ -1,5 +1,5 @@
 import express from 'express'
-import {getAllProducts,getProductById,getProductsByCategory } from '../Controllers/productController.js'
+import {getAllProducts,getProductById,getProductsByCategory, getRelatedProducts } from '../Controllers/productController.js'
 import { updateCart,removeCartItem, getUserCart } from '../Controllers/cartController.js'
 import {getUserWishlist,addToWishlist,removeFromWishlist} from '../Controllers/wishlistController.js'
 import { getOrders,getOneOrder,placeOrder,cancelOrder, orderStripe,stripeSuccess ,publicKey} from '../Controllers/orderController.js'
@@ -15,6 +15,7 @@ router
     .get('/products',(getAllProducts))
     .get('/product/:id',(getProductById))
     .get('/products/category/:category',(getProductsByCategory))
+    .get('/related/products',(getRelatedProducts))
 
 //route for cartProduct
     .get('/cart',verifyToken,trycatch (getUserCart))

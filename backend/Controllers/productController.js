@@ -40,6 +40,15 @@ export const getProductsByCategory = async (req, res, next) => {
   res.status(200).json({ success: true, data: products });
 };
 
+export const getRelatedProducts = async (req, res) => {
+  const { category, excludeId } = req.query;
+  const relatedProducts = await Product.find({
+    category,
+    _id: { $ne: excludeId },
+  });
+  res.json(relatedProducts);
+};
+
 
                                     //admin functionalities
   

@@ -33,8 +33,7 @@ const Collection = () => {
                     <select
                         value={selectedCategory}
                         onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="p-2 border border-gray-600 rounded mr-10 mb-1"
-                    >
+                        className="p-2 border border-gray-600 rounded mr-10 mb-1">
                         <option value="all">All</option>
                         {categories.map((category, index) => (
                             <option key={index} value={category}>

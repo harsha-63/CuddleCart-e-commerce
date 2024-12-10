@@ -6,10 +6,11 @@ import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import axiosErrorManager from '../../utilities/axiosErrorManager';
 
 const ProductDetails = () => {
   const { id } = useParams();
-  console.log(id);
+  console.log('Product ID:', id); 
   
   const { addToCart, userCart } = useContext(CartContext);
   const { currentUser } = useContext(UserContext);
@@ -22,24 +23,25 @@ const ProductDetails = () => {
     // Fetch product details when component mounts
     const fetchProductDetails = async () => {
       try {
-        const {data} = await axios.get(`http://localhost:3002/user/product/${id}`)
-        .then(response => {
-          console.log('Product data:', response.data)})
+        const response = await axios.get(`http://localhost:3002/user/product/${id}`);
+        const { data } = response.data; 
+        console.log('Product Data:', data); 
         setProduct(data);
-
-        // Fetch related products by category
-        const relatedResponse = await axios.get('http://localhost:3002/user/products');
-        const related = relatedResponse.data.filter(
-          (item) => item.category === data.data.category && item.id !== id
-        );
-        setRelatedProducts(related);
+        // if (data.category && data._id) {
+        //   const relatedResponse = await axios.get("http://localhost:3002/user/products", {
+        //     params: { category: data.category, excludeId: data._id },
+        //   });
+        //   setRelatedProducts(relatedResponse.data);
+        // } else {
+        //   console.warn('Skipping related products fetch: Missing category or ID');
+        // }
       } catch (error) {
-        console.error('Error fetching product details:', error);
+        console.error(axiosErrorManager(error));
       }
     };
 
     fetchProductDetails();
-  }, [id]);
+  }, [id,]);
 
   // Check if product is already in cart
   useEffect(() => {
@@ -76,7 +78,7 @@ const ProductDetails = () => {
           <div className="flex flex-col justify-between p-4">
             <h2 className="text-2xl font-bold text-start">{product.name}</h2>
             <p className="text-lg font-semibold text-start text-gray-800">
-              ${product.price.toFixed(2)} <span className="text-gray-600"> & Free shipping</span>
+              ${product.price} <span className="text-gray-600"> & Free shipping</span>
             </p>
             <p className="text-gray-700 text-start my-2 font-medium">{product.description}</p>
             <p className="text-gray-700 text-start my-2">{product.review}</p>
@@ -106,7 +108,7 @@ const ProductDetails = () => {
       <div className="mt-10">
         <h3 className="text-2xl font-bold mb-6 text-gray-800">Related Products</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {relatedProducts.slice(0, 8).map((related) => (
+          {relatedProducts.map((related) => (
             <NavLink key={related._id} to={`/product/${related._id}`} className="border rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
               <img src={related.image} alt={related.name} className="w-full h-48 object-cover" />
               <div className="p-4">
@@ -123,3 +125,11 @@ const ProductDetails = () => {
 
 export default ProductDetails;
 
+     // Fetch related products by category
+    //     const relatedResponse = await axios.get('http://localhost:3002/user/products');
+    //     const related = relatedResponse.data
+    // //     .filter(
+    // //   (item) => item.category === data.category && item._id !== id
+    // // );
+    // // console.log('Filtered Related Products:', related);
+    // setRelatedProducts(related);

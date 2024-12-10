@@ -5,7 +5,8 @@ export const ShopContext=createContext()
 // eslint-disable-next-line react/prop-types
 const ShopProvider = ({children}) => {
     const [products, setProducts] = useState([]);
-    
+    // const [loading, setLoading] = useState(true);
+
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [categories, setCategories] = useState([]);
     const [search,setSearch]=useState('');
@@ -13,12 +14,10 @@ const ShopProvider = ({children}) => {
     useEffect(()=>{
       async function fetchdata() {
         try {
-          const {data} = await axios.get("http://localhost:3002/user/products", {
-              headers: {
-                  'Content-Type': 'application/json',
-              }
-          });
+          const {data} = await axios.get("http://localhost:3002/user/products");
           setProducts(data.data);
+          console.log(data.data);
+          
           const uniqueCategories = [...new Set(data.data.map(product => product.category))];
           setCategories(['all', ...uniqueCategories]);
       } catch (error) {
