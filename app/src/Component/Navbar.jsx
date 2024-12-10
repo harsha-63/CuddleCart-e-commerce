@@ -9,7 +9,7 @@ import { CartContext } from '../Context/CartContext';
 
 const Navbar = () => {
   const { userCart } = useContext(CartContext);
-  const { currentUser } = useContext(UserContext);
+  const { currentUser,isAdmin } = useContext(UserContext);
   const { setShowSearch } = useContext(ShopContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
 
@@ -27,7 +27,7 @@ const Navbar = () => {
           <NavLink to="/collection" className="hover:text-amber-800 text-black transition">Collection</NavLink>
           <NavLink to="/about" className="hover:text-amber-800 text-black transition">About</NavLink>
           <NavLink to="/contact" className="hover:text-amber-800 text-black transition">Contact</NavLink>
-          {currentUser && currentUser.isAdmin ? (
+          {currentUser && isAdmin ? (
             <NavLink to="/admin" className="hover:text-amber-800 text-black transition">Admin</NavLink>
           ) : null}
         </nav>

@@ -1,10 +1,48 @@
 import { useContext } from 'react';
 import { CartContext } from '../Context/CartContext';
 import { NavLink } from 'react-router-dom';
+import Cookies from "js-cookie";
+import axiosErrorManager from '../../utilities/axiosErrorManager';  
+import axios from 'axios';
+import { UserContext } from '../Context/UserContext';
 
 const Cart = () => {
-    const { userCart, removeFromCart, updateQuantity } = useContext(CartContext);
+    const {setLoading} = useContext(UserContext)
+    const { userCart,setUserCart, removeFromCart, addToCart, } = useContext(CartContext);
+    
 
+    const updateCart = (productID, quantity) => {
+        const updatedCart = userCart.map((item) => {
+          if (item.id === productID) {
+            return { ...item, quantity: quantity };
+          }
+          return item;
+        });
+        setUserCart(updatedCart)
+        updateServer(productID, quantity); // Update server
+      };
+    
+      // Update cart on the server
+      const updateServer = async (productID, quantity) => {
+        setLoading(true);
+        try {
+          const token = Cookies.get("token");
+          await axios.post(
+            'http://localhost:3002/user/cart',
+            {
+              productID,
+              quantity,
+            },
+            {
+              headers: { token: `Bearer ${token}` },
+            }
+          );
+        } catch (error) {
+          console.error(axiosErrorManager(error));
+        } finally {
+          setLoading(false);
+        }
+      };
     const calculateTotalPrice = () => {
         return userCart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
     };
@@ -46,7 +84,7 @@ const Cart = () => {
                                         <span className="block sm:hidden font-semibold">Quantity: </span>
                                         <div className="flex items-center mt-2 sm:mt-0">
                                             <button
-                                                onClick={() => updateQuantity(product._id, 'decrement')}
+                                                onClick={() => updateCart(product._id, product.quantity-1)}
                                                 className="px-2 py-1 bg-gray-300 hover:bg-gray-400 rounded-l"
                                             >
                                                 -
@@ -58,7 +96,7 @@ const Cart = () => {
                                                 className="w-8 text-center border border-gray-300 mx-1"
                                             />
                                             <button
-                                                onClick={() => updateQuantity(product._id, 'increment')}
+                                                onClick={() => updateCart(product._id,product.quantity+1)}
                                                 className="px-2 py-1 bg-gray-300 hover:bg-gray-400 rounded-r"
                                             >
                                                 +

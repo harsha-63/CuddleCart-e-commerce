@@ -4,28 +4,19 @@ import { UserContext } from '../Context/UserContext';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-  const { users, setCurrentUser } = useContext(UserContext);
+  const { loginUser } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const foundUser = users.find((user) => user.email === email && user.password === password);
-    const isAdmin = users.find((user) => user.email === email && user.password === password && user.isAdmin === true);
-
-    if (isAdmin) {
-      setCurrentUser(isAdmin);
+    try {
+      await loginUser(email, password);
       navigate('/');
-    } else if (foundUser) {
-      if (foundUser.isBlock) {
-        toast.error("You Are Blocked!");
-      } else {
-        setCurrentUser(foundUser);
-        navigate('/');
-      }
-    } else {
-      toast.error("Not found");
+    // eslint-disable-next-line no-unused-vars
+    } catch (err) {
+      toast.error("Invalid credentials or error occurred");
     }
   };
 

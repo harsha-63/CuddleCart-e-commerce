@@ -1,11 +1,10 @@
 import { useContext } from "react";
-import { CartContext } from "../Context/CartContext";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
 
 const Userdata = () => {
-    const { currentUser } = useContext(UserContext);
-    const { logoutUser } = useContext(CartContext);
+    const { currentUser,logoutUser } = useContext(UserContext);
+    
 
     return (
         <div >

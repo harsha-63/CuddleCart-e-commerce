@@ -57,8 +57,8 @@ export const loginUser = async (req, res, next) => {
   if (!isMatch) {
     return next(new CustomError("Invalid credentials", 401));
   }
-  const token = createToken(user._id);
-  const refreshToken = createRefreshToken(user._id);
+  const token = createToken(user._id,user.isAdmin);
+  const refreshToken = createRefreshToken(user._id,user.isAdmin);
 
   user.refreshToken = refreshToken;
   await user.save();
@@ -69,8 +69,24 @@ export const loginUser = async (req, res, next) => {
     secure: false,
     sameSite: "none",
   });
+  const currentUser = {
+    id: user._id,
+    name: user.name,
+    email: user.email,
+    isAdmin: user.isAdmin,
+  }
+  //sending user details to client (for curr user)
+  res.cookie("currentUser", JSON.stringify(currentUser))
 
-  res.json({ success: true, message: "Logged in successfully", token });
+  //sending token to cookie
+  res.cookie("token", token, {
+    httpOnly: false,
+    secure: true,
+    sameSite: "none",
+  });
+
+
+  res.json({ success: true, message: "Logged in successfully", token,currentUser });
 };
 
 
@@ -124,6 +140,16 @@ export const logout = async (req, res, next) => {
     secure: false,
     sameSite: "none",
   });
+  res.clearCookie("currentUser", {
+    httpOnly: false,
+    secure: true,
+    sameSite: "none",
+  });
+  res.clearCookie("token", {
+    httpOnly: false,
+    secure: true,
+    sameSite: "none",
+  })
 
   if (!cookieCleared) {
     return next(new CustomError("Failed to log out. Please try again.", 500));
