@@ -22,8 +22,7 @@ const CartProvider = ({ children }) => {
       const response = await axios.get("http://localhost:3002/user/cart", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setUserCart(response.data?.products || []);  
-      
+      setUserCart(response.data?.products || []);   
     } catch (error) {
       console.error("Failed to fetch user cart:", error);
     }
@@ -35,7 +34,6 @@ const CartProvider = ({ children }) => {
   
   // Add a product to the cart
   const addToCart = async (productId, quantity = 1) => {
-    console.log("Adding product to cart:", { productId, quantity });
     const token = Cookies.get("token");
     if (!token) {
       toast.error("User not authenticated. Please log in.");
