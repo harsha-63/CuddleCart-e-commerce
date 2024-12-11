@@ -3,14 +3,14 @@ import CustomError from "../Utils/customError.js";
 
 //fuction for getUserCart
 export const getUserCart = async (req, res) => {
-  const cart = await Cart.findOne({ userId: req.user.id }).populate({
-    path: "products.productId",
-    select: "name price image",
-  });
+  const cart = await Cart.findOne({ userId: req.user.id }).populate({ path: "products.productId",select: "name price image"});
+  console.log(cart);
+  
   if (cart) {
     res.status(200).json(cart);
+
   } else {
-    res.status(200).json({ products: []});
+    res.status(200).json({products:[]});
   }
 };
 

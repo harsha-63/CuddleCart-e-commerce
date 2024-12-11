@@ -45,11 +45,12 @@ const ProductDetails = () => {
 
   // Check if product is already in cart
   useEffect(() => {
-    if (product && userCart) {
-      const includedProduct = userCart.some(item => item.id === product._id);
+    if (product && Array.isArray(userCart)) {
+      const includedProduct = userCart.some(item => item.productId._id === id);
       setAdded(includedProduct);
     }
-  }, [product, userCart]);
+  }, [id, product, userCart]);
+  
 
   const handleAddToCart = () => {
     if (currentUser) {

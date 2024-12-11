@@ -101,7 +101,7 @@ const Home = () => {
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 hover:">
         {newArrivalProducts.map((product) => (
           <NavLink
-            key={product.id} to={`/product/${product.id}`}
+            key={product._id} to={`/product/${product._id}`}
             className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg hover:scale-105  transition-transform duration-300"
           >
             <img

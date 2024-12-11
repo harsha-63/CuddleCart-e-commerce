@@ -43,10 +43,9 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { toast } from "react-toastify"
 
+
+
 export const UserContext = createContext();
-
-
-
 // eslint-disable-next-line react/prop-types
 const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -76,7 +75,7 @@ const UserProvider = ({ children }) => {
       toast.success("Logged in successfully");
     } catch (err) {
       toast.error("Invalid credentials or error occurred");
-      throw err;  // Rethrow error so it can be caught in the login page
+      throw err;  
     }
   };
 

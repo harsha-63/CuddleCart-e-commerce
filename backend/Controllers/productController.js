@@ -42,7 +42,7 @@ export const getProductsByCategory = async (req, res, next) => {
 
 export const getRelatedProducts = async (req, res) => {
   const { category, excludeId } = req.query;
-  const relatedProducts = await Product.find({
+  const relatedProducts = await Products.find({
     category,
     _id: { $ne: excludeId },
   });

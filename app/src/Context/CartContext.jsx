@@ -22,8 +22,7 @@ const CartProvider = ({ children }) => {
       const response = await axios.get("http://localhost:3002/user/cart", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setUserCart(response.data?.products || []);
-      console.log("userCart",userCart);
+      setUserCart(response.data?.products || []);  
       
     } catch (error) {
       console.error("Failed to fetch user cart:", error);
@@ -35,23 +34,42 @@ const CartProvider = ({ children }) => {
   }, [currentUser]);
   
   // Add a product to the cart
-  const addToCart = async (productID, quantity = 1) => {
+  const addToCart = async (productId, quantity = 1) => {
+    console.log("Adding product to cart:", { productId, quantity });
+    const token = Cookies.get("token");
+    if (!token) {
+      toast.error("User not authenticated. Please log in.");
+      return;
+    }
     try {
-      const res = await axios.post( "http://localhost:3002/user/cart",{ productID, quantity },{ withCredentials: true });
+      const response = await axios.post(
+        "http://localhost:3002/user/cart",
+        { productId, quantity },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      console.log(response);
       await getUserCart(); 
-      toast.success(res.data.message);
+      toast.success(response.data.message);
     } catch (error) {
       toast.error("Failed to add to cart.");
       console.error(error);
     }
   };
+  
 
   // Remove a product from the cart
-  const removeFromCart = async (productID) => {
+  const removeFromCart = async (productId) => {
+    const token = Cookies.get("token");
+    if (!token) {
+      toast.error("User not authenticated. Please log in.");
+      return;
+    }
     try {
       const res = await axios.delete("http://localhost:3002/user/cart", {
-        data: { productID },
-        withCredentials: true,
+        data: { productId },
+        headers: { Authorization: `Bearer ${token}` },
       });
       await getUserCart(); 
       toast.success(res.data.message);
@@ -60,20 +78,35 @@ const CartProvider = ({ children }) => {
       console.error(error);
     }
   };
+  
+
+  const value = {userCart,setUserCart,addToCart,removeFromCart,getUserCart};
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+};
+
+export default CartProvider;
+
+
+
+
+
+
+
 
   // Update the quantity of a product in the cart
-  const updateQuantity = async (productID, action) => {
-    try {
-      const newQuantity =
-        action === "increment" ? 1 : action === "decrement" ? -1 : 0;
-      if (newQuantity !== 0) {
-        await addToCart(productID, newQuantity); 
-      }
-    } catch (error) {
-      toast.error("Failed to update quantity.");
-      console.error(error);
-    }
-  };
+  // const updateQuantity = async (productID, action) => {
+  //   try {
+  //     const newQuantity =
+  //       action === "increment" ? 1 : action === "decrement" ? -1 : 0;
+  //     if (newQuantity !== 0) {
+  //       await addToCart(productID, newQuantity); 
+  //     }
+  //   } catch (error) {
+  //     toast.error("Failed to update quantity.");
+  //     console.error(error);
+  //   }
+  // };
 
   // Update the order on the server whenever it changes
   // const patchUpdatedOrder = async (updatedOrder) => {
@@ -87,12 +120,3 @@ const CartProvider = ({ children }) => {
   //     console.error("Failed to update user order:", error);
   //   }
   // };
-
-
-
-  const value = {userCart,addToCart,removeFromCart,updateQuantity,getUserCart};
-
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
-};
-
-export default CartProvider;

@@ -8,29 +8,31 @@ import { UserContext } from '../Context/UserContext';
 
 const Cart = () => {
     const {setLoading} = useContext(UserContext)
-    const { userCart,setUserCart, removeFromCart, addToCart, } = useContext(CartContext);
+    const { userCart,setUserCart, removeFromCart } = useContext(CartContext);
     
 
-    const updateCart = (productID, quantity) => {
+    const updateCart = (productId, quantity) => {
+        if (quantity < 1) return; 
         const updatedCart = userCart.map((item) => {
-          if (item.id === productID) {
-            return { ...item, quantity: quantity };
+          if (item.productId._id === productId) {
+            return { ...item, quantity };
           }
           return item;
         });
-        setUserCart(updatedCart)
-        updateServer(productID, quantity); // Update server
+        setUserCart(updatedCart);
+        updateServer(productId, quantity);
       };
+      
     
       // Update cart on the server
-      const updateServer = async (productID, quantity) => {
+      const updateServer = async (productId, quantity) => {
         setLoading(true);
         try {
           const token = Cookies.get("token");
           await axios.post(
             'http://localhost:3002/user/cart',
             {
-              productID,
+              productId,
               quantity,
             },
             {
@@ -44,7 +46,7 @@ const Cart = () => {
         }
       };
     const calculateTotalPrice = () => {
-        return userCart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
+        return Array.isArray(userCart)&&userCart.reduce((total, product) => total + product.productId.price * product.quantity, 0).toFixed(2);
     };
 
     return (
@@ -66,25 +68,28 @@ const Cart = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {userCart.map((product) => (
-                                <tr key={product._id} className="border-t sm:table-row block mb-6 sm:mb-0">
+                            
+                            
+                            {Array.isArray(userCart)&&userCart.map((product,index) => (
+                                 product.productId && (
+                                <tr key={index} className="border-t sm:table-row block mb-6 sm:mb-0">
                                     <td className="py-2 px-4 block sm:table-cell">
                                         <div className="flex items-center">
-                                            <img src={product.image} alt={product.name} className="w-12 h-12 object-cover rounded mr-2" />
-                                            <span className="font-semibold">{product.name}</span>
+                                            <img src={product.productId.image} alt={product.productId.name} className="w-12 h-12 object-cover rounded mr-2" />
+                                            <span className="font-semibold">{product.productId.name}</span>
                                         </div>
                                     </td>
                                     <td className="py-2 px-4 block sm:table-cell">
-                                        <span className="block sm:hidden font-semibold">Description: </span>{product.description}
+                                        <span className="block sm:hidden font-semibold">Description: </span>{product.productId.description}
                                     </td>
                                     <td className="py-2 px-4 block sm:table-cell">
-                                        <span className="block sm:hidden font-semibold">Price: </span>${product.price.toFixed(2)}
+                                        <span className="block sm:hidden font-semibold">Price: </span>${product.productId.price}
                                     </td>
                                     <td className="py-2 px-4 block sm:table-cell">
                                         <span className="block sm:hidden font-semibold">Quantity: </span>
                                         <div className="flex items-center mt-2 sm:mt-0">
                                             <button
-                                                onClick={() => updateCart(product._id, product.quantity-1)}
+                                                onClick={() => updateCart(product.productId._id, product.quantity-1)}
                                                 className="px-2 py-1 bg-gray-300 hover:bg-gray-400 rounded-l"
                                             >
                                                 -
@@ -96,7 +101,7 @@ const Cart = () => {
                                                 className="w-8 text-center border border-gray-300 mx-1"
                                             />
                                             <button
-                                                onClick={() => updateCart(product._id,product.quantity+1)}
+                                                onClick={() => updateCart(product.productId._id,product.quantity+1)}
                                                 className="px-2 py-1 bg-gray-300 hover:bg-gray-400 rounded-r"
                                             >
                                                 +
@@ -106,13 +111,13 @@ const Cart = () => {
                                     <td className="py-2 px-4 block sm:table-cell">
                                         <span className="block sm:hidden font-semibold">Remove: </span>
                                         <button
-                                            onClick={() => removeFromCart(product._id)}
+                                            onClick={() => removeFromCart(product.productId._id)}
                                             className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600 mt-2 sm:mt-0"
                                         >
                                             Remove
                                         </button>
                                     </td>
-                                </tr>
+                                </tr>)
                             ))}
                         </tbody>
                     </table>
