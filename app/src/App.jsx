@@ -36,7 +36,7 @@ function AdminLayout() {
   return (
     <div className="flex min-h-screen">
       <ToastContainer/>
-       <div className="w-1/5">
+       <div className="flex flex-col w-1/5  rounded-lg">
         <AdminSideBar />
       </div>
       <div className="w-4/5 p-6 flex flex-col h-full">
@@ -54,7 +54,7 @@ function UserLayout() {
   const hideNavbarFooter = location.pathname === '/login' || location.pathname === '/signup';
 
   return (
-    <>
+    <div>
       <ToastContainer />
       <div className='px-6 sm:px-[8vw] md:px-[10vw] lg:px-[12vw]'>
         {/* Conditionally render Navbar and Footer */}
@@ -63,7 +63,7 @@ function UserLayout() {
         <Outlet />
         {!hideNavbarFooter && <Footer />}
       </div>
-    </>
+    </div>
   );
 }
 

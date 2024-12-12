@@ -2,10 +2,15 @@ import { useState, useEffect, useContext } from "react";
 import babyImage from "../assets/baby1.jpg";
 import { Link, NavLink } from "react-router-dom";
 import { ShopContext } from "../Context/ShopContext"
+import { UserContext } from "../Context/UserContext";
+import { WishlistContext } from "../Context/WishlistContext"
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 
 const Home = () => {
   const { products } = useContext(ShopContext); // Access products from context
   const [newArrivalProducts, setNewArrivalProducts] = useState([]);
+  const {currentUser} = useContext(UserContext)
+  const {addToWishlist,userWishlist} = useContext(WishlistContext)
 
   useEffect(() => {
     if (products) {
@@ -15,6 +20,11 @@ const Home = () => {
       setNewArrivalProducts(filteredProducts);
     }
   }, [products]);
+
+  const handleAddToWishlist = (productId) => {
+    addToWishlist(productId); 
+};
+
 
   return (
     <>
@@ -98,20 +108,34 @@ const Home = () => {
       <h3 className="text-3xl font-bold text-gray-800 text-center">
         New Arrivals
       </h3>
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 hover:">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 ">
         {newArrivalProducts.map((product) => (
           <NavLink
-            key={product._id} to={`/product/${product._id}`}
-            className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg hover:scale-105  transition-transform duration-300"
-          >
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-48 object-cover rounded-lg mb-4"
-            />
-            <h4 className="text-lg font-semibold">{product.name}</h4>
-            <p className="text-black mt-2 font-bold">${product.price}</p>
-          </NavLink>
+          key={product._id}
+          to={`/product/${product._id}`}
+          className="p-4 bg-white rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 relative"
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-48 object-cover rounded-lg mb-4"
+          />
+          <h4 className="text-lg font-semibold">{product.name}</h4>
+          <p className="text-black mt-2 font-bold">${product.price}</p>
+          {currentUser && (
+            <div
+              onClick={() => handleAddToWishlist(product)}
+              className="absolute bottom-4 right-4 cursor-pointer text-red-500"
+            >
+              {userWishlist.some((item) => item._id === product._id) ? (
+                <FaHeart size={18} />
+              ) : (
+                <FaRegHeart size={18} />
+              )}
+            </div>
+          )}
+        </NavLink>
+        
         ))}
       </div>
       </div>

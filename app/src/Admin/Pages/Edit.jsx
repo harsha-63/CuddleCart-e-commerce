@@ -45,7 +45,7 @@ const Edit = () => {
         if (product) {
             try {
                 const updatedProduct = { ...product, name, description, image, price: parseFloat(price) };
-                await axios.patch(`http://localhost:4000/products/${product.id}`, updatedProduct);
+                await axios.patch(`http://localhost:3002/products/${product.id}`, updatedProduct);
                 setProducts(prevProducts =>
                     prevProducts.map(p => (p.id === product.id ? updatedProduct : p))
                 );

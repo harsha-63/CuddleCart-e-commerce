@@ -1,30 +1,57 @@
 
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 import {toast} from 'react-toastify'
-import axios from "axios";
-import { UserContext } from "../../Context/UserContext";
+import axios from "axios"
+import Cookies from 'js-cookie'
 
 const Action = () => {
-    const { users } = useContext(UserContext);
+   
     const { id } = useParams();
     const [user, setUser] = useState(null);
     const [isBlocked, setIsBlocked] = useState(false);
+    const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (users) {
-            const foundUser = users.find((customer) => customer.id === id);
-            setUser(foundUser || null);
+        const fetchUserById = async () => {
+          try {
+            const token = Cookies.get("token");
+            if (!token) {
+              throw new Error("Token not found");
+            }
+    
+            const response = await axios.get(`http://localhost:3002/admin/user/${id}`, {
+              headers: {
+                Authorization: `Bearer ${token}`, // Attach the token
+              },
+            });
+            console.log(response.data.user);
+            
+            setUser(response.data.user);
+            setLoading(false);
+          } catch (err) {
+            console.error("Error fetching user by ID:", err);
+            setError("Failed to fetch user details. Please try again later.");
+            setLoading(false);
+          }
+        };
+    
+        if (id) {
+          fetchUserById();
         }
-    }, [id, users]);
+      }, [id]);
 
     useEffect(() => {
         if (user) {
             setIsBlocked(user.isBlock);
         }
     }, [user]);
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p className="text-red-500">{error}</p>;
+    if (!user) return <p>No user found.</p>;
 
     const UserRole = async () => {
         if (user) {
@@ -74,7 +101,7 @@ const Action = () => {
                         </h3>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     <h3 className="text-xl font-semibold mb-2">Orders:</h3>
                     {user.order.length > 0 ? (
                         <table className="min-w-full bg-white border border-gray-300 rounded">
@@ -105,7 +132,7 @@ const Action = () => {
                     ) : (
                         <p>No orders found for this user.</p>
                     )}
-                </div>
+                </div> */}
 
                 
                 <div className="flex justify-center gap-4 h-10">
