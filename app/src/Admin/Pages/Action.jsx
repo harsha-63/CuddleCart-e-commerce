@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import {toast} from 'react-toastify'
 import axios from "axios"
 import Cookies from 'js-cookie'
+import axiosErrorManager from "../../../utilities/axiosErrorManager";
 
 const Action = () => {
    
@@ -67,20 +68,36 @@ const Action = () => {
         }
     };
 
-    const BlockUser = async () => {
-        const newBlockStatus = !isBlocked;
-        setIsBlocked(newBlockStatus);
-        if (user) {
-            const updatedUser = { ...user, isBlock: !user.isBlock };
-            try {
-                await axios.patch(`http://localhost:4000/user/${user.id}`, { isBlock: updatedUser.isBlock });
-                setUser(updatedUser);
-                toast(`${updatedUser.isBlock ? "User blocked" : "User unblocked"}`);
-            } catch (error) {
-                console.error("Failed to update user block status:", error);
-            }
+   
+
+const blockUser = async (id) => {
+    setLoading(true);
+    try {
+        // Retrieve the token from cookies
+        const token = Cookies.get("token");
+        if (!token) {
+            throw new Error("Token not found");
         }
-    };
+        const response = await axios.patch(
+            `http://localhost:3002/admin/users/block/${id}`,
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`, 
+                },
+            }
+        );
+        console.log(response.data);
+        
+        setUser(response.data.user);
+        toast.success(response.data.message);
+    } catch (err) {
+        toast.error(axiosErrorManager(err));
+    } finally {
+        setLoading(false);
+    }
+};
+
 
     if (!user) {
         return <div>Loading user information...</div>;
@@ -144,13 +161,15 @@ const Action = () => {
                     </button>
 
                     <button
-                        onClick={BlockUser}
+                        onClick={() => blockUser(user._id)}
+                        // Properly disable the button
                         className={`${
-                          user.isBlock ? "bg-red-500" : "bg-green-500"
-                        } hover:bg-opacity-80 text-white py-2 px-4 rounded-lg`}
+                            user.isBlock ? "bg-red-500" : "bg-green-500"
+                        } py-2 px-4 rounded-lg `}
                     >
                         {user.isBlock ? "Unblock" : "Block"}
                     </button>
+
                 </div>
 
             </div>

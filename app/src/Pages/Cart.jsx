@@ -5,7 +5,6 @@ import Cookies from "js-cookie";
 import axiosErrorManager from '../../utilities/axiosErrorManager';  
 import axios from 'axios';
 import { UserContext } from '../Context/UserContext';
-import { AiOutlineClose } from 'react-icons/ai'; // For remove icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
@@ -128,7 +127,7 @@ const Cart = () => {
                         Total Price: ${calculateTotalPrice()}
                     </p>
                     <NavLink to="/payment">
-                        <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 w-full sm:w-auto">
+                        <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 w-full sm:w-auto ">
                             Proceed to Payment
                         </button>
                     </NavLink>
