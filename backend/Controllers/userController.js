@@ -18,7 +18,7 @@ export const getUserById = async (req, res, next) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return next(new CustomError("Invalid user ID format", 400));
+    return next(new CustomError("Invalid ID format", 400));
   }
   const user = await Users.findById(id, { password: 0 });
   if (!user) {
@@ -32,7 +32,7 @@ export const getUserById = async (req, res, next) => {
 export const blockUser = async (req, res, next) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return next(new CustomError("Invalid user ID format", 400));
+    return next(new CustomError("Invalid ID format", 400));
   }
   const user = await Users.findById(id);
 

@@ -9,8 +9,8 @@ authRouter
 .post('/register',registerUser)
 .post('/login', loginUser)
 .post('/admin',adminLogin)
-.post("/refreshtoken",trycatch(refreshingToken)) //handling token refresh
-.post("/logout",trycatch(logout)) // 
+.post("/refreshtoken",trycatch(refreshingToken)) 
+.post("/logout",trycatch(logout)) 
 
 
 export default authRouter;

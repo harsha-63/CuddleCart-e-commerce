@@ -86,7 +86,7 @@ export const loginUser = async (req, res, next) => {
   });
 
 
-  res.json({ success: true, message: "Logged in successfully", token,currentUser });
+  res.json({ success: true, message: "Logged in successfully", token });
 };
 
 
@@ -123,7 +123,6 @@ export const refreshingToken = async (req, res, next) => {
   if (!refreshToken) {
     next(new CustomError("No refresh token found", 401));
   }
-  // Verifying the refresh token
   const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_TOKEN);
   const user = await User.findById(decoded.id);
   if (!user) {
@@ -133,7 +132,6 @@ export const refreshingToken = async (req, res, next) => {
   res.status(200).json({ message: "Token refreshed", token: token });
 };
 
-// Controller to handle logout
 export const logout = async (req, res, next) => {
   const cookieCleared = res.clearCookie("refreshToken", {
     httpOnly: true,

@@ -77,7 +77,7 @@ export const orderStripe = async (req, res, next) => {
 ));
 console.log(line_items);
 
-
+//gateway initialization
   const stripeClient = new stripe(process.env.STRIPE_SECRET_KEY);
 
   // Create a Stripe session
@@ -85,8 +85,8 @@ console.log(line_items);
     payment_method_types: ['card'],
     line_items,
     mode: 'payment',
-    success_url: `http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `http://localhost:3000/cancel`,
+    success_url: `http://localhost:3002/success?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `http://localhost:3002/cancel`,
   });
 
   const newTotal=Math.round(totalAmount)
@@ -148,9 +148,8 @@ export const getOrders = async(req,res)=>{
       .populate("products.productId", "name price image")
       .sort({ createdAt: -1 });
       
-        // sending the orders or an empty array if none found
      if (orders) {
-        res.status(200).json({ data: orders });
+        res.status(200).json( orders );
      } else {
         res.status(200).json({message:"No orders for this user "});
     }
@@ -221,7 +220,7 @@ export const getTotalOrders = async(req,res)  =>{
 export const getOrderByUser = async (req, res, next) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return next(new CustomError("Invalid user ID format", 400));
+    return next(new CustomError("Invalid ID format", 400));
   }
   const orders = await Order.find({ userId: id })
     .populate("products.productId", "name price image")

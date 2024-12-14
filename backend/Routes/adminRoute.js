@@ -20,8 +20,9 @@ admin
     .get('/product/:id',(getProductById))
     .get('/products/category/:category',(getProductsByCategory))
     .post("/products",verifyAdminToken,upload.single("image"), trycatch(createProduct))
-    .patch("/products/:productId",verifyAdminToken,upload.single("image"),trycatch (updateProduct))
-    .delete("/product/:productId",verifyAdminToken, trycatch(deleteProduct))
+    .patch("/products/:id",verifyAdminToken,upload.single("image"),trycatch (updateProduct))
+    .patch("/product/:id",verifyAdminToken, trycatch(deleteProduct))
+   
     
 
 //admin routes for managing orderDetails

@@ -20,7 +20,7 @@ export const getAllProducts = async (req, res, next) => {
 export const getProductById = async (req, res, next) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return next(new CustomError("Invalid product ID format", 400));
+    return next(new CustomError("Invalid ID format", 400));
   }
   const product = await Products.findById(id);
   if (!product) {
@@ -40,14 +40,7 @@ export const getProductsByCategory = async (req, res, next) => {
   res.status(200).json({ success: true, data: products });
 };
 
-export const getRelatedProducts = async (req, res) => {
-  const { category, excludeId } = req.query;
-  const relatedProducts = await Products.find({
-    category,
-    _id: { $ne: excludeId },
-  });
-  res.json(relatedProducts);
-};
+
 
 
                                     //admin functionalities
@@ -78,13 +71,13 @@ export const createProduct  = async (req,res,next)=>{
 }  
   //function for updateProduct
   export const updateProduct = async (req, res, next) => {
-    const { productId } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(productId)) {
-      return next(new CustomError("Invalid product ID format", 400));
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return next(new CustomError("Invalid ID format", 400));
     }
   
     // Find the product
-    const product = await Products.findById(productId);
+    const product = await Products.findById(id);
     if (!product) {
       return next(new CustomError("Product not found", 404));
     }
@@ -101,7 +94,7 @@ export const createProduct  = async (req,res,next)=>{
   
     // Update the product with only provided fields
     const updatedProduct = await Products.findByIdAndUpdate(
-      productId,
+      id,
       { $set: updatedData },
       { new: true } 
     );
@@ -120,13 +113,13 @@ export const createProduct  = async (req,res,next)=>{
   
   //function for deleteProduct
   export const deleteProduct = async (req, res, next) => {
-    const { productId } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(productId)) {
-      return next(new CustomError("Invalid product ID format", 400));
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return next(new CustomError("Invalid ID format", 400));
     }
   
     // Soft delete the product by setting isDeleted to true
-    const product = await Products.findById(productId);
+    const product = await Products.findById(id);
   
     if (!product) {
       return next(new CustomError("Product not found", 404));
@@ -134,8 +127,23 @@ export const createProduct  = async (req,res,next)=>{
     product.isDeleted = !product.isDeleted;
     await product.save();
   
-    res.status(200).json({ success: true, message: "Product deleted successfully", product });
+    res.status(200).json({status: "success",message: `Product ${product.isDeleted? "deleted" : "restored"} successfully`});
   };
+
+   // function for restoring deleted products
+  //  export const restoreProducts = async (req, res, next) => {
+  //   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+  //     return next(new CustomError("Invalid ID format", 400)); 
+  // }
+  //   const restoredProduct = await Products.findByIdAndUpdate(
+  //     req.params.id,
+  //     { $set: { isDeleted: false } },
+  //     { new: true }
+  //   );
+  //   if (!restoredProduct) return next(new CustomError("Product not found", 404));
+  //   res.status(200).json({
+  //     message: "Product restored successfully"});
+  // };
   
 
  
