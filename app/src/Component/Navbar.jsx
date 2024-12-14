@@ -20,9 +20,9 @@ const Navbar = () => {
   return (
     <header className="relative pt-8 pb-5">
 
-      <div className="flex flex-grow justify-between items-center w-full max-w-7xl ">
-        <NavLink to='/' className="font-atma text-3xl font-semibold text-amber-950 ml-2">Cuddle Cart</NavLink>
-        <nav className="hidden sm:flex items-center gap-6 text-base">
+      <div className="flex flex-grow justify-between items-center w-full ">
+        <NavLink to='/' className="font-atma text-4xl font-semibold text-amber-950 ml-8">Cuddle Cart</NavLink>
+        <nav className="hidden sm:flex items-center gap-12 text-base ml-0">
           <NavLink to="/" className="hover:text-amber-800  text-black transition">Home</NavLink>
           <NavLink to="/collection" className="hover:text-amber-800 text-black transition">Collection</NavLink>
           <NavLink to="/about" className="hover:text-amber-800 text-black transition">About</NavLink>
@@ -32,7 +32,7 @@ const Navbar = () => {
           ) : null}
         </nav>
 
-        <div className="flex items-center space-x-4 sm:space-x-6">
+        <div className="sm:flex items-center gap-6  mr-12">
           <FontAwesomeIcon
             icon={faSearch}
             size="lg"

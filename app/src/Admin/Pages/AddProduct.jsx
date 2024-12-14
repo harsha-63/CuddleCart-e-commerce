@@ -28,7 +28,7 @@ const AddProduct = () => {
         e.preventDefault();
         if (formData.name && formData.description && formData.price) {
             try {
-                await axios.post('http://localhost:4000/products', formData);
+                await axios.post('http://localhost:3002/admin/products', formData);
                 toast("Product added successfully!");
                 fetchdata();
                 setFormData({

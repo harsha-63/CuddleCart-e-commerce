@@ -1,36 +1,20 @@
 import { faDashboard, faListAlt, faShoppingBag, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavLink, useLocation } from "react-router-dom";
-import Dashbord from "../Pages/Dashbord";
-import Users from "../Pages/Users";
-import Product from "../Pages/Product";
-import Order from "../../Pages/Order";
+import { NavLink, } from "react-router-dom";
+// import Dashbord from "../Pages/Dashbord";
+// import Users from "../Pages/Users";
+// import Product from "../Pages/Product";
+// import Order from "../../Pages/Order";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 
 const AdminSidebar = () => {
-     const location=useLocation();
      const {logOutUser}=useContext(CartContext)
 
-     const render=()=>{
-        switch(location.pathname){
-          case '/dashbord':
-            return <Dashbord/>
-          case '/users':
-            return <Users/>
-          case '/items':
-            return <Product/>
-          case '/order':
-            return <Order/>
-          default:
-            return <Dashbord/>
-        }
-     }
-
-
+    
   return (
     <div className="flex">
-      {/* Sidebar */}
+      
       <div className="h-screen fixed top-0 left-0 w-1/5 bg-orange-200 text-white flex flex-col justify-between shadow-lg">
         {/* Branding */}
         <div className="p-6 mt-10 text-center">
@@ -96,10 +80,7 @@ const AdminSidebar = () => {
         </div>
       </div>
   
-      {/* Main Content */}
-      <div className="ml-1/5 w-4/5 p-6">
-        {render()}
-      </div>
+     
     </div>
   );
   

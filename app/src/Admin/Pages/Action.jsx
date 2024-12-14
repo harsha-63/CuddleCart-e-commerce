@@ -54,26 +54,13 @@ const Action = () => {
     if (error) return <p className="text-red-500">{error}</p>;
     if (!user) return <p>No user found.</p>;
 
-    const UserRole = async () => {
-        if (user) {
-            const updatedUser = { ...user, isAdmin: !user.isAdmin };
-
-            try {
-                await axios.patch(`http://localhost:4000/user/${user.id}`, { isAdmin: updatedUser.isAdmin });
-                setUser(updatedUser);
-                toast(`User role changed to ${updatedUser.isAdmin ? "Admin" : "User"}`);
-            } catch (error) {
-                console.error("Failed to update user role:", error);
-            }
-        }
-    };
+   
 
    
 
 const blockUser = async (id) => {
     setLoading(true);
     try {
-        // Retrieve the token from cookies
         const token = Cookies.get("token");
         if (!token) {
             throw new Error("Token not found");
@@ -154,15 +141,7 @@ const blockUser = async (id) => {
                 
                 <div className="flex justify-center gap-4 h-10">
                     <button
-                        onClick={UserRole}
-                        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
-                    >
-                        Change Role to {user.isAdmin ? "User" : "Admin"}
-                    </button>
-
-                    <button
                         onClick={() => blockUser(user._id)}
-                        // Properly disable the button
                         className={`${
                             user.isBlock ? "bg-red-500" : "bg-green-500"
                         } py-2 px-4 rounded-lg `}

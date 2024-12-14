@@ -56,7 +56,7 @@ function UserLayout() {
   return (
     <div>
       <ToastContainer />
-      <div className='px-6 sm:px-[8vw] md:px-[10vw] lg:px-[12vw]'>
+      <div className='px-6 sm:px-[2vw] md:px-[4vw] lg:px-[6vw]'>
         {/* Conditionally render Navbar and Footer */}
         {!hideNavbarFooter && <Navbar />}
         <SearchBar />
@@ -67,7 +67,7 @@ function UserLayout() {
   );
 }
 
-
+// sm:px-[8vw] md:px-[10vw] lg:px-[12vw]
 function App() {
   const { currentUser } = useContext(UserContext)
 
