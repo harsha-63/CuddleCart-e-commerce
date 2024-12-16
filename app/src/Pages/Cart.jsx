@@ -65,7 +65,6 @@ const Cart = () => {
                     <thead>
                         <tr className="bg-gray-200 text-gray-700 text-sm font-bold">
                             <th className="py-3 px-4 text-left">Product</th>
-                            {/* <th className="py-3 px-4 text-left">Description</th> */}
                             <th className="py-3 px-4 text-left">Price</th>
                             <th className="py-3 px-4 text-left">Quantity</th>
                             <th className="py-3 px-4 text-left">Subtotal</th>
@@ -84,7 +83,6 @@ const Cart = () => {
                                         />
                                         <span className="font-semibold">{product.productId.name}</span>
                                     </td>
-                                    {/* <td className="py-4 px-4">{product.productId.description}</td> */}
                                     <td className="py-4 px-4">${product.productId.price}</td>
                                     <td className="py-4 px-4">
                                         <div className="flex items-center">

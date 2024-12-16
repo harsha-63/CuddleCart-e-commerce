@@ -55,7 +55,7 @@ const Home = () => {
 
 
   <div className="text-center mb-8">
-    <h3 className="text-3xl font-bold text-gray-800">Categories</h3>
+    <h3 className="text-3xl font-serif text-gray-800">Categories</h3>
     <p className="text-gray-600 mt-2">
       Explore our wide range of baby products
     </p>
@@ -145,7 +145,7 @@ const Home = () => {
               className="flex flex-col items-center justify-center bg-cover bg-center p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 h-96"
               style={{
                 backgroundImage:
-                  "url(https://i.pinimg.com/736x/cd/dd/12/cddd123eb8c006b78e8a78b8501ad8b5.jpg)",
+                  "url(https://i.pinimg.com/736x/7a/a6/6a/7aa66ac460b8611d152c149f10fc7187.jpg)",
               }}
             >
               <div className="absolute inset-0 bg-black opacity-40 rounded-lg"></div>
@@ -232,7 +232,7 @@ const Home = () => {
     {/* New Arrivals Section */}
     <div className="mt-20 ">
       <div className="text-center mb-20">
-      <h3 className="text-3xl font-bold text-gray-900 text-center ">
+      <h3 className="text-3xl font-serif text-gray-900 text-center ">
         New Arrivals
       </h3>
       <p className="text-gray-600 mt-2">

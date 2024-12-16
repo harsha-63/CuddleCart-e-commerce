@@ -266,7 +266,7 @@ export const getTotalRevenue = async (req, res) => {
 //update ShippingStatus
 export const shippingStatus = async (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    return next(new CustomError("Invalid order ID format", 400));
+    return next(new CustomError("Invalid ID format", 400));
   }
   
   const order = await Order.findOne({ _id: req.params.id });
@@ -289,7 +289,7 @@ export const shippingStatus = async (req, res, next) => {
 //update paymentStatus
 export const paymentStatus = async (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    return next(new CustomError("Invalid order ID format", 400));
+    return next(new CustomError("Invalid ID format", 400));
   }
   const order = await Order.findOne({ _id: req.params.id });
   if (!order) {
