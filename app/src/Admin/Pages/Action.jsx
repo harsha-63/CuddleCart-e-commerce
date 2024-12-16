@@ -1,159 +1,188 @@
-
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
-import {toast} from 'react-toastify'
-import axios from "axios"
-import Cookies from 'js-cookie'
+import { toast } from "react-toastify";
+import axios from "axios";
+import Cookies from "js-cookie";
 import axiosErrorManager from "../../../utilities/axiosErrorManager";
 
 const Action = () => {
-   
-    const { id } = useParams();
-    const [user, setUser] = useState(null);
-    const [isBlocked, setIsBlocked] = useState(false);
-    const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  const [user, setUser] = useState(null);
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchUserById = async () => {
-          try {
-            const token = Cookies.get("token");
-            if (!token) {
-              throw new Error("Token not found");
-            }
-    
-            const response = await axios.get(`http://localhost:3002/admin/user/${id}`, {
-              headers: {
-                Authorization: `Bearer ${token}`, // Attach the token
-              },
-            });
-            console.log(response.data.user);
-            
-            setUser(response.data.user);
-            setLoading(false);
-          } catch (err) {
-            console.error("Error fetching user by ID:", err);
-            setError("Failed to fetch user details. Please try again later.");
-            setLoading(false);
-          }
-        };
-    
-        if (id) {
-          fetchUserById();
-        }
-      }, [id]);
-
-    useEffect(() => {
-        if (user) {
-            setIsBlocked(user.isBlock);
-        }
-    }, [user]);
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p className="text-red-500">{error}</p>;
-    if (!user) return <p>No user found.</p>;
-
-   
-
-   
-
-const blockUser = async (id) => {
-    setLoading(true);
-    try {
+  useEffect(() => {
+    const fetchUserById = async () => {
+      try {
         const token = Cookies.get("token");
         if (!token) {
-            throw new Error("Token not found");
+          throw new Error("Token not found");
         }
-        const response = await axios.patch(
-            `http://localhost:3002/admin/users/block/${id}`,
-            {},
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`, 
-                },
-            }
+
+        const response = await axios.get(
+          `http://localhost:3002/admin/user/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
-        console.log(response.data);
-        
+
         setUser(response.data.user);
-        toast.success(response.data.message);
+      } catch (err) {
+        console.error("Error fetching user by ID:", err);
+        setError("Failed to fetch user details. Please try again later.");
+      }
+    };
+
+    const fetchUserOrders = async () => {
+        try {
+            const token = Cookies.get("token");
+            if (!token) {
+                throw new Error("Token is missing.");
+            }
+    
+            const response = await axios.get(`http://localhost:3002/admin/orders/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Pass the token here
+                },
+            });
+    
+            // Handle the response
+            if (Array.isArray(response.data.data)) {
+                setOrders(response.data.data);
+            } else {
+                throw new Error("Data is not in the expected format.");
+            }
+            setLoading(false);
+        } catch (err) {
+            setError("Failed to fetch orders. Please try again later.");
+            setLoading(false);
+        }
+    };
+    
+
+    if (id) {
+      fetchUserById();
+      fetchUserOrders();
+    }
+
+    setLoading(false);
+  }, [id]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
+
+  const blockUser = async (id) => {
+    try {
+      const token = Cookies.get("token");
+      if (!token) {
+        throw new Error("Token not found");
+      }
+      const response = await axios.patch(
+        `http://localhost:3002/admin/users/block/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setUser(response.data.user);
+      toast.success(response.data.message);
     } catch (err) {
-        toast.error(axiosErrorManager(err));
-    } finally {
-        setLoading(false);
+      toast.error(axiosErrorManager(err));
     }
-};
+  };
 
+  if (!user) {
+    return <div>Loading user information...</div>;
+  }
 
-    if (!user) {
-        return <div>Loading user information...</div>;
-    }
-
-    return (
-        <div className="container mx-auto p-6">
-            <div className="grid grid-rows-3 gap-2 bg-white shadow-lg rounded-lg p-2">
-                <div className="grid grid-cols-2 gap-4"> 
-                    <div className="flex justify-center items-center">
-                    <FontAwesomeIcon icon={faUser} size="8x" />
-                    </div>
-                    <div className="flex flex-col justify-center">
-                        <h2 className="text-2xl font-semibold mb-2">Name: {user.name}</h2>
-                        <h3 className="text-lg mb-2">Email: {user.email}</h3>
-                        <h3 className="text-lg font-semibold mb-2">Role: 
-                            <span className="ml-2">{user.isAdmin ? "Admin" : "User"}</span>
-                        </h3>
-                    </div>
-                </div>
-                {/* <div>
-                    <h3 className="text-xl font-semibold mb-2">Orders:</h3>
-                    {user.order.length > 0 ? (
-                        <table className="min-w-full bg-white border border-gray-300 rounded">
-                            <thead className="bg-gray-200">
-                                <tr>
-                                    <th className="py-2 px-4 text-left">Product Name</th>
-                                    <th className="py-2 px-4 text-left">Quantity</th>
-                                    <th className="py-2 px-4 text-left">Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {user.order.map((product) => (
-                                    <tr key={product?.id} className="border-t">
-                                        <td className="py-2 px-4 flex items-center">
-                                            <img
-                                                src={product?.image}
-                                                alt={product?.name}
-                                                className="w-12 h-12 object-cover rounded mr-2"
-                                            />
-                                            {product?.name}
-                                        </td>
-                                        <td className="py-2 px-4">{product?.quantity}</td>
-                                        <td className="py-2 px-4">${product?.price?.toFixed(2)}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    ) : (
-                        <p>No orders found for this user.</p>
-                    )}
-                </div> */}
-
-                
-                <div className="flex justify-center gap-4 h-10">
-                    <button
-                        onClick={() => blockUser(user._id)}
-                        className={`${
-                            user.isBlock ? "bg-red-500" : "bg-green-500"
-                        } py-2 px-4 rounded-lg `}
-                    >
-                        {user.isBlock ? "Unblock" : "Block"}
-                    </button>
-
-                </div>
-
-            </div>
+  return (
+    <div className="container mx-auto ">
+      <div className="grid grid-rows-3 gap-2 bg-white shadow-lg rounded-lg ">
+        <div className="grid grid-cols-2 gap-4  mb-20">
+          <div className="flex justify-center items-center  bg-slate-400">
+            <FontAwesomeIcon icon={faUser} size="6x" />
+          </div>
+          <div className="flex flex-col justify-center">
+            <h2 className="text-2xl font-semibold mb-2">Name: {user.name}</h2>
+            <h3 className="text-lg mb-2">Email: {user.email}</h3>
+            <h3 className="text-lg font-semibold mb-2">
+              Role:{" "}
+              <span className="ml-2">{user.isAdmin ? "Admin" : "User"}</span>
+            </h3>
+            <div className="">
+          <button
+            onClick={() => blockUser(user._id)}
+            className={`${
+              user.isBlock ? "bg-red-500" : "bg-green-500"
+            } py-2 px-4 rounded-lg mr-96 ml-6 `}
+          >
+            {user.isBlock ? "Unblock" : "Block"}
+          </button>
         </div>
-    );
+          </div>
+         
+        </div>
+       
+        <div className="container mx-auto  ">
+            <h2 className="px-5 mb-8 font-serif text-3xl">Orders</h2>
+            {orders.map((order) => (
+                <div key={order._id} className=" bg-white shadow-lg rounded-lg px-5 pb-">
+                    <h2 className="text-xl font-semibold mb-4">Order ID: {order._id}</h2>
+
+                    <table className="min-w-full bg-white border border-gray-300 rounded">
+                        <thead className="bg-gray-200">
+                            <tr>
+                                <th className="py-2 px-4 text-left">Product Name</th>
+                                <th className="py-2 px-4 text-left">Price</th>
+                                <th className="py-2 px-4 text-left">Image</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {order.products && order.products.length > 0 && order.products.map((product,index) => (
+                                <tr key={index} className="border-t">
+                                    <td className="py-2 px-4">{product.productId.name}</td>
+                                    <td className="py-2 px-4">${product.productId.price}</td>
+                                    <td className="py-2 px-4">
+                                        <img
+                                            src={product.productId.image}
+                                            alt={product.productId.name}
+                                            className="w-12 h-12 object-cover rounded"
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+
+                    <div className="mt-4">
+                        <p className="text-base font-semibold">Total Amount: ${order.totalAmount}</p>
+                        <p className="text-base font-semibold">Shipping Status: {order.shippingStatus}</p>
+                        <p className="text-base font-semibold">Payment Status: {order.paymentStatus}</p>
+                        <p className="text-base font-semibold">Payment Method: {order.paymentMethod}</p>
+                        <div className="mt-2">
+                            <p className="font-medium">User Details:</p>
+                            <p>Name: {order.userDetails.name}</p>
+                            <p>Phone: {order.userDetails.phone}</p>
+                            <p>Address: {order.userDetails.address}</p>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+
+       
+      </div>
+    </div>
+  );
 };
 
 export default Action;
