@@ -113,6 +113,21 @@ export const adminLogin = async(req,res,next)=>{
         secure: false,
         sameSite: "none",
       });
+
+      const currentUser = {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      };
+      //sending user details to client (for curr user)
+      res.cookie("currentUser", JSON.stringify(currentUser));
+      
+      res.cookie("token", token, {
+        httpOnly: false,
+        secure: true,
+        sameSite: "none",
+      });
       res.json({success:true, message: "Logged in successfully", token });
   };  
 

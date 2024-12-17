@@ -47,17 +47,17 @@ const Action = () => {
     
             const response = await axios.get(`http://localhost:3002/admin/orders/${id}`, {
                 headers: {
-                    Authorization: `Bearer ${token}`, // Pass the token here
+                    Authorization: `Bearer ${token}`, 
                 },
             });
     
-            // Handle the response
             if (Array.isArray(response.data.data)) {
                 setOrders(response.data.data);
             } else {
                 throw new Error("Data is not in the expected format.");
             }
             setLoading(false);
+        // eslint-disable-next-line no-unused-vars
         } catch (err) {
             setError("Failed to fetch orders. Please try again later.");
             setLoading(false);
@@ -107,7 +107,7 @@ const Action = () => {
     <div className="container mx-auto ">
       <div className="grid grid-rows-3 gap-2 bg-white shadow-lg rounded-lg ">
         <div className="grid grid-cols-2 gap-4  mb-20">
-          <div className="flex justify-center items-center  bg-slate-400">
+          <div className="flex justify-center items-center ">
             <FontAwesomeIcon icon={faUser} size="6x" />
           </div>
           <div className="flex flex-col justify-center">

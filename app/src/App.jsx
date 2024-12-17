@@ -29,6 +29,8 @@ import Collection from './Pages/Collection'
 import { UserContext } from './Context/UserContext'
 import Users from './Admin/Pages/Users'
 import Wishlist from './Pages/Wishlist';
+import Orders from './Admin/Pages/Orders';
+import AdminLogin from './Admin/Components/AdminLogin';
 
 
 
@@ -51,7 +53,7 @@ function UserLayout() {
   const location = useLocation();  // Get the current route
 
   // Only render Navbar and Footer if the current route is not '/login' or '/signup'
-  const hideNavbarFooter = location.pathname === '/login' || location.pathname === '/signup';
+  const hideNavbarFooter = location.pathname === '/login' || location.pathname === '/signup'||location.pathname === '/Adminlogin';
 
   return (
     <div>
@@ -81,6 +83,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/Adminlogin' element={<AdminLogin />} />
           <Route path='/signup' element={<Signup />} />
           <Route path="/collection/:category" element={<CategoryPage />} />
           <Route path='/product/:id' element={<Details />} />
@@ -109,6 +112,7 @@ function App() {
             <Route path='/items' element={<Product />} />
             <Route path='/edit/:id' element={<Edit />} />
             <Route path='/add' element={<AddProduct />} />
+            <Route path='/orders' element={< Orders/>} />
           </Route>
         ) : (
           <Route path='/admin/*' element={<Navigate to='/*' replace />} />

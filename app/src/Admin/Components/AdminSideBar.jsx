@@ -54,7 +54,7 @@ const AdminSidebar = () => {
               </li>
             </NavLink>
             <NavLink
-              to="/order"
+              to="/orders"
               className="block px-4 py-3 hover:bg-amber-700 hover:text-white transition-all rounded-lg"
             >
               <li className="flex items-center">

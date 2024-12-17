@@ -1,47 +1,9 @@
-// import { createContext } from "react";
-// import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 
-
-
-
-
-// export const UserContext = createContext()
-// // eslint-disable-next-line react/prop-types
-// const UserProvider = ({ children }) => {
-//   const [currentUser, setCurrentUser] = useState(null);
-//   const [loading, setLoading] = useState(false);
-//   // const [cart, setCart] = useState([]);
-//   // const [wishlist, setWishlist] = useState([]);
-//   const navigate = useNavigate();
-
-//   const isAdmin = currentUser !== null && currentUser.isAdmin? true : false;
-
-// const registerUser = async (name,email,password)=>{
-//   const data = {
-//     name:name,
-//     email:email,
-//     password:password
-//   }
-
-// }
-
-// const value = {
-//   currentUser,setCurrentUser,loading,setLoading,registerUser
-// }
-// return (
-//   <UserContext.Provider value={value}>{children}</UserContext.Provider>
-// )
-// }
-
-// export default UserProvider
-
-
-
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState,useEffect } from "react";
 import Cookies from "js-cookie";  
 import axios from "axios";
 import { toast } from "react-toastify"
+import axiosErrorManager from "../../utilities/axiosErrorManager";
 
 
 
@@ -67,7 +29,6 @@ const UserProvider = ({ children }) => {
   const loginUser = async (email, password) => {
     try {
       const response = await axios.post("http://localhost:3002/auth/login", { email, password }, { withCredentials: true });
-      console.log("Response Data:", response.data);
       const user = Cookies.get("currentUser");
       setCurrentUser(JSON.parse(user));
       const { token } = response.data;
@@ -89,8 +50,23 @@ const UserProvider = ({ children }) => {
     }
   };
 
+  const loginAdmin = async (email, password) => {
+    try {
+      await axios.post(
+        "http://localhost:3002/auth/admin",
+        { email, password },
+        { withCredentials: true }
+      );
+      const cookieAdmin = Cookies.get("currentUser");
+      setCurrentUser(JSON.parse(cookieAdmin));
+      toast.success("Admin logged in successfully");
+    } catch (err) {
+      toast.error(axiosErrorManager(err));
+    }
+  };
 
-  const value = { currentUser, setCurrentUser,isAdmin,loading,setLoading,loginUser,logoutUser };
+
+  const value = { currentUser, setCurrentUser,isAdmin,loading,setLoading,loginUser,logoutUser,loginAdmin };
 
   return (
     <UserContext.Provider value={value}>
