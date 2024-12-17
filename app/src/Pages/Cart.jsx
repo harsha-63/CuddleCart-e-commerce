@@ -10,6 +10,7 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 const Cart = () => {
     const { setLoading } = useContext(UserContext);
+    const {calculateTotalPrice} = useContext(CartContext)
     const { userCart, setUserCart, removeFromCart } = useContext(CartContext);
 
     const updateCart = (productId, quantity) => {
@@ -47,12 +48,7 @@ const Cart = () => {
 
     const calculateSubtotal = (price, quantity) => (price * quantity).toFixed(2);
 
-    const calculateTotalPrice = () => {
-        return Array.isArray(userCart) && userCart.reduce(
-            (total, product) => total + product.productId.price * product.quantity, 
-            0
-        ).toFixed(2);
-    };
+    
 
     return (
         <div className="p-6 ">

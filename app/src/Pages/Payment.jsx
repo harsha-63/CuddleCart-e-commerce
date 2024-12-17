@@ -1,28 +1,79 @@
 import { useContext, useState } from 'react';
 import { CartContext } from '../Context/CartContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const PaymentPage = () => {
-  const { setUserOrder, setUserCart, userCart, patchUpdatedCart, } = useContext(CartContext);
+  const { setUserOrder, setUserCart, userCart, calculateTotalPrice } = useContext(CartContext);
   const navigate = useNavigate();
-  
+
   const [deliveryDetails, setDeliveryDetails] = useState({
-    fullName: '',
+    name: '',
     address: '',
-    phonenumber: '',
+    mobile: '',
     state: '',
     postalCode: '',
   });
-  const [paymentMethod, setPaymentMethod] = useState('creditCard');
+  const [paymentMethod, setPaymentMethod] = useState('Cash on delivery');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    alert('Payment was successful!');
-    setUserOrder((prev) => [...prev, ...userCart]);
-    await patchUpdatedCart([]);
-    setUserCart([]);
-    navigate('/');
+    const totalAmount = calculateTotalPrice(); 
+    const userDetails = { ...deliveryDetails };
+
+    if (!paymentMethod) {
+      toast.error('Please select a payment method.');
+      return;
+    }
+
+    try {
+      const token = Cookies.get('token');
+      if (!token) {
+        toast.error('You must be logged in to place an order.');
+        return;
+      }
+
+      if (paymentMethod === 'cash on delivery') {
+        // Cash on Delivery Logic
+        await axios.post(
+          'http://localhost:3002/user/order/cod',
+          { userDetails, totalAmount },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        toast.success('Order placed successfully for Cash on Delivery!');
+        setUserOrder((prev) => [...prev, ...userCart]);
+       
+        setUserCart([]);
+        navigate('/');
+      } else if (paymentMethod === 'card') {
+        // Stripe Payment Logic
+        const response = await axios.post(
+          'http://localhost:3002/user/order/stripe',
+          { userDetails, totalAmount },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        const { stripeUrl } = response.data;
+        window.location.href = stripeUrl; 
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error('Error processing your order. Please try again.');
+    }
   };
 
   const handleInputChange = (e) => {
@@ -38,70 +89,22 @@ const PaymentPage = () => {
         <div className="space-y-4">
           <h2 className="text-lg font-semibold">Delivery Details</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-              <label htmlFor="fullName" className="block text-sm font-medium mb-1">Full Name</label>
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                value={deliveryDetails.fullName}
-                onChange={handleInputChange}
-                className="w-full p-3 border rounded-md focus:ring focus:ring-indigo-300"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="address" className="block text-sm font-medium mb-1">Address</label>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                value={deliveryDetails.address}
-                onChange={handleInputChange}
-                className="w-full p-3 border rounded-md focus:ring focus:ring-indigo-300"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="phonenumber" className="block text-sm font-medium mb-1">Phone Number</label>
-              <input
-                type="text"
-                id="phonenumber"
-                name="phonenumber"
-                value={deliveryDetails.phonenumber}
-                onChange={handleInputChange}
-                className="w-full p-3 border rounded-md focus:ring focus:ring-indigo-300"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="state" className="block text-sm font-medium mb-1">State</label>
-              <input
-                type="text"
-                id="state"
-                name="state"
-                value={deliveryDetails.state}
-                onChange={handleInputChange}
-                className="w-full p-3 border rounded-md focus:ring focus:ring-indigo-300"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="postalCode" className="block text-sm font-medium mb-1">Postal Code</label>
-              <input
-                type="text"
-                id="postalCode"
-                name="postalCode"
-                value={deliveryDetails.postalCode}
-                onChange={handleInputChange}
-                className="w-full p-3 border rounded-md focus:ring focus:ring-indigo-300"
-                required
-              />
-            </div>
+            {['name', 'address', 'mobile', 'state', 'postalCode'].map((field) => (
+              <div key={field}>
+                <label htmlFor={field} className="block text-sm font-medium mb-1">
+                  {field.charAt(0).toUpperCase() + field.slice(1).replace(/([A-Z])/g, ' $1')}
+                </label>
+                <input
+                  type="text"
+                  id={field}
+                  name={field}
+                  value={deliveryDetails[field]}
+                  onChange={handleInputChange}
+                  className="w-full p-3 border rounded-md focus:ring focus:ring-indigo-300"
+                  required
+                />
+              </div>
+            ))}
           </div>
         </div>
         <div className="space-y-4">
@@ -111,34 +114,23 @@ const PaymentPage = () => {
               <input
                 type="radio"
                 name="paymentMethod"
-                value="creditCard"
-                checked={paymentMethod === 'creditCard'}
+                value="cash on delivery"
+                checked={paymentMethod === 'cash on delivery'}
                 onChange={(e) => setPaymentMethod(e.target.value)}
                 className="mr-2 focus:ring focus:ring-indigo-300"
               />
-              Credit Card
+              Cash on Delivery
             </label>
             <label className="flex items-center">
               <input
                 type="radio"
                 name="paymentMethod"
-                value="paypal"
-                checked={paymentMethod === 'paypal'}
+                value="card"
+                checked={paymentMethod === 'card'}
                 onChange={(e) => setPaymentMethod(e.target.value)}
                 className="mr-2 focus:ring focus:ring-indigo-300"
               />
-              PayPal
-            </label>
-            <label className="flex items-center">
-              <input
-                type="radio"
-                name="paymentMethod"
-                value="Gpay"
-                checked={paymentMethod === 'Gpay'}
-                onChange={(e) => setPaymentMethod(e.target.value)}
-                className="mr-2 focus:ring focus:ring-indigo-300"
-              />
-              Gpay
+              Card (Stripe)
             </label>
           </div>
         </div>
@@ -156,3 +148,4 @@ const PaymentPage = () => {
 };
 
 export default PaymentPage;
+

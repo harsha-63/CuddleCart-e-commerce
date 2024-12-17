@@ -27,7 +27,7 @@ const orderSchema = new mongoose.Schema({
     shippingStatus:{type:String, enum: ['processing', 'shipped', 'delivered', 'cancelled'],dafault:"processing"},
     userDetails: {
         name: { type: String, required: true },
-        phone: { type: String, required: true },
+        mobile: { type: String, required: true },
         address: { type: String, required: true }
       },
       sessionId: {  // For Stripe session tracking

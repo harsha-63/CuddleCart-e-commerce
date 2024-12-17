@@ -70,7 +70,7 @@ export const orderStripe = async (req, res, next) => {
       product_data: {
         name: product.productId.name, 
       },
-      unit_amount: Math.round(product.productId.price * product.quantity), 
+      unit_amount: Math.round(product.productId.price * 100), 
     },
     quantity: product.quantity,
   }

@@ -11,6 +11,13 @@ export const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [userCart, setUserCart] = useState([]);
   const { currentUser } = useContext(UserContext);
+
+  const calculateTotalPrice = () => {
+    return Array.isArray(userCart) && userCart.reduce(
+        (total, product) => total + product.productId.price * product.quantity, 
+        0
+    ).toFixed(2);
+};
  
 
   // Fetch the user's cart when the component mounts or `currentUser` changes
@@ -78,7 +85,7 @@ const CartProvider = ({ children }) => {
   };
   
 
-  const value = {userCart,setUserCart,addToCart,removeFromCart,getUserCart};
+  const value = {userCart,setUserCart,addToCart,removeFromCart,getUserCart,calculateTotalPrice};
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
