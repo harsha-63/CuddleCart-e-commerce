@@ -6,7 +6,7 @@ import mongoose from "mongoose"
 
 //function for getAllProducts
 export const getAllProducts = async (req, res, next) => {
-  const products = await Products.find({ isDeleted: false });
+  const products = await Products.find();
 
   if (!products || products.length === 0) {
     return next(new CustomError("No products available", 404));
@@ -81,9 +81,9 @@ export const createProduct  = async (req,res,next)=>{
     if (!product) {
       return next(new CustomError("Product not found", 404));
     }
-    if (product.isDeleted) {
-      return next(new CustomError("Cannot update a deleted product", 400));
-    }
+    // if (product.isDeleted) {
+    //   return next(new CustomError("Cannot update a deleted product", 400));
+    // }
     let updatedData = {};
     if (req.body) {
       updatedData = { ...req.body };

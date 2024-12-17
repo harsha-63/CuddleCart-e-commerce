@@ -5,7 +5,7 @@ export const ShopContext=createContext()
 // eslint-disable-next-line react/prop-types
 const ShopProvider = ({children}) => {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [categories, setCategories] = useState([]);

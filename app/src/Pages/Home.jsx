@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     if (products) {
       const filteredProducts = products.filter(
-        (product) => product.newArrival === true
+        (product) => product?.newArrival === true
       );
       setNewArrivalProducts(filteredProducts);
     }
@@ -256,16 +256,21 @@ const Home = () => {
                 <p className="text-gray-700 mt-2">${product.price.toFixed(2)}</p>
          </div>
           {currentUser && (
-            <div
-              onClick={() => handleAddToWishlist(product)}
-              className="absolute bottom-4 right-4 cursor-pointer text-red-500"
-            >
-              {userWishlist.some((item) => item._id === product._id) ? (
-                <FaHeart size={18} />
-              ) : (
-                <FaRegHeart size={18} />
-              )}
-            </div>
+                <div>
+                <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleAddToWishlist(product._id);
+                }}
+                className="text-red-600 hover:text-red-800  cursor-pointer ml-px"
+              >
+                {userWishlist.includes(product._id) ? (
+                  <FaHeart size={20} />
+                ) : (
+                  <FaRegHeart size={20} />
+                )}
+              </button>
+                </div>
           )}
         </NavLink>
         
