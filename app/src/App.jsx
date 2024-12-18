@@ -31,6 +31,7 @@ import Users from './Admin/Pages/Users'
 import Wishlist from './Pages/Wishlist';
 import Orders from './Admin/Pages/Orders';
 import AdminLogin from './Admin/Components/AdminLogin';
+import StripeSuccessPage from './Pages/StripeSuccess';
 
 
 
@@ -96,6 +97,7 @@ function App() {
               <Route path='/payment' element={<PaymentPage />} />
               <Route path='/order' element={<Order />} />
               <Route path='/wishlist' element={<Wishlist />} />
+              <Route path="/success/:sessionId" element={<StripeSuccessPage />} />
             </>
           )}
 
