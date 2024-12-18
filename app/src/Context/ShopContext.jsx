@@ -1,5 +1,5 @@
 import { createContext,useState ,useEffect} from "react";
-import axios from "axios";
+import axiosInstance from "../../utilities/axiosInstance";
 
 export const ShopContext=createContext()
 // eslint-disable-next-line react/prop-types
@@ -14,7 +14,7 @@ const ShopProvider = ({children}) => {
     useEffect(()=>{
       async function fetchdata() {
         try {
-          const {data} = await axios.get("http://localhost:3002/user/products");
+          const {data} = await axiosInstance.get("/user/products");
           setProducts(data.data);
           console.log(data.data);
           

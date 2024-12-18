@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
+
+import axiosInstance from "../../../utilities/axiosInstance";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import  {faUser}  from "@fortawesome/free-solid-svg-icons";
 // import { NavLink } from "react-router-dom";
@@ -39,34 +39,15 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = Cookies.get("token");
-
-        if (!token) {
-          console.error("No token found in cookies.");
-          return;
-        }
-
-        const response = await axios.get("http://localhost:3002/admin/stats/revenue", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axiosInstance.get("/admin/stats/revenue", );
         console.log(response.data);
         
         setTotalRevenue(response.data.totalRevenue);
 
-        const purchaseResponse = await axios.get("http://localhost:3002/admin/stats/purchase", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const purchaseResponse = await axiosInstance.get("/admin/stats/purchase", );
         setTotalOrders(purchaseResponse.data.totalPurchase);
 
-        const UserResponse = await axios.get("http://localhost:3002/admin/users", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const UserResponse = await axiosInstance.get("/admin/users",);
         const users = UserResponse.data?.users || [];
       setUsersCount(users.length);
       const newUsers = users.slice(-4)

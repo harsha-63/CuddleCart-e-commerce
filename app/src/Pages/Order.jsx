@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import axiosInstance from "../../utilities/axiosInstance";
 
 const Order = () => {
   const [userOrders, setUserOrders] = useState([]);
@@ -11,16 +10,7 @@ const Order = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const token = Cookies.get("token");
-        if (!token) {
-          console.error("No token found in cookies.");
-          return;
-        }
-        const response = await axios.get("http://localhost:3002/user/order", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axiosInstance.get("/user/order", );
 
         if (response.data && Array.isArray(response.data)) {
           setUserOrders(response.data);
@@ -43,22 +33,11 @@ const Order = () => {
 
   const handleCancelOrder = async (orderId) => {
     try {
-      const token = Cookies.get("token");
-      if (!token) {
-        toast.error("You must be logged in to cancel an order.");
-        return;
-      }
-      const response = await axios.patch(
-        `http://localhost:3002/user/order/cancel/${orderId}`,
+      const response = await axiosInstance.patch(
+        `/user/order/cancel/${orderId}`,
         {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
       );
       toast.success(response.data.message);
-      // Update the order list locally
       setUserOrders((prevOrders) =>
         prevOrders.map((order) =>
           order._id === orderId

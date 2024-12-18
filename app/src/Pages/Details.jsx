@@ -3,15 +3,13 @@ import { useParams, useNavigate, NavLink, useLocation } from 'react-router-dom';
 import { CartContext } from '../Context/CartContext';
 import { UserContext } from '../Context/UserContext';
 import { toast } from 'react-toastify';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import axiosErrorManager from '../../utilities/axiosErrorManager';
 import { ShopContext } from '../Context/ShopContext';
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const location = useLocation(); // Track location changes
+  const location = useLocation(); 
   const navigate = useNavigate();
 
   const { addToCart, userCart } = useContext(CartContext);
@@ -92,9 +90,6 @@ const ProductDetails = () => {
                   Add To Cart
                 </button>
               )}
-              <span>
-                <FontAwesomeIcon icon={faHeart} />
-              </span>
             </div>
           </div>
         </div>

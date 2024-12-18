@@ -222,14 +222,19 @@ export const getOrderByUser = async (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return next(new CustomError("Invalid ID format", 400));
   }
-  const orders = await Order.find({ userId: id })
-    .populate("products.productId", "name price image")
-    .sort({ createdAt: -1 });
-  if (!orders || orders.length === 0) {
-    return next(new CustomError("No orders found", 404));
+  
+  try {
+    const orders = await Order.find({ userId: id })
+      .populate("products.productId", "name price image")
+      .sort({ createdAt: -1 });
+
+    // Return an empty array if no orders are found
+    return res.status(200).json({ data: orders || [] });
+  } catch (err) {
+    next(err); // Pass unexpected errors to the error handler
   }
-  res.status(200).json({ data: orders });
 };
+
 
 
  //function for getTotalPurchase

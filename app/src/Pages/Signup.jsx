@@ -1,9 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate,Link } from "react-router-dom";
-import axios from "axios";
-import { UserContext } from "../Context/UserContext";
-import { toast } from 'react-toastify';
-import axiosErrorManager from "../../utilities/axiosErrorManager";
+import { UserContext } from "../Context/UserContext"
 
 const Signup = () => {
   const [Data, setData] = useState({
@@ -13,9 +10,10 @@ const Signup = () => {
   });
   
 
-  const navigate = useNavigate();
+ 
   const [cPassword, setcPassword] = useState('');
-  const { setLoading } = useContext(UserContext);
+  const { registerUser } = useContext(UserContext);
+  const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,24 +22,13 @@ const Signup = () => {
       [name]: value,
     }));
   };
-  const registerUser = async (name, email, password) => {
-    const data = { name, email, password };
-    setLoading(true);
-    try {
-      const response = await axios.post("http://localhost:3002/auth/register", data);
-      toast.success(response.data.message);  
-      navigate("/login");  
-    } catch (error) {
-      toast.error(axiosErrorManager(error)); 
-    } finally {
-      setLoading(false); 
-    }
-  };
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (Data.name && Data.email && Data.password && Data.password ===cPassword) {
       await registerUser(Data.name, Data.email, Data.password);
+      navigate("/login"); 
     } else {
       alert("Please fill in all fields and ensure passwords match.");
     }

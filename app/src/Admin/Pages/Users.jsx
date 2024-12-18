@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
-import Cookies from 'js-cookie'
-import axios from "axios"; // Ensure you have axios installed
+import axiosInstance from "../../../utilities/axiosInstance"; // Ensure you have axios installed
 
 
 const Users = () => {
@@ -14,16 +13,7 @@ const Users = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const token = Cookies.get("token"); 
-        if (!token) {
-          throw new Error("Token not found");
-        }
-
-        const response = await axios.get("http://localhost:3002/admin/users", {
-          headers: {
-            Authorization: `Bearer ${token}`, 
-          },
-        });
+        const response = await axiosInstance.get("/admin/users", );
         console.log("Response data:", response.data);
         setUsers(response.data.users);
         setLoading(false);

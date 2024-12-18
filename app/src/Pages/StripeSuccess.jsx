@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
-import Cookies from 'js-cookie'
-import {toast} from 'react-toastify'
+import axiosInstance from "../../utilities/axiosInstance";
+
 
 const StripeSuccessPage = () => {
   const { sessionId } = useParams();
@@ -13,20 +12,9 @@ const StripeSuccessPage = () => {
     console.log("Session ID:", sessionId);
     const fetchOrderStatus = async () => {
         try {
-          const token = Cookies.get('token');
-          if (!token) {
-            toast.error('You must be logged in to place an order.');
-            return;
-          }
-      
-          const response = await axios.put(
-            `http://localhost:3002/user/order/stripe/success/${sessionId}`,
-            {}, // Request body, if empty, should still be provided
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
+          const response = await axiosInstance.put(
+            `/user/order/stripe/success/${sessionId}`,
+            {},
           );
           console.log("API Response:", response.data);
           setStatus({ loading: false, success: true, message: response.data.message });

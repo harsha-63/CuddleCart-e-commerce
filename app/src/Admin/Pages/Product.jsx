@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import Cookies from "js-cookie";
-import axios from "axios";
+import axiosInstance from "../../../utilities/axiosInstance";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -14,15 +13,7 @@ const Product = () => {
 
   const fetchProducts = async () => {
     try {
-      const token = Cookies.get("token");
-      if (!token) throw new Error("Token not found");
-
-      const response = await axios.get("http://localhost:3002/admin/products", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
+      const response = await axiosInstance.get("/admin/products",);
       setProducts(response.data.data);
       const uniqueCategories = [...new Set(response.data.data.map((product) => product.category))];
       setCategories([...uniqueCategories]);
@@ -36,19 +27,11 @@ const Product = () => {
 
   const fetchProductsByCategory = async () => {
     try {
-      const token = Cookies.get("token");
-      if (!token) throw new Error("Token not found");
-
-      let url = `http://localhost:3002/admin/products`;
-      if (category) url = `http://localhost:3002/admin/products/category/${category}`;
-
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
+      let url = `/admin/products`;
+      if (category) url = `/admin/products/category/${category}`;
+      const response = await axiosInstance.get(url,);
       setProducts(response.data.data);
+    // eslint-disable-next-line no-unused-vars
     } catch (error) {
       setError("Failed to fetch products. Please try again later.");
     }

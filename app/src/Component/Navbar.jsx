@@ -28,7 +28,7 @@ const Navbar = () => {
           <NavLink to="/about" className="hover:text-amber-800 text-black transition">About</NavLink>
           <NavLink to="/contact" className="hover:text-amber-800 text-black transition">Contact</NavLink>
           {currentUser && isAdmin ? (
-            <NavLink to="/admin" className="hover:text-amber-800 text-black transition">Admin</NavLink>
+            <NavLink to="/dashbord" className="hover:text-amber-800 text-black transition">Admin</NavLink>
           ) : null}
         </nav>
 

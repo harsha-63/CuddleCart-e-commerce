@@ -1,8 +1,8 @@
 import { NavLink, useParams} from "react-router-dom";
 import { useContext,useEffect,useState } from "react";
 import { ShopContext } from "../Context/ShopContext";
-import axios from 'axios'
 import axiosErrorManager from "../../utilities/axiosErrorManager";
+import axiosInstance from "../../utilities/axiosInstance";
 
 const CategoryPage = () => {
   const { category } = useParams(); 
@@ -13,7 +13,7 @@ const CategoryPage = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:3002/user/products/category/${category}`, {
+        const response = await axiosInstance.get(`/user/products/category/${category}`, {
         });
         console.log(response.data);
         

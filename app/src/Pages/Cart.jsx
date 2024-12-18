@@ -1,55 +1,13 @@
 import { useContext } from 'react';
 import { CartContext } from '../Context/CartContext';
 import { NavLink } from 'react-router-dom';
-import Cookies from "js-cookie";
-import axiosErrorManager from '../../utilities/axiosErrorManager';  
-import axios from 'axios';
-import { UserContext } from '../Context/UserContext';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
+
 const Cart = () => {
-    const { setLoading } = useContext(UserContext);
-    const {calculateTotalPrice} = useContext(CartContext)
-    const { userCart, setUserCart, removeFromCart } = useContext(CartContext);
-
-    const updateCart = (productId, quantity) => {
-        if (quantity < 1) return; 
-        const updatedCart = userCart.map((item) => {
-            if (item.productId._id === productId) {
-                return { ...item, quantity };
-            }
-            return item;
-        });
-        setUserCart(updatedCart);
-        updateServer(productId, quantity);
-    };
-
-    const updateServer = async (productId, quantity) => {
-        setLoading(true);
-        try {
-            const token = Cookies.get("token");
-            await axios.post(
-                'http://localhost:3002/user/cart',
-                {
-                    productId,
-                    quantity,
-                },
-                {
-                    headers: { token: `Bearer ${token}` },
-                }
-            );
-        } catch (error) {
-            console.error(axiosErrorManager(error));
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const calculateSubtotal = (price, quantity) => (price * quantity).toFixed(2);
-
-    
-
+    const { userCart, removeFromCart,calculateTotalPrice,calculateSubtotal,updateCart } = useContext(CartContext);
     return (
         <div className="p-6 ">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Your Cart</h2>

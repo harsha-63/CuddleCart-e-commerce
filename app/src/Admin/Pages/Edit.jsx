@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../../../utilities/axiosInstance";
 import { toast } from "react-toastify";
-import Cookies from "js-cookie";
 import { ShopContext } from "../../Context/ShopContext";
 
 const Edit = () => {
@@ -61,20 +60,11 @@ const Edit = () => {
                     formData.append("image", image);
                 }
 
-                const token = Cookies.get("token");
-                if (!token) {
-                    throw new Error("Token is missing.");
-                }
+               
 
-                const response = await axios.patch(
-                    `http://localhost:3002/admin/products/${id}`,
+                const response = await axiosInstance.patch(
+                    `/admin/products/${id}`,
                     formData,
-                    {
-                        headers: {
-                            "Content-Type": "multipart/form-data",
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
                 );
 
                 const updatedProduct = response.data;
@@ -98,23 +88,11 @@ const Edit = () => {
         if (!confirm) return;
 
         try {
-            const token = Cookies.get("token");
-            if (!token) {
-                throw new Error("Token is missing.");
-            }
 
-            // Toggle the isDeleted flag
             const updatedProduct = { ...product, isDeleted: !product.isDeleted };
-
-            // Update the product on the server
-            await axios.patch(
-                `http://localhost:3002/admin/products/${id}`,
+            await axiosInstance.patch(
+                `/admin/products/${id}`,
                 { isDeleted: updatedProduct.isDeleted },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
             );
 
          

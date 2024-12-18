@@ -2,12 +2,12 @@ import { useContext, useState } from 'react';
 import { CartContext } from '../Context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import axiosInstance from '../../utilities/axiosInstance';
 
 const PaymentPage = () => {
-  const { setUserOrder, setUserCart, userCart, calculateTotalPrice } = useContext(CartContext);
+  const { setUserCart, userCart, calculateTotalPrice } = useContext(CartContext);
   const navigate = useNavigate();
+  const [userOrder, setUserOrder] = useState([]);
 
   const [deliveryDetails, setDeliveryDetails] = useState({
     name: '',
@@ -30,43 +30,16 @@ const PaymentPage = () => {
     }
 
     try {
-      const token = Cookies.get('token');
-      if (!token) {
-        toast.error('You must be logged in to place an order.');
-        return;
-      }
 
       if (paymentMethod === 'cash on delivery') {
-        // Cash on Delivery Logic
-        await axios.post(
-          'http://localhost:3002/user/order/cod',
-          { userDetails, totalAmount },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-
-        toast.success('Order placed successfully for Cash on Delivery!');
+        await axiosInstance.post(`/user/order/cod`,{ userDetails, totalAmount });
+        toast.success('Order placed successfully!');
         setUserOrder((prev) => [...prev, ...userCart]);
-       
+        console.log(userOrder);
         setUserCart([]);
         navigate('/');
       } else if (paymentMethod === 'card') {
-        // Stripe Payment Logic
-        const response = await axios.post(
-          'http://localhost:3002/user/order/stripe',
-          { userDetails, totalAmount },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-
+        const response = await axiosInstance.post('/user/order/stripe',{ userDetails, totalAmount }, );
         const { stripeUrl } = response.data;
         window.location.href = stripeUrl; 
       }

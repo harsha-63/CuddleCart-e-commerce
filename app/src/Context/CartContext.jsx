@@ -1,7 +1,6 @@
 import { useState, createContext, useContext, useEffect } from "react";
-import axios from "axios";
-import Cookies from 'js-cookie'
-
+import axiosInstance from "../../utilities/axiosInstance";
+import axiosErrorManager from "../../utilities/axiosInstance";
 import { UserContext } from "./UserContext";
 import { toast } from "react-toastify";
 
@@ -10,25 +9,20 @@ export const CartContext = createContext();
 // eslint-disable-next-line react/prop-types
 const CartProvider = ({ children }) => {
   const [userCart, setUserCart] = useState([]);
-  const { currentUser } = useContext(UserContext);
+  const { currentUser,setLoading } = useContext(UserContext);
+  
+
 
   const calculateTotalPrice = () => {
-    return Array.isArray(userCart) && userCart.reduce(
-        (total, product) => total + product.productId.price * product.quantity, 
-        0
-    ).toFixed(2);
+    return Array.isArray(userCart) && userCart.reduce((total, product) => total + product.productId.price * product.quantity,0).toFixed(2);
 };
  
 
-  // Fetch the user's cart when the component mounts or `currentUser` changes
+  // Fetch the user cart 
   const getUserCart = async () => {
-    if (!currentUser) return;
-    const token = Cookies.get("token");
-    if (!token) return;
+    
     try {
-      const response = await axios.get("http://localhost:3002/user/cart", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axiosInstance.get(`/user/cart` );
       setUserCart(response.data?.products || []);   
     } catch (error) {
       console.error("Failed to fetch user cart:", error);
@@ -41,20 +35,8 @@ const CartProvider = ({ children }) => {
   
   // Add a product to the cart
   const addToCart = async (productId, quantity = 1) => {
-    const token = Cookies.get("token");
-    if (!token) {
-      toast.error("User not authenticated. Please log in.");
-      return;
-    }
     try {
-      const response = await axios.post(
-        "http://localhost:3002/user/cart",
-        { productId, quantity },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      console.log(response);
+      const response = await axiosInstance.post(`/user/cart`,{ productId, quantity },);
       await getUserCart(); 
       toast.success(response.data.message);
     } catch (error) {
@@ -66,15 +48,9 @@ const CartProvider = ({ children }) => {
 
   // Remove a product from the cart
   const removeFromCart = async (productId) => {
-    const token = Cookies.get("token");
-    if (!token) {
-      toast.error("User not authenticated. Please log in.");
-      return;
-    }
     try {
-      const res = await axios.delete("http://localhost:3002/user/cart", {
+      const res = await axiosInstance.delete(`/user/cart`, {
         data: { productId },
-        headers: { Authorization: `Bearer ${token}` },
       });
       await getUserCart(); 
       toast.success(res.data.message);
@@ -83,9 +59,34 @@ const CartProvider = ({ children }) => {
       console.error(error);
     }
   };
+
+  const updateCart = (productId, quantity) => {
+    if (quantity < 1) return; 
+    const updatedCart = userCart.map((item) => {
+        if (item.productId._id === productId) {
+            return { ...item, quantity };
+        }
+        return item;
+    });
+    setUserCart(updatedCart);
+    updateServer(productId, quantity);
+};
+
+const updateServer = async (productId, quantity) => {
+    setLoading(true);
+    try {
+        await axiosInstance.post('/user/cart',{productId,quantity});
+    } catch (error) {
+        console.error(axiosErrorManager(error));
+    } finally {
+        setLoading(false);
+    }
+};
+
+const calculateSubtotal = (price, quantity) => (price * quantity).toFixed(2);
   
 
-  const value = {userCart,setUserCart,addToCart,removeFromCart,getUserCart,calculateTotalPrice};
+  const value = {userCart,setUserCart,addToCart,removeFromCart,getUserCart,calculateTotalPrice,updateCart,calculateSubtotal};
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

@@ -110,7 +110,7 @@ export const adminLogin = async(req,res,next)=>{
 
       res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: false,
+        secure: true,
         sameSite: "none",
       });
 
@@ -128,29 +128,42 @@ export const adminLogin = async(req,res,next)=>{
         secure: true,
         sameSite: "none",
       });
+
       res.json({success:true, message: "Logged in successfully", token });
   };  
 
 
-export const refreshingToken = async (req, res, next) => {
-  const refreshToken = req.cookies.refreshToken;
+  export const refreshingToken = async (req, res, next) => {
+    console.log(req.cookies);
+    
+    const refreshToken = req.cookies.refreshToken;
 
-  if (!refreshToken) {
-    next(new CustomError("No refresh token found", 401));
-  }
-  const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_TOKEN);
-  const user = await User.findById(decoded.id);
-  if (!user) {
-    next(new CustomError("User not found", 401));
-  }
-  const token = createToken(user._id, user.isAdmin);
-  res.status(200).json({ message: "Token refreshed", token: token });
-};
+  
+    if (!refreshToken) {
+      return next(new CustomError("No refresh token found", 401));
+    }
+  
+    let decoded;
+    try {
+      decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_TOKEN);
+    } catch (err) {
+      return next(new CustomError("Invalid or expired refresh token", 401));
+    }
+  
+    const user = await User.findById(decoded.id);
+    if (!user) {
+      return next(new CustomError("User not found", 401));
+    }
+  
+    const token = createToken(user._id, user.isAdmin);
+    res.status(200).json({ message: "Token refreshed", token });
+  };
+  
 
 export const logout = async (req, res, next) => {
   const cookieCleared = res.clearCookie("refreshToken", {
     httpOnly: true,
-    secure: false,
+    secure: true,
     sameSite: "none",
   });
   res.clearCookie("currentUser", {
@@ -168,6 +181,5 @@ export const logout = async (req, res, next) => {
     return next(new CustomError("Failed to log out. Please try again.", 500));
   }
 
-  // Send success response
   res.status(200).json({ success:true, message: "Logged out successfully" });
 };

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import axiosInstance from '../../../utilities/axiosInstance';
+
 import { FaCheckCircle } from 'react-icons/fa'; // Importing a checkmark icon
 
 const Orders = () => {
@@ -12,17 +12,9 @@ const Orders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const token = Cookies.get('token');
-        if (!token) {
-          console.error('No token found in cookies.');
-          return;
-        }
+        
 
-        const response = await axios.get('http://localhost:3002/admin/orders', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axiosInstance.get('/admin/orders', );
 
         if (Array.isArray(response.data.data)) {
           setOrders(response.data.data);
@@ -43,22 +35,8 @@ const Orders = () => {
   // Separate function to handle shipping status update
   const handleShippingStatusChange = async (orderId, status) => {
     try {
-      const token = Cookies.get('token');
-      if (!token) {
-        console.error('No token found in cookies.');
-        return;
-      }
-  
-      // Update the shipping status in the backend
-      await axios.patch(
-        `http://localhost:3002/admin/orders/shipping/${orderId}`,
-        { shippingStatus: status },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      
+      await axiosInstance.patch( `/admin/orders/shipping/${orderId}`,{ shippingStatus: status },);
   
       // Update the state immutably
       setOrders((prevOrders) =>
@@ -77,28 +55,11 @@ const Orders = () => {
   // Separate function to handle payment status update
   const handlePaymentStatusChange = async (orderId, status) => {
     try {
-      const token = Cookies.get('token');
-      if (!token) {
-        console.error('No token found in cookies.');
-        return;
-      }
 
-      await axios.patch(
-        `http://localhost:3002/admin/orders/payment/${orderId}`,
-        { paymentStatus: status },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await axiosInstance.patch(`/admin/orders/payment/${orderId}`, { paymentStatus: status },);
 
       // Refetch orders to get updated status from the backend
-      const updatedOrdersResponse = await axios.get('http://localhost:3002/admin/orders', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const updatedOrdersResponse = await axiosInstance.get(`/admin/orders`, );
 
       if (Array.isArray(updatedOrdersResponse.data.data)) {
         setOrders(updatedOrdersResponse.data.data);
