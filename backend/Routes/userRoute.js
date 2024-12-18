@@ -36,4 +36,4 @@ router
     .get('/order/stripe/publicKey', verifyToken, trycatch(publicKey))
     
 
-export default router
+export default router   
