@@ -6,7 +6,7 @@ import CustomError from "../Utils/customError.js";
 
 
 const createToken = (id,isAdmin) =>{
-  return jwt.sign({id,isAdmin},process.env.JWT_TOKEN,{ expiresIn: '1h' })
+  return jwt.sign({id,isAdmin},process.env.JWT_TOKEN,{ expiresIn: '1s' })
 }
 const createRefreshToken = (id,isAdmin) =>{
   return jwt.sign({id,isAdmin},process.env.JWT_REFRESH_TOKEN,{ expiresIn: '1D' })
@@ -66,7 +66,7 @@ export const loginUser = async (req, res, next) => {
   // Set refresh token in cookies
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
-    secure: false,
+    secure: true,
     sameSite: "none",
   });
   const currentUser = {
@@ -118,7 +118,7 @@ export const adminLogin = async(req,res,next)=>{
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role,
+        isAdmin: user.isAdmin,
       };
       //sending user details to client (for curr user)
       res.cookie("currentUser", JSON.stringify(currentUser));
@@ -134,7 +134,7 @@ export const adminLogin = async(req,res,next)=>{
 
 
   export const refreshingToken = async (req, res, next) => {
-    console.log(req.cookies);
+    console.log("Cookies: ", req.cookies); 
     
     const refreshToken = req.cookies.refreshToken;
 

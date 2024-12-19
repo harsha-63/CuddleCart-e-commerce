@@ -6,14 +6,14 @@
 
 const Contact = () => {
   return (
-    <div className="max-w-7xl mx-auto mt-10 px-6 sm:px-12 lg:px-24 ">
+    <div className="max-w-6xl mx-auto mt-10 px-6 sm:px-12 lg:px-24 ">
     <div className="text-center  ">
       <h2 className="text-4xl font-serif font-bold text-gray-800">Contact Us</h2>
       <p className="text-gray-600 text-medium leading-relaxed">
         We would love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out.
       </p>
     </div>
-    <div className="flex justify-center items-center mt-8 mb-10">
+    <div className="flex justify-center items-center mt-8 mb-10 ">
       
     <div className="grid grid-cols-1 lg:grid-cols-2 bg-orange-50 shadow-2xl rounded-3xl overflow-hidden max-w-4xl w-full">
       {/* Left Section: Image */}

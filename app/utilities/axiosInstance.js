@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:3002",
@@ -36,12 +36,14 @@ axiosInstance.interceptors.response.use(
 
         originalRequest.headers["Authorization"] = `Bearer ${token}`;
         return axiosInstance(originalRequest);
-    } catch (refreshError) {
+    } catch (err) {
+        console.error("Error refreshing token:", err);
+        // toast.error("Session expired. Please log in again.");
         Cookies.remove("token");
         Cookies.remove("refreshToken");
         Cookies.remove("currentUser");
-        toast.error("Session expired. Please log in again.");
-        return Promise.reject(refreshError);
+       
+        return Promise.reject(err);
       }
     }
 

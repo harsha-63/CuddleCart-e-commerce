@@ -14,6 +14,7 @@ export default {
         // sans: ['"Poppins"', 'sans-serif'],     // Clean Sans-Serif font
       },
     },
+      
   },
   plugins: [],
 }

@@ -29,7 +29,7 @@ export const WishlistProvider = ({ children }) => {
       await axiosInstance.post(`/user/wishlist`, { productId },
       );
       await getUserWishlist();
-      toast.success("Product added to wishlist");
+      // toast.success("Product added to wishlist");
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to add product to wishlist");
     }
@@ -43,7 +43,7 @@ export const WishlistProvider = ({ children }) => {
        }
       );
       await getUserWishlist(); 
-      toast.success("Product removed from wishlist");
+      // toast.success("Product removed from wishlist");
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to remove product from wishlist");
     }

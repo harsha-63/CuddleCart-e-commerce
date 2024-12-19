@@ -80,11 +80,13 @@ const UserProvider = ({ children }) => {
 
   const loginAdmin = async (email, password) => {
     try {
-      await axios.post(
+      const res=await axios.post(
         "http://localhost:3002/auth/admin",
         { email, password },
         { withCredentials: true }
       );
+      console.log(res);
+      
       const admin = Cookies.get("currentUser");
       setCurrentUser(JSON.parse(admin));
       toast.success("Admin logged in successfully");

@@ -38,7 +38,9 @@ const CartProvider = ({ children }) => {
     try {
       const response = await axiosInstance.post(`/user/cart`,{ productId, quantity },);
       await getUserCart(); 
-      toast.success(response.data.message);
+      console.log(response);
+      
+      // toast.success(response.data.message);
     } catch (error) {
       toast.error("Failed to add to cart.");
       console.error(error);

@@ -52,13 +52,11 @@ const Orders = () => {
   };
   
 
-  // Separate function to handle payment status update
+  
   const handlePaymentStatusChange = async (orderId, status) => {
     try {
 
       await axiosInstance.patch(`/admin/orders/payment/${orderId}`, { paymentStatus: status },);
-
-      // Refetch orders to get updated status from the backend
       const updatedOrdersResponse = await axiosInstance.get(`/admin/orders`, );
 
       if (Array.isArray(updatedOrdersResponse.data.data)) {
@@ -82,7 +80,7 @@ const Orders = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Orders</h1>
+      <h1 className=" flex justify-center text-3xl font-serif mb-6">Orders</h1>
       <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
         <thead>
           <tr className="bg-gray-200">
@@ -129,7 +127,7 @@ const Orders = () => {
                     {order.shippingStatus !== 'delivered' && (
                       <button
                         onClick={() => handleShippingStatusChange(order._id, 'delivered')}
-                        className="bg-green-500 text-white py-1 px-3 rounded mr-2"
+                        className="bg-green-500 text-white py-1 px-3 rounded mr-2 mb-4"
                       >
                         Mark as Shipped
                       </button>

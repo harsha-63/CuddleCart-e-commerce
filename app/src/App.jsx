@@ -37,17 +37,40 @@ import StripeSuccessPage from './Pages/StripeSuccess';
 
 function AdminLayout() {
   return (
-    <div className="flex min-h-screen">
-      <ToastContainer/>
-       <div className="flex flex-col w-1/5  rounded-lg">
+    <div className=" md:grid-grid-flow-col ">
+      {/* Toast Notification */}
+      <ToastContainer />
+      
+      {/* Sidebar */}
+      <div className="bg-orange-200 ">
         <AdminSideBar />
       </div>
-      <div className="w-4/5 p-6 flex flex-col h-full">
-        <Outlet/>
+      
+      {/* Main Content */}
+      <div className="p-6 ml-64">
+        <Outlet />
       </div>
     </div>
   );
 }
+
+
+
+
+// function AdminLayout() {
+//   return (
+//     <div className="flex flex-col ">
+//       <ToastContainer />
+//        <AdminSideBar />
+//       <div className="flex-grow p-6 bg-gray-100 sm:flex-row">
+//         <Outlet />
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
 
 
 function UserLayout() {
@@ -59,7 +82,7 @@ function UserLayout() {
   return (
     <div>
       <ToastContainer />
-      <div className='px-6 sm:px-[2vw] md:px-[4vw] lg:px-[6vw]'>
+      <div className='px-6 '>
         {/* Conditionally render Navbar and Footer */}
         {!hideNavbarFooter && <Navbar />}
         <SearchBar />

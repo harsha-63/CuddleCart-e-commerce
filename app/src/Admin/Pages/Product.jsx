@@ -62,7 +62,7 @@ const Product = () => {
   return (
     <div className="container p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-semibold">Products List</h1>
+        <h1 className="text-3xl font-serif">Products List</h1>
         <div className="flex items-center">
           <div className="relative mr-8">
             <select

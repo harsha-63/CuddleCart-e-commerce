@@ -61,7 +61,7 @@ const Home = () => {
     </p>
   </div>
 
-  <div>
+  <div className="px-5">
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
         {showFirstFour ? (
           <>
@@ -239,43 +239,44 @@ const Home = () => {
       Discover our new baby products
     </p>
     </div>
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6 ">
-        {newArrivalProducts.map((product) => (
-          <NavLink
-          key={product._id}
-          to={`/product/${product._id}`}
-          className="border rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6 px-5">
+  {newArrivalProducts.map((product) => (
+    <div
+      key={product._id}
+      className="border rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden relative"
+    >
+      <NavLink
+        to={`/product/${product._id}`}
+        className="w-full h-full block"
+      >
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-48 object-cover"
+        />
+        <div className="p-4">
+          <h4 className="text-lg font-bold text-gray-900">{product.name}</h4>
+          <p className="text-gray-700 mt-2">${product.price.toFixed(2)}</p>
+        </div>
+      </NavLink>
+
+      {currentUser && (
+        <div
+          onClick={() => handleAddToWishlist(product)}
+          className="absolute bottom-4 right-4 cursor-pointer text-red-500"
         >
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-48 object-cover"
-          />
-          <div className="p-4">
-                <h4 className="text-lg font-bold text-gray-900">{product.name}</h4>
-                <p className="text-gray-700 mt-2">${product.price.toFixed(2)}</p>
-         </div>
-          {currentUser && (
-                <div>
-                <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleAddToWishlist(product._id);
-                }}
-                className="text-red-600 hover:text-red-800  cursor-pointer ml-px"
-              >
-                {userWishlist.includes(product._id) ? (
-                  <FaHeart size={20} />
-                ) : (
-                  <FaRegHeart size={20} />
-                )}
-              </button>
-                </div>
+          {userWishlist.some((item) => item._id === product._id) ? (
+            <FaHeart size={18} />
+          ) : (
+            <FaRegHeart size={18} />
           )}
-        </NavLink>
-        
-        ))}
-      </div>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
+
+
       </div>
     </>
   );

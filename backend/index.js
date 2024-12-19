@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import connectDB from './Config/mongodb.js'
 import {connectCloudinary} from './Config/cloudinary.js'
 import errorHandler from './Middlewares/errorHandler.js'
+import cookieParser from "cookie-parser";
 import authRouter from './Routes/authRoute.js'
 import router from './Routes/userRoute.js'
 import admin from './Routes/adminRoute.js' 
@@ -25,7 +26,7 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"]
   }))
 
-
+app.use(cookieParser());
 //api endpoints
 app.use('/auth',authRouter)
 app.use('/user',router)

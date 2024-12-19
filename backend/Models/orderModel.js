@@ -18,7 +18,7 @@ const orderSchema = new mongoose.Schema({
         }
      }
     ],
-    purchaseDate:{type:Date,dafault:Date.now},
+    purchaseDate:{type:Date,default:Date.now},
     orderId:{type:String},
     totalAmount:{type:Number},
     paymentMethod:{type:String,enum: ['cash on delivery', 'stripe'],

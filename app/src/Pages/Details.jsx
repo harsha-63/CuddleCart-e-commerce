@@ -65,7 +65,8 @@ const ProductDetails = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-center">
-      <div className="border p-4 rounded shadow-lg w-full sm:w-2/5 md:w-4/5  grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="border p-4 rounded shadow-lg w-full sm:w-2/5 md:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-5">
+
           <div className="w-full h-full">
             <img src={product.image} alt={product.name} className="w-full h-full object-cover rounded" />
           </div>

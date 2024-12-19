@@ -1,8 +1,10 @@
 
+import { FaMoneyBillAlt, FaShieldAlt, FaTruckMoving } from "react-icons/fa";
+
 
 const About = () => {
   return (
-    <div className="max-w-7xl mx-auto px-24">
+    <div className="max-w-6xl mx-auto px-24">
       <div className="flex justify-center items-center  mt-8 mb-20">
   <div className="grid grid-cols-1 lg:grid-cols-2 bg-white shadow-2xl rounded-3xl overflow-hidden max-w-6xl">
     <div className=" hidden lg:block">
@@ -44,6 +46,7 @@ const About = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
           <div className="bg-orange-50 p-6 rounded-lg shadow-lg text-center">
+          <p className="ml-28"><FaShieldAlt className="text-amber-600" size={20}/></p>
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Quality Assurance</h3>
             <p className="text-gray-600">
               All our products are carefully curated and tested for safety, durability, and comfort to ensure the best for your little one.
@@ -52,6 +55,7 @@ const About = () => {
 
         
           <div className="bg-orange-50 p-6 rounded-lg shadow-lg text-center">
+          <p className="ml-28"><FaMoneyBillAlt className="text-amber-600" size={20}/></p>
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Affordable Prices</h3>
             <p className="text-gray-600">
               We believe in offering high-quality products at prices that make it easier for parents to get what they need without breaking the bank.
@@ -60,6 +64,7 @@ const About = () => {
 
           
           <div className="bg-orange-50 p-6 rounded-lg shadow-lg text-center">
+          <p className="ml-28"><FaTruckMoving className="text-amber-600" size={20}/></p>
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Fast Delivery</h3>
             <p className="text-gray-600">
               We understand that timing is critical. Thats why we offer fast, reliable delivery to make sure your baby essentials arrive on time.

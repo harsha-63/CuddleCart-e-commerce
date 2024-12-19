@@ -14,6 +14,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); 
 
   const toggleMobileMenu = () => {
+    console.log("Mobile Menu Toggled", !isMobileMenuOpen);
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
@@ -69,26 +70,31 @@ const Navbar = () => {
           )}
         </div>
 
-        <button
-          onClick={toggleMobileMenu}
-          className="block sm:hidden text-gray-600 focus:outline-none"
-          aria-label="Toggle mobile menu"
-        >
-          <FontAwesomeIcon icon={faBars} size="lg" />
-        </button>
+      <button
+      onClick={toggleMobileMenu}
+      className="block sm:hidden text-gray-600 focus:outline-none p-2"
+      aria-label="Toggle mobile menu"
+    >
+      <FontAwesomeIcon icon={faBars} size="lg" />
+    </button>
+
       </div>
 
       {isMobileMenuOpen && (
-        <div className="sm:hidden bg-gray-100 flex flex-col items-center justify-center gap-4 text-lg text-gray-600 p-4 w-full">
-          <NavLink to="/" onClick={toggleMobileMenu} className="hover:text-gray-800 transition">Home</NavLink>
-          <NavLink to="/collection" onClick={toggleMobileMenu} className="hover:text-gray-800 transition">Collection</NavLink>
-          <NavLink to="/about" onClick={toggleMobileMenu} className="hover:text-gray-800 transition">About</NavLink>
-          <NavLink to="/contact" onClick={toggleMobileMenu} className="hover:text-gray-800 transition">Contact</NavLink>
-          {currentUser && currentUser.isAdmin && (
-            <NavLink to="/admin" onClick={toggleMobileMenu} className="hover:text-gray-800 transition">Admin</NavLink>
-          )}
-        </div>
-      )}
+  <div
+    className="sm:hidden bg-gray-100 flex flex-col items-center justify-center gap-4 text-lg text-gray-600 p-4 w-full z-50 absolute top-0 left-0"
+    style={{ zIndex: 1000 }} // Make sure the menu is on top of other content
+  >
+    <NavLink to="/" onClick={toggleMobileMenu} className="hover:text-gray-800 transition">Home</NavLink>
+    <NavLink to="/collection" onClick={toggleMobileMenu} className="hover:text-gray-800 transition">Collection</NavLink>
+    <NavLink to="/about" onClick={toggleMobileMenu} className="hover:text-gray-800 transition">About</NavLink>
+    <NavLink to="/contact" onClick={toggleMobileMenu} className="hover:text-gray-800 transition">Contact</NavLink>
+    {currentUser && currentUser.isAdmin && (
+      <NavLink to="/admin" onClick={toggleMobileMenu} className="hover:text-gray-800 transition">Admin</NavLink>
+    )}
+  </div>
+)}
+
     </header>
   );
 };

@@ -119,11 +119,11 @@ const Edit = () => {
                     <img
                         src={imagePreview || "default-image-url.jpg"}
                         alt={name}
-                        className="w-full h-64 object-cover rounded-lg"
+                        className="w-full h-full object-cover rounded-lg"
                     />
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center">
-                    <h2 className="text-lg font-bold mb-4">Edit Product: {name}</h2>
+                    <h2 className="text-lg font-bold mb-4 text-center"> <span className="font-atma text-2xl">{name}</span></h2>
                     <div className="mt-2">
                         <span className="block text-center font-semibold">Name</span>
                         <input
