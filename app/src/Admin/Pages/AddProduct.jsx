@@ -1,9 +1,9 @@
-import axios from "axios";
+
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ShopContext } from "../../Context/ShopContext";
-import Cookies from "js-cookie";
+import axiosInstance from "../../../utilities/axiosInstance";
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
@@ -48,17 +48,8 @@ const AddProduct = () => {
         formPayload.append("category", formData.category);
         formPayload.append("stars", formData.stars);
 
-        const token = Cookies.get("token");
-        if (!token) {
-          throw new Error("Token is missing.");
-        }
 
-        const res = await axios.post("http://localhost:3002/admin/products", formPayload, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axiosInstance.post("/admin/products", formPayload,);
 
         toast.success("Product added successfully!");
         setFormData({
@@ -71,7 +62,7 @@ const AddProduct = () => {
         });
 
         navigate("/items");
-        setProducts((prev) => [...prev, res.data.data]);
+        setProducts((prev) => [...prev, response.data.data]);
       } catch (error) {
         console.error("Error adding product:", error);
         toast.error("Failed to add product. Please try again.");

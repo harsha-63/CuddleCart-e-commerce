@@ -60,7 +60,7 @@ const Product = () => {
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
-    <div className="container p-6">
+    <div className="">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-serif">Products List</h1>
         <div className="flex items-center">
@@ -146,6 +146,6 @@ const Product = () => {
 
 export default Product;
 
-
+// container p-6
 
 

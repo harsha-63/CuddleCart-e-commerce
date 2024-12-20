@@ -78,7 +78,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 h-full ml-2">
+    <div className="">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 h-full">
         <div className="bg-gray-200 p-10 rounded shadow flex flex-col items-center justify-center">
           <h2 className="text-lg font-bold">Total Revenue</h2>
@@ -132,4 +132,4 @@ const Dashboard = () => {
 export default Dashboard;
 
 
-
+// flex flex-col gap-4 h-full ml-2

@@ -94,37 +94,3 @@ const calculateSubtotal = (price, quantity) => (price * quantity).toFixed(2);
 };
 
 export default CartProvider;
-
-
-
-
-
-
-
-
-  // Update the quantity of a product in the cart
-  // const updateQuantity = async (productID, action) => {
-  //   try {
-  //     const newQuantity =
-  //       action === "increment" ? 1 : action === "decrement" ? -1 : 0;
-  //     if (newQuantity !== 0) {
-  //       await addToCart(productID, newQuantity); 
-  //     }
-  //   } catch (error) {
-  //     toast.error("Failed to update quantity.");
-  //     console.error(error);
-  //   }
-  // };
-
-  // Update the order on the server whenever it changes
-  // const patchUpdatedOrder = async (updatedOrder) => {
-  //   try {
-  //     await axios.patch(
-  //       "http://localhost:3002/user/order",
-  //       { order: updatedOrder },
-  //       { withCredentials: true }
-  //     );
-  //   } catch (error) {
-  //     console.error("Failed to update user order:", error);
-  //   }
-  // };

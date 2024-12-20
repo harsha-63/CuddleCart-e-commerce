@@ -31,7 +31,7 @@ const Users = () => {
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
-    <div className="container mx-auto px-4 py-6">
+    <div className="">
       <h2 className="text-4xl font-semibold mb-6 text-gray-800 text-center">Customer List</h2>
       <div className="overflow-x-auto shadow-md sm:rounded-lg">
         <table className="min-w-full text-left text-sm text-gray-500">
@@ -81,3 +81,4 @@ const Users = () => {
 
 export default Users;
 
+// container mx-auto px-4 py-6

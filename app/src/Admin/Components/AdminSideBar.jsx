@@ -10,7 +10,7 @@ const AdminSidebar = () => {
   return (
     <div className="flex">
       {/* Sidebar */}
-      <div className="fixed top-0 left-0 h-full bg-orange-200 text-white shadow-lg w-16 lg:w-[250px] flex flex-col justify-between transition-all">
+      <div className="w-64">
         {/* Branding */}
         <div className="p-4 mt-8 text-center">
           <NavLink to="/" className="font-atma text-3xl font-semibold text-amber-950 hidden lg:block">
@@ -22,7 +22,7 @@ const AdminSidebar = () => {
         <nav className="flex-grow mt-8 text-black">
           <ul className="flex flex-col items-center  space-y-4">
             <NavLink
-              to="/dashbord"
+              to="/dashboard"
               className="block px-4 py-3 hover:bg-amber-700 hover:text-white transition-all rounded-lg text-center"
             >
               <li className="flex items-center justify-center ">
@@ -79,4 +79,5 @@ const AdminSidebar = () => {
 };
 
 export default AdminSidebar;
+// fixed pe-10 top-0 left-0 h-full bg-orange-200 text-white shadow-lg w-16 lg:w-[250px] flex flex-col justify-between transition-all
 

@@ -12,7 +12,7 @@ import Navbar from './Component/Navbar'
 import Details from './Pages/Details'
 import CategoryPage from './Pages/Category';
 import PaymentPage from './Pages/Payment'
-import Userdata from './Pages/Userdata'
+import Userdata from './Pages/UserData'
 import SearchBar from './Pages/Search'
 import AdminSideBar from './Admin/Components/AdminSideBar'
 import Product from './Admin/Pages/Product'
@@ -37,47 +37,29 @@ import StripeSuccessPage from './Pages/StripeSuccess';
 
 function AdminLayout() {
   return (
-    <div className=" md:grid-grid-flow-col ">
+    <div className="flex h-screen">
       {/* Toast Notification */}
       <ToastContainer />
-      
+
       {/* Sidebar */}
-      <div className="bg-orange-200 ">
+      <div className="w-1/  bg-orange-200 p-4 shadow-md">
         <AdminSideBar />
       </div>
-      
+
       {/* Main Content */}
-      <div className="p-6 ml-64">
+      <div className="flex-1 bg-gray-50 p-6 overflow-y-auto">
         <Outlet />
       </div>
     </div>
   );
 }
 
-
-
-
-// function AdminLayout() {
-//   return (
-//     <div className="flex flex-col ">
-//       <ToastContainer />
-//        <AdminSideBar />
-//       <div className="flex-grow p-6 bg-gray-100 sm:flex-row">
-//         <Outlet />
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-
-
 function UserLayout() {
   const location = useLocation();  // Get the current route
 
   // Only render Navbar and Footer if the current route is not '/login' or '/signup'
-  const hideNavbarFooter = location.pathname === '/login' || location.pathname === '/signup'||location.pathname === '/Adminlogin';
+  const hideNavbarFooter = location.pathname === '/login' || location.pathname === '/signup'||location.pathname === '/Adminlogin'
+  
 
   return (
     <div>
@@ -96,6 +78,7 @@ function UserLayout() {
 // sm:px-[8vw] md:px-[10vw] lg:px-[12vw]
 function App() {
   const { currentUser } = useContext(UserContext)
+
 
   return (
     <Router>
@@ -131,7 +114,7 @@ function App() {
           <Route element={<AdminLayout />}>
             <Route path='/admin' element={<AdminSideBar />} /> 
             <Route path='/admin' element={<Navigate to='/dashbord' replace />} />
-            <Route path='/dashbord' element={<Dashbord/>}/>
+            <Route path='/dashboard' element={<Dashbord/>}/>
             <Route path='/users' element={<Users/>} />
             <Route path='/action/:id' element={< Action/>} />
             <Route path='/items' element={<Product />} />

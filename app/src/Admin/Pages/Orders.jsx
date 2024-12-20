@@ -79,7 +79,7 @@ const Orders = () => {
   }
 
   return (
-    <div className="p-4">
+    <div className="">
       <h1 className=" flex justify-center text-3xl font-serif mb-6">Orders</h1>
       <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
         <thead>
@@ -155,7 +155,7 @@ const Orders = () => {
 
 export default Orders;
 
-
+// p-4
 
 
 

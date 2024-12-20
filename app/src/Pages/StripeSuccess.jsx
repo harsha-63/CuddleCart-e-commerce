@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../utilities/axiosInstance";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 
 const StripeSuccessPage = () => {
@@ -43,29 +45,20 @@ const StripeSuccessPage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-5">
+    <div className="flex flex-col items-center justify-center mt-32 mb-64 ">
       {status.success ? (
-        <div className="bg-white p-8 shadow-lg rounded-md text-center">
+        <div className="bg-white p-10 shadow-lg rounded-md text-center">
           <h2 className="text-xl font-bold text-green-600 mb-4">Payment Successful!</h2>
           <p className="text-gray-700">{status.message}</p>
           <button
             onClick={handleGoToHome}
             className="mt-6 px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700"
           >
-            Go to Home
+            <FontAwesomeIcon icon={faHome}/>
           </button>
         </div>
-      ) : (
-        <div className="bg-white p-8 shadow-lg rounded-md text-center">
-          <h2 className="text-xl font-bold text-red-600 mb-4">Payment Failed</h2>
-          <p className="text-gray-700">{status.message}</p>
-          <button
-            onClick={handleGoToHome}
-            className="mt-6 px-6 py-3 bg-red-600 text-white rounded hover:bg-red-700"
-          >
-            Try Again
-          </button>
-        </div>
+      ) : ( null
+       
       )}
     </div>
   );
