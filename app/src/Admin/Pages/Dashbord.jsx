@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "../../../utilities/axiosInstance";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faMoneyBills, faShoppingBag, faUser } from "@fortawesome/free-solid-svg-icons";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -28,22 +28,17 @@ const Dashboard = () => {
     Legend
   );
 
-  const dummyGraphData = {
-    labels: ["January", "February", "March", "April", "May", "June"],
-    data: [500, 700, 1200, 800, 1500, 900],
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosInstance.get("/admin/stats/revenue");
-        setTotalRevenue(response.data.totalRevenue);
+        const revenueResponse = await axiosInstance.get("/admin/stats/revenue");
+        setTotalRevenue(revenueResponse.data.totalRevenue);
 
         const purchaseResponse = await axiosInstance.get("/admin/stats/purchase");
         setTotalOrders(purchaseResponse.data.totalPurchase);
 
-        const UserResponse = await axiosInstance.get("/admin/users");
-        const users = UserResponse.data?.users || [];
+        const userResponse = await axiosInstance.get("/admin/users");
+        const users = userResponse.data?.users || [];
         setUsersCount(users.length);
         const newUsers = users.slice(-4);
         setRecentUsers(newUsers);
@@ -55,14 +50,29 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
+  // Bar chart data to represent the total values for Revenue, Orders, and Users
   const chartData = {
-    labels: dummyGraphData.labels,
+    labels: ['Total'], // Using a single label "Total"
     datasets: [
       {
-        label: "Monthly Sales",
-        data: dummyGraphData.data,
-        backgroundColor: "rgba(75, 192, 192, 0.6)",
+        label: "Total Revenue",
+        data: [totalRevenue], // Use the total revenue value
+        backgroundColor: "rgba(234, 88, 12, 0.7)", // bg-amber-700 color
+        borderColor: "rgba(234, 88, 12, 1)", // bg-amber-700 border color
+        borderWidth: 1,
+      },
+      {
+        label: "Total Orders",
+        data: [totalOrders], // Use the total orders value
+        backgroundColor: "rgba(75, 192, 192, 0.6)", // Example color for orders
         borderColor: "rgba(75, 192, 192, 1)",
+        borderWidth: 1,
+      },
+      {
+        label: "Total Users",
+        data: [usersCount], // Use the total users value
+        backgroundColor: "rgba(153, 102, 255, 0.6)", // Example color for users
+        borderColor: "rgba(153, 102, 255, 1)",
         borderWidth: 1,
       },
     ],
@@ -73,35 +83,45 @@ const Dashboard = () => {
     maintainAspectRatio: false,
     plugins: {
       legend: { position: "top" },
-      title: { display: true, text: "Sales Trends (Dummy Data)" },
+      title: { display: true, text: "Total Revenue, Orders, and Users" },
+    },
+    scales: {
+      x: {
+        // Adjust bar width here
+        barPercentage: 0.6, // Reduce bar width by setting it to less than 1
+        categoryPercentage: 0.8, // Optionally adjust category space
+      },
     },
   };
 
   return (
-    <div className="">
+    <div className="flex flex-col gap-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 h-full">
-        <div className="bg-gray-200 p-10 rounded shadow flex flex-col items-center justify-center">
+        <div className="p-10 rounded shadow flex flex-col items-center justify-center border border-black">
+          <p><FontAwesomeIcon icon={faMoneyBills} /></p>
           <h2 className="text-lg font-bold">Total Revenue</h2>
           <p className="text-2xl font-semibold">${totalRevenue}</p>
         </div>
 
-        <div className="bg-gray-200 p-10 rounded shadow flex flex-col items-center justify-center">
+        <div className="p-10 rounded shadow flex flex-col items-center justify-center border border-black">
+          <p><FontAwesomeIcon icon={faShoppingBag} /></p>
           <h2 className="text-lg font-bold">Total Purchase</h2>
-          <p className="text-2xl font-semibold">{totalOrders} orders</p>
+          <p className="text-2xl font-semibold">{totalOrders} products</p>
         </div>
 
-        <div className="bg-gray-200 p-10 rounded shadow flex flex-col items-center justify-center">
+        <div className="p-10 rounded shadow flex flex-col items-center justify-center border border-black">
+          <p><FontAwesomeIcon icon={faUser} /></p>
           <h2 className="text-lg font-bold">Total Users</h2>
           <p className="text-2xl font-semibold">{usersCount} Users</p>
         </div>
       </div>
 
-      <div className="flex-grow bg-gray-300 p-6 rounded shadow flex items-center justify-center lg:h-[530px] h-72">
+      <div className="flex-grow p-6 rounded shadow flex items-center justify-center lg:h-[530px] h-72 border border-black">
         <Bar data={chartData} options={options} />
       </div>
 
       <div>
-        <h1 className=" flex justify-center text-3xl font-serif mb-6 mt-8">New Customers</h1>
+        <h1 className="flex justify-center text-3xl font-serif mb-6 mt-8">New Customers</h1>
         <table className="w-full bg-white rounded shadow">
           <thead>
             <tr className="bg-gray-200 text-left">
@@ -132,4 +152,6 @@ const Dashboard = () => {
 export default Dashboard;
 
 
-// flex flex-col gap-4 h-full ml-2
+
+
+

@@ -78,22 +78,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-
-
-
- {/* Contact Info Section */}
-  {/* <div className="space-y-6">
-    <div className="flex items-center justify-center lg:justify-start">
-      <FontAwesomeIcon icon={faPhone} className="text-xl text-black mr-3" />
-      <span className="text-gray-600">+1 234 567 890</span>
-    </div>
-    <div className="flex items-center justify-center lg:justify-start">
-      <FontAwesomeIcon icon={faEnvelope} className="text-xl text-black mr-3" />
-      <span className="text-gray-600">cuddlecart@gmail.com</span>
-    </div>
-    <div className="flex items-center justify-center lg:justify-start">
-      <FontAwesomeIcon icon={faLocation} className="text-xl text-black mr-3" />
-      <span className="text-gray-600">Our Location</span>
-    </div>
-  </div> */}

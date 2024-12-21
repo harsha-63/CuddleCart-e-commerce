@@ -2,10 +2,10 @@ import { faDashboard, faListAlt, faShoppingBag, faSignOut, faUser } from "@forta
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from "../../Context/CartContext";
+import { UserContext } from "../../Context/UserContext";
 
 const AdminSidebar = () => {
-  const { logOutUser } = useContext(CartContext);
+  const { logOutUser } = useContext(UserContext);
 
   return (
     <div className="flex">
@@ -61,9 +61,9 @@ const AdminSidebar = () => {
         </nav>
 
         {/* Logout */}
-        <div className="mb-8 px-4">
-          <NavLink
-            to="/"
+        <div className="mb-8 px-16 mt-10  items-center ">
+          <button
+           
             className="block px-4 py-3 bg-amber-700 hover:bg-amber-800 text-white transition-all rounded-lg text-center"
             onClick={logOutUser}
           >
@@ -71,7 +71,7 @@ const AdminSidebar = () => {
               <FontAwesomeIcon icon={faSignOut} className="mr-0 lg:mr-3" />
               <span className="hidden lg:inline">LogOut</span>
             </li>
-          </NavLink>
+          </button>
         </div>
       </div>
     </div>

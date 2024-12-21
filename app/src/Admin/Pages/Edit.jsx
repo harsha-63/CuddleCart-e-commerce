@@ -113,7 +113,7 @@ const Edit = () => {
     };
 
     return (
-        <div className="">
+        <div className="flex justify-center items-center">
             <div className="border p-6 rounded-lg shadow-lg hover:shadow-xl w-full md:w-3/4 flex flex-col md:flex-row gap-6">
                 <div className="md:w-1/2">
                     <img
@@ -193,4 +193,4 @@ const Edit = () => {
 
 export default Edit;
 
-// flex justify-center items-center
+// 

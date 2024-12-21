@@ -10,7 +10,7 @@ const Cart = () => {
     const { userCart, removeFromCart,calculateTotalPrice,calculateSubtotal,updateCart } = useContext(CartContext);
     return (
         <div className="p-6 ">
-        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Your Cart</h2>
+        <h2 className="text-4xl font-serif mb-6 text-center text-gray-800">Your Cart</h2>
         {userCart.length === 0 ? (
             <p className="text-center text-gray-600">Your cart is empty.</p>
         ) : (
@@ -22,7 +22,7 @@ const Cart = () => {
                             <th className="py-3 px-4 text-left">Price</th>
                             <th className="py-3 px-4 text-left">Quantity</th>
                             <th className="py-3 px-4 text-left">Subtotal</th>
-                            <th className="py-3 px-4 text-center">Remove</th>
+                            <th className="py-3 px-4 text-left">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,10 +61,10 @@ const Cart = () => {
                                         </div>
                                     </td>
                                     <td className="py-4 px-4">${calculateSubtotal(product.productId.price, product.quantity)}</td>
-                                    <td className="py-4 px-4">
+                                    <td className="py-4 px-4 ">
                                         <button
                                             onClick={() => removeFromCart(product.productId._id)}
-                                            className="text-gray-500 hover:text-red-600"
+                                            className="text-gray-500 hover:text-red-600 ml-5"
                                         >
                                             <FontAwesomeIcon icon={faTrashCan} />
                                         </button>
@@ -75,15 +75,18 @@ const Cart = () => {
                     </tbody>
                 </table>
                 <div className="mt-6 p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
-                    <p className="text-xl font-bold text-gray-800 text-right">
-                        Total Price: ${calculateTotalPrice()}
-                    </p>
-                    <NavLink to="/payment">
-                        <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 w-full sm:w-auto ">
-                            Proceed to Payment
-                        </button>
-                    </NavLink>
+                    <div className="flex justify-between items-center">
+                        <p className="text-xl font-bold text-gray-800">
+                            Total Price: ${calculateTotalPrice()}
+                        </p>
+                        <NavLink to="/payment">
+                            <button className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
+                                Proceed to Payment
+                            </button>
+                        </NavLink>
+                    </div>
                 </div>
+
             </div>
         )}
     </div>

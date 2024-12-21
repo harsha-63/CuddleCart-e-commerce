@@ -21,7 +21,7 @@ const Footer = () => {
           <div className="flex flex-col items-start">
             <NavLink
               to="/"
-              className="font-atma text-3xl font-semibold text-amber-950 mb-4 ml-52"
+              className="font-atma text-3xl font-semibold text-amber-950 mb-4 flex justify-center"
             >
               Cuddle Cart
             </NavLink>
@@ -32,7 +32,7 @@ const Footer = () => {
             </p>
           </div>
           {/* Company Links */}
-          <div>
+          <div >
             <p className="text-xl font-medium mb-4">COMPANY</p>
             <ul className="flex flex-col gap-2">
               <li>
@@ -120,5 +120,8 @@ const Footer = () => {
     </>
   );
 };
+
+
+
 
 export default Footer;
