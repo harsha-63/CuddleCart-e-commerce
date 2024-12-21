@@ -20,4 +20,11 @@ This project is an online store that provides a variety of baby clothing and ess
     - Tailwind CSS for style
     - React Toastify for notification
     - Fontawosome for icons
+ 
+- **Backend**:
+   - Node.js
+   - Express.js
+   - MongoDB (database)
+   - JWT (JSON Web Token) for authentication
+   - RESTful API (for communication between frontend and backend)
 
