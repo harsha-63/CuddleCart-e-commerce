@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../../Context/UserContext";
 
 const AdminSidebar = () => {
-  const { logOutUser } = useContext(UserContext);
+  const { logoutUser } = useContext(UserContext);
 
   return (
     <div className="flex">
@@ -62,16 +62,18 @@ const AdminSidebar = () => {
 
         {/* Logout */}
         <div className="mb-8 px-16 mt-10  items-center ">
+          <NavLink to={'/'}>
           <button
            
             className="block px-4 py-3 bg-amber-700 hover:bg-amber-800 text-white transition-all rounded-lg text-center"
-            onClick={logOutUser}
+            onClick={logoutUser}
           >
             <li className="flex items-center justify-center lg:justify-start">
               <FontAwesomeIcon icon={faSignOut} className="mr-0 lg:mr-3" />
               <span className="hidden lg:inline">LogOut</span>
             </li>
           </button>
+          </NavLink>
         </div>
       </div>
     </div>

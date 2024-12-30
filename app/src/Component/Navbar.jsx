@@ -20,7 +20,7 @@ const Navbar = () => {
     <header className="relative pt-8 pb-5">
       <div className="flex justify-between items-center w-full px-4 sm:px-8">
         <NavLink to='/' className="font-atma text-2xl sm:text-4xl font-semibold text-amber-950">Cuddle Cart</NavLink>
-        <nav className="hidden sm:flex items-center gap-6 text-base">
+        <nav className="hidden sm:flex items-center gap-14 text-base">
           <NavLink to="/" className="hover:text-amber-800 text-black transition">Home</NavLink>
           <NavLink to="/collection" className="hover:text-amber-800 text-black transition">Collection</NavLink>
           <NavLink to="/about" className="hover:text-amber-800 text-black transition">About</NavLink>

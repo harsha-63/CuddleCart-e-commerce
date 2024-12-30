@@ -50,28 +50,28 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  // Bar chart data to represent the total values for Revenue, Orders, and Users
+  
   const chartData = {
-    labels: ['Total'], // Using a single label "Total"
+    labels: ['Total'], 
     datasets: [
       {
         label: "Total Revenue",
-        data: [totalRevenue], // Use the total revenue value
-        backgroundColor: "rgba(234, 88, 12, 0.7)", // bg-amber-700 color
-        borderColor: "rgba(234, 88, 12, 1)", // bg-amber-700 border color
+        data: [totalRevenue], 
+        backgroundColor: "rgba(234, 88, 12, 0.7)", 
+        borderColor: "rgba(234, 88, 12, 1)", 
         borderWidth: 1,
       },
       {
         label: "Total Orders",
-        data: [totalOrders], // Use the total orders value
-        backgroundColor: "rgba(75, 192, 192, 0.6)", // Example color for orders
+        data: [totalOrders], 
+        backgroundColor: "rgba(75, 192, 192, 0.6)", 
         borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 1,
       },
       {
         label: "Total Users",
-        data: [usersCount], // Use the total users value
-        backgroundColor: "rgba(153, 102, 255, 0.6)", // Example color for users
+        data: [usersCount], 
+        backgroundColor: "rgba(153, 102, 255, 0.6)", 
         borderColor: "rgba(153, 102, 255, 1)",
         borderWidth: 1,
       },
@@ -87,9 +87,8 @@ const Dashboard = () => {
     },
     scales: {
       x: {
-        // Adjust bar width here
-        barPercentage: 0.6, // Reduce bar width by setting it to less than 1
-        categoryPercentage: 0.8, // Optionally adjust category space
+        barPercentage: 0.6, 
+        categoryPercentage: 0.8, 
       },
     },
   };
