@@ -11,7 +11,7 @@ const Collection = () => {
   const { addToWishlist, userWishlist } = useContext(WishlistContext);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 8; // Number of products per page
+  const productsPerPage = 8; 
 
   const filteredProducts = () => {
     let filtered = products || [];

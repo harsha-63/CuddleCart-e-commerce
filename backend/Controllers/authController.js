@@ -90,6 +90,7 @@ export const loginUser = async (req, res, next) => {
 };
 
 
+
 export const adminLogin = async(req,res,next)=>{
   const {email,password} = req.body
   const user = await User.findOne({email});

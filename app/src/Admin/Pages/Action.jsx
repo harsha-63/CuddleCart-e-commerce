@@ -92,16 +92,18 @@ const Action = () => {
           </h3>
   
           {/* Block/Unblock Button */}
-          <div className="flex justify-start">
-            <button
-              onClick={() => blockUser(user._id)}
-              className={`${
-                user.isBlock ? "bg-green-500" : "bg-red-500"
-              } py-2 px-4 rounded-lg`}
-            >
-              {user.isBlock ? "Unblock" : "Block"}
-            </button>
-          </div>
+          {!user.isAdmin && ( 
+        <div className="flex justify-start">
+          <button
+            onClick={() => blockUser(user._id)}
+            className={`${
+              user.isBlock ? "bg-green-500" : "bg-red-500"
+            } py-2 px-4 rounded-lg`}
+          >
+            {user.isBlock ? "Unblock" : "Block"}
+          </button>
+        </div>
+      )}
         </div>
       </div>
   

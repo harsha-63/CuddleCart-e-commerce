@@ -75,8 +75,8 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-4 border rounded shadow-lg">
-      <h1 className="text-3xl font-bold mb-4 text-center">Add New Product</h1>
+    <div className="max-w-2xl mx-auto mt-10 p-6 border rounded shadow-lg ">
+      <h1 className="text-3xl font-serif mb-4 text-center">Add New Product</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block font-semibold" htmlFor="name">Name</label>
@@ -87,7 +87,7 @@ const AddProduct = () => {
             value={formData.name}
             onChange={handleInputChange}
             placeholder="Enter product name"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border  border-gray-300 rounded"
             required
           />
         </div>
@@ -100,7 +100,7 @@ const AddProduct = () => {
             value={formData.description}
             onChange={handleInputChange}
             placeholder="Enter product description"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border  border-gray-300 rounded"
             required
           />
         </div>
@@ -113,10 +113,13 @@ const AddProduct = () => {
             value={formData.price}
             onChange={handleInputChange}
             placeholder="Enter product price"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border  border-gray-300 rounded"
+            min="0"
+            max="5000"
             required
           />
         </div>
+
         <div className="mb-4">
           <label className="block font-semibold" htmlFor="image">Image</label>
           <input
@@ -124,23 +127,30 @@ const AddProduct = () => {
             id="image"
             name="image"
             onChange={handleFileChange}
-            className="w-full p-2 border rounded"
+            className="w-full p-2  border  border-gray-300 rounded"
             required
           />
         </div>
         <div className="mb-4">
           <label className="block font-semibold" htmlFor="category">Category</label>
-          <input
-            type="text"
+          <select
             id="category"
             name="category"
             value={formData.category}
             onChange={handleInputChange}
-            placeholder="Enter product category"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border  border-gray-300 rounded"
             required
-          />
+          >
+            <option value="" disabled>Select a category</option>
+            <option value="Toys">Toys</option>
+            <option value="Clothings">Clothings</option>
+            <option value="Essentials">Essentials</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Nursing">Nursing</option>
+            <option value="Bath">Bath</option>
+          </select>
         </div>
+
         <div className="mb-4">
           <label className="block font-semibold" htmlFor="stars">Star Rating</label>
           <input
@@ -150,13 +160,17 @@ const AddProduct = () => {
             value={formData.stars}
             onChange={handleInputChange}
             placeholder="Enter star rating"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-gray-300 rounded"
+            min="0"
+            max="5"
+            step="0.1" 
             required
           />
-        </div>
+       </div>
+
         <button
           type="submit"
-          className="w-full bg-green-600 text-white p-2 rounded"
+          className=" ml-48 w-1/3 bg-green-600 text-white p-2 rounded"
         >
           Save
         </button>

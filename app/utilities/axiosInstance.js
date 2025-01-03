@@ -38,10 +38,11 @@ axiosInstance.interceptors.response.use(
         return axiosInstance(originalRequest);
     } catch (err) {
         console.error("Error refreshing token:", err);
-        // toast.error("Session expired. Please log in again.");
+       
         Cookies.remove("token");
         Cookies.remove("refreshToken");
         Cookies.remove("currentUser");
+        //  toast.error("Session expired. Please log in again.");
        
         return Promise.reject(err);
       }

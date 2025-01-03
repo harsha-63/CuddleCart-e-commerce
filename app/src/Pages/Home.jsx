@@ -7,20 +7,25 @@ import { WishlistContext } from "../Context/WishlistContext"
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
 
 const Home = () => {
-  const { products } = useContext(ShopContext); // Access products from context
+  const { products } = useContext(ShopContext); 
   const [newArrivalProducts, setNewArrivalProducts] = useState([]);
   const {currentUser} = useContext(UserContext)
   const {addToWishlist,userWishlist} = useContext(WishlistContext)
   const [showFirstFour, setShowFirstFour] = useState(true);
-
   useEffect(() => {
     if (products) {
-      const filteredProducts = products.filter(
-        (product) => product?.newArrival === true
-      );
-      setNewArrivalProducts(filteredProducts);
+      const lastEightProducts = [...products].slice(-8);
+      const updatedProducts = products.map((product) => ({
+        ...product,
+        newArrival: lastEightProducts.includes(product)
+      }));
+      setNewArrivalProducts(lastEightProducts);
+      console.log(updatedProducts);
+      
     }
   }, [products]);
+  
+  
 
   const handleAddToWishlist = (productId) => {
     addToWishlist(productId); 
