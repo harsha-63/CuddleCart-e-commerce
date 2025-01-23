@@ -20,16 +20,15 @@ const Navbar = () => {
     <header className="relative pt-8 pb-5">
       <div className="flex justify-between items-center w-full px-4 sm:px-8">
         <NavLink to='/' className="font-atma text-2xl sm:text-4xl font-semibold text-amber-950">Cuddle Cart</NavLink>
-        <nav className="hidden sm:flex items-center gap-14 text-base">
+        <div className="hidden sm:flex items-center gap-14 text-base">
           <NavLink to="/" className="hover:text-amber-800 text-black transition">Home</NavLink>
           <NavLink to="/collection" className="hover:text-amber-800 text-black transition">Collection</NavLink>
           <NavLink to="/about" className="hover:text-amber-800 text-black transition">About</NavLink>
           <NavLink to="/contact" className="hover:text-amber-800 text-black transition">Contact</NavLink>
-          {currentUser && isAdmin ? (
+          {currentUser && isAdmin && (
             <NavLink to="/dashboard" className="hover:text-amber-800 text-black transition">Admin</NavLink>
-          ) : null}
-        </nav>
-
+          )}
+        </div>
         <div className="hidden sm:flex items-center gap-6">
           <FontAwesomeIcon
             icon={faSearch}
@@ -37,7 +36,6 @@ const Navbar = () => {
             className="cursor-pointer hover:text-gray-800 transition"
             onClick={() => setShowSearch(true)}
           />
-
           {currentUser && (
             <>
               <NavLink to="/cart" className="hover:text-gray-800 relative">
@@ -53,7 +51,6 @@ const Navbar = () => {
               </NavLink>
             </>
           )}
-
           {currentUser ? (
             <NavLink to="/user" className="hover:text-gray-800 transition">
               <FontAwesomeIcon icon={faUser} size="lg" />
@@ -66,7 +63,6 @@ const Navbar = () => {
             </NavLink>
           )}
         </div>
-
         <button
           onClick={toggleMobileMenu}
           className="block sm:hidden text-gray-600 focus:outline-none"
@@ -75,7 +71,6 @@ const Navbar = () => {
           <FontAwesomeIcon icon={faBars} size="lg" />
         </button>
       </div>
-
       {isMobileMenuOpen && (
         <div className="sm:hidden bg-gray-100 flex flex-col items-center gap-4 text-lg text-gray-600 p-4 w-full absolute top-16 left-0 z-50">
           <NavLink to="/" onClick={toggleMobileMenu} className="hover:text-gray-800 transition">Home</NavLink>

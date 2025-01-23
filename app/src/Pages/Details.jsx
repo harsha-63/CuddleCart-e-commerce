@@ -65,11 +65,12 @@ const ProductDetails = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-center">
-      <div className="border p-4 rounded shadow-lg w-full sm:w-2/5 md:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="border p-4 rounded shadow-lg w-full sm:w-2/5 md:w-3/5 lg:w-2/3 xl:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-5">
 
           <div className="w-full h-full">
             <img src={product.image} alt={product.name} className="w-full h-full object-cover rounded" />
           </div>
+
           <div className="flex flex-col justify-between p-4">
             <h2 className="text-2xl font-semibold text-start">{product.name}</h2>
             <p className="text-lg font-semibold text-start text-gray-800">
@@ -98,7 +99,7 @@ const ProductDetails = () => {
 
       {/* Related Products Section */}
       <div className="mt-16">
-        <h3 className="text-3xl font-serif mb-8 text-gray-800">Related Products___</h3>
+        <h3 className="text-3xl font-serif mb-8 text-gray-800">Related Products</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {products
             .filter(item => item.category === product.category && item._id !== product._id)
@@ -123,4 +124,5 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
+
 

@@ -28,11 +28,11 @@ export const registerUser = async (req, res, next) => {
     return next(new CustomError("User already exists", 409));
   }
 
-  // Hash the password with salting
+ 
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
-  // Save the new user to the database
+ 
   const user = new User({ name, email, password: hashedPassword });
   await user.save();
 

@@ -33,14 +33,14 @@ const Collection = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Paginated Products
+  
   const paginatedProducts = () => {
     const startIndex = (currentPage - 1) * productsPerPage;
     const endIndex = startIndex + productsPerPage;
     return filteredProducts().slice(startIndex, endIndex);
   };
 
-  // Total Pages
+  
   const totalPages = Math.ceil(filteredProducts().length / productsPerPage);
 
   const handleAddToWishlist = (productId) => {
