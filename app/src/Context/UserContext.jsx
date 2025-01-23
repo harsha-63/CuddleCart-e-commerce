@@ -55,7 +55,7 @@ const UserProvider = ({ children }) => {
 
   const loginUser = async (email, password) => {
     try {
-      const response = await axios.post("/auth/login", { email, password }, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, { email, password }, { withCredentials: true });
       const user = Cookies.get("currentUser");
       setCurrentUser(JSON.parse(user));
       const { token } = response.data;
@@ -69,7 +69,7 @@ const UserProvider = ({ children }) => {
 
   const logoutUser = async () => {
     try {
-      await axiosInstance.post(`${import.meta.env.VITE_API_URL}auth/logout`, {}, { withCredentials: true });
+      await axiosInstance.post("auth/logout", {}, { withCredentials: true });
       toast.success("Logged out successfully");
       setCurrentUser(null)
     // eslint-disable-next-line no-unused-vars
