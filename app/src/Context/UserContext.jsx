@@ -69,7 +69,7 @@ const UserProvider = ({ children }) => {
 
   const logoutUser = async () => {
     try {
-      await axiosInstance.post("auth/logout", {}, { withCredentials: true });
+      await axiosInstance.post(`${import.meta.env.VITE_API_URL}auth/logout`, {}, { withCredentials: true });
       toast.success("Logged out successfully");
       setCurrentUser(null)
     // eslint-disable-next-line no-unused-vars
