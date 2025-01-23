@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 // import { toast } from "react-toastify";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3002",
+  baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
 });
 
@@ -27,7 +27,7 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const refreshResponse = await axios.post("http://localhost:3002/auth/refreshToken", {}, {
+        const refreshResponse = await axios.post(`${import.meta.env.VITE_API_URL}/auth/refreshToken`, {}, {
           withCredentials: true,
         });
 

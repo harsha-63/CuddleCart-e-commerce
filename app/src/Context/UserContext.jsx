@@ -39,7 +39,7 @@ const UserProvider = ({ children }) => {
     const data = { name, email, password };
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:3002/auth/register", data);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, data);
       toast.success(response.data.message);  
       
     } catch (error) {
@@ -55,7 +55,7 @@ const UserProvider = ({ children }) => {
 
   const loginUser = async (email, password) => {
     try {
-      const response = await axios.post("http://localhost:3002/auth/login", { email, password }, { withCredentials: true });
+      const response = await axios.post("/auth/login", { email, password }, { withCredentials: true });
       const user = Cookies.get("currentUser");
       setCurrentUser(JSON.parse(user));
       const { token } = response.data;
@@ -81,7 +81,7 @@ const UserProvider = ({ children }) => {
   const loginAdmin = async (email, password) => {
     try {
       const res=await axios.post(
-        "http://localhost:3002/auth/admin",
+        `${import.meta.env.VITE_API_URL}/auth/admin`,
         { email, password },
         { withCredentials: true }
       );

@@ -23,7 +23,7 @@ const ProductDetails = () => {
     // Fetch product details when component mounts or id changes
     const fetchProductDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3002/user/product/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/user/product/${id}`);
         const { data } = response.data;
         setProduct(data);
       } catch (error) {
