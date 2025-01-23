@@ -76,17 +76,8 @@ export const loginUser = async (req, res, next) => {
     isAdmin: user.isAdmin,
   }
   //sending user details to client (for curr user)
-  res.cookie("currentUser", JSON.stringify(currentUser))
 
-  //sending token to cookie
-  res.cookie("token", token, {
-    httpOnly: false,
-    secure: true,
-    sameSite: "none",
-  });
-
-
-  res.json({ success: true, message: "Logged in successfully", token });
+  res.json({ success: true, message: "Logged in successfully", token,currentUser });
 };
 
 

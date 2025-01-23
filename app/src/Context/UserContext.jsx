@@ -55,11 +55,11 @@ const UserProvider = ({ children }) => {
 
   const loginUser = async (email, password) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, { email, password }, { withCredentials: true });
+      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, { email, password }, { withCredentials: true });
+      Cookies.set("currentUser",data.currentUser)
       const user = Cookies.get("currentUser");
       setCurrentUser(JSON.parse(user));
-      const { token } = response.data;
-      Cookies.set("token", token); 
+      Cookies.set("token", data.token); 
       toast.success("Logged in successfully");
     } catch (err) {
       toast.error("Invalid credentials or error occurred");
