@@ -129,6 +129,7 @@ export const adminLogin = async(req,res,next)=>{
     console.log("Cookies: ", req.cookies); 
     
     const refreshToken = req.cookies.refreshToken;
+    console.log(refreshToken)
 
   
     if (!refreshToken) {
